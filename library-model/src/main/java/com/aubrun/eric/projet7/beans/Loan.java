@@ -1,0 +1,51 @@
+package com.aubrun.eric.projet7.beans;
+
+import java.util.List;
+
+public class Loan {
+
+    private Integer id;
+    private List<Book> books;
+    private User user;
+
+    public Loan() {
+    }
+
+    public Loan(List<Book> books, User user) {
+        this.books = books;
+        this.user = user;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "id=" + id +
+                ", books=" + books +
+                ", user=" + user +
+                '}';
+    }
+}

@@ -1,3 +1,5 @@
+package com.aubrun.eric.projet7.controllers;
+
 import javax.servlet.*;
 import java.io.IOException;
 

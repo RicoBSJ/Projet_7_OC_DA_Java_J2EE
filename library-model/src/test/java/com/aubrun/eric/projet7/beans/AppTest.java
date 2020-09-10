@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet7.model;
+package com.aubrun.eric.projet7.beans;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
