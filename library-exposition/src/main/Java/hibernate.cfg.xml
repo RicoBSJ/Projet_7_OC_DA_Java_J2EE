@@ -4,21 +4,20 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.password">postgres</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/javaee</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hbm2ddl.auto">create-drop</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.connection.release_mode">auto</property>
-        <property name="current_session_context_class">thread</property>
-        <property name="hibernate.connection.autoReconnect">true</property>
+
+        <property name = "hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name = "hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--<property name = "hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> -->
+        <!-- Assume test is the database name -->
+        <property name = "hibernate.connection.url">jdbc:mysql://localhost:8889</property>
+        <property name = "hibernate.connection.username">root</property>
+        <property name = "hibernate.connection.password">root</property>
 
         <mapping class="com.aubrun.eric.projet7.beans.Author" />
         <mapping class="com.aubrun.eric.projet7.beans.Book" />
         <mapping class="com.aubrun.eric.projet7.beans.Category" />
         <mapping class="com.aubrun.eric.projet7.beans.Loan" />
         <mapping class="com.aubrun.eric.projet7.beans.User" />
+
     </session-factory>
 </hibernate-configuration>
