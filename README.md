@@ -105,10 +105,15 @@ Il vous est demandé de vous mettre en situation réelle : en effet, il s'agit d
 ## La soutenance, d’une durée d’environ 25-30 minutes, se déroulera comme ceci :
 
     Partie 1 – 20-25 minutes : Simulation d'une réunion professionnelle
+    
 L’évaluateur jouera le rôle de l’architecte logiciel de votre entreprise.
+
 [~ 5 minutes]  Vous lui ferez une démonstration rapide de votre application web et du batch
+
 [~ 5 minutes] Vous lui présenterez la solution technique : architecture et technologies utilisées
+
 [10 minutes] Vous présenterez l’implémentation de l’architecture mise en oeuvre et les points importants du développement.
+
     Partie 2 – 5-10 minutes : Retour sur la soutenance
 L’évaluateur pourra vous demander d’approfondir certains aspects ou vous questionner sur vos livrables.
 L’évaluateur vous fera un debrief sur votre prestation en soutenance.
