@@ -13,13 +13,20 @@ public class BookService {
     private BookDao bookDao = new BookDao();
 
     public List<BookDto> findAll() {
+
         List<Book> book = bookDao.recupererLivres();
         List<BookDto> dto = new ArrayList<BookDto>();
+
         for (Book b : book) {
             BookDto bookDto = BookDtoMapper.toDto(b);
             dto.add(bookDto);
         }
         return dto;
+    }
+
+    public void addBook( Book newBook ) {
+
+        bookDao.ajouterLivre( newBook );
     }
 
     public Book findById( Integer id ) {

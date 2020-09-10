@@ -1,6 +1,6 @@
 package com.aubrun.eric.projet7.consumer.dao;
 
-import com.aubrun.eric.projet7.beans.Book;
+import com.aubrun.eric.projet7.beans.Author;
 import com.aubrun.eric.projet7.beans.SearchModel;
 import com.aubrun.eric.projet7.consumer.HibernateUtils;
 import org.hibernate.Session;
@@ -12,58 +12,58 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BookDao {
+public class AuthorDao {
 
     SessionFactory factory = HibernateUtils.getSessionFactory();
 
-    public List<Book> recupererLivres() {
+    public List<Author> recupererAuteurs() {
 
         Session session = factory.openSession();
-        List<Book> books = null;
+        List<Author> authors = null;
 
         try {
-            String q = "SELECT b FROM Book b";
-            Query<Book> query = session.createQuery( q );
-            books = query.getResultList();
+            String q = "SELECT b FROM Author b";
+            Query<Author> query = session.createQuery( q );
+            authors = query.getResultList();
 
         } catch ( Exception e ) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return books;
+        return authors;
     }
 
-    public Book afficherParId( Integer id ) {
+    public Author afficherParId( Integer id ) {
 
         Session session = factory.openSession();
-        Book book = null;
+        Author author = null;
 
         try {
-            String q = "SELECT b FROM Book b WHERE b.id=?1";
-            TypedQuery<Book> query = session.createQuery( q, Book.class );
+            String q = "SELECT a FROM Author a WHERE a.id=?1";
+            TypedQuery<Author> query = session.createQuery( q, Author.class );
             query.setParameter( 1, id );
-            book = query.getSingleResult();
+            author = query.getSingleResult();
 
         } catch ( Exception e ) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return book;
+        return author;
     }
 
-    public Book supprimerLivre(Integer id ) {
+    public Author supprimerAuteur(Integer id ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-            Book book = session.get( Book.class, id );
-            if ( book != null ) {
-                String q = "DELETE FROM Book b " + "WHERE b.id = :bookId";
-                Query<Book> query = session.createQuery( q );
-                query.setParameter( "bookId", id );
+            Author author = session.get( Author.class, id );
+            if ( author != null ) {
+                String q = "DELETE FROM Author b " + "WHERE b.id = :authorId";
+                Query<Author> query = session.createQuery( q );
+                query.setParameter( "authorId", id );
                 int result = query.executeUpdate();
                 System.out.println( result );
             }
@@ -79,13 +79,13 @@ public class BookDao {
         return null;
     }
 
-    public void ajouterLivre(Book book ) {
+    public void ajouterAuteur( Author author ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-            session.save( book );
+            session.save( author );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
@@ -97,21 +97,21 @@ public class BookDao {
         }
     }
 
-    public List<Book> recherche( SearchModel searchForm ) {
+    public List<Author> recherche( SearchModel searchForm ) {
         Session session = factory.openSession();
-        List<Book> resultat = null;
+        List<Author> resultat = null;
         try {
             Map<String, String> parameters = new HashMap();
-            String q = "SELECT b FROM Book b WHERE 1=1 ";
+            String q = "SELECT a FROM Author a WHERE 1=1 ";
             if ( searchForm.getTitle() != "" ) {
-                q += "AND b.title LIKE :title ";
+                q += "AND a.title LIKE :title ";
                 parameters.put( "title", "%" + searchForm.getTitle() + "%" );
             }
             if ( searchForm.getCategory() != "" ) {
-                q += "AND b.category LIKE :category ";
+                q += "AND a.category LIKE :category ";
                 parameters.put( "category", "%" + searchForm.getCategory() + "%" );
             }
-            Query<Book> query = session.createQuery( q );
+            Query<Author> query = session.createQuery( q );
             query.setProperties( parameters );
             resultat = query.getResultList();
 
@@ -121,13 +121,13 @@ public class BookDao {
         return resultat;
     }
 
-    public void modifierLivre( Book book ) {
+    public void modifierAuteur( Author author ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-            session.saveOrUpdate( book );
+            session.saveOrUpdate( author );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
