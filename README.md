@@ -102,7 +102,7 @@ Le mentor doit être en mesure de déployer le système d’information chez lui
 Déroulement de la soutenance
 Il vous est demandé de vous mettre en situation réelle : en effet, il s'agit d'une réunion professionnelle. Vous vous adresserez à John, l’architecte logiciel de la DSIO, qui doit valider votre travail sur le projet.‌
 
-# La soutenance, d’une durée d’environ 25-30 minutes, se déroulera comme ceci :
+## La soutenance, d’une durée d’environ 25-30 minutes, se déroulera comme ceci :
 
     Partie 1 – 20-25 minutes : Simulation d'une réunion professionnelle
 L’évaluateur jouera le rôle de l’architecte logiciel de votre entreprise.
@@ -136,7 +136,7 @@ Chaque composant a un cycle de développement qui lui est propre.
 Une architecture n-tiers est mise en oeuvre.
 Le patron de conception ‘Inversion de contrôle’ est mis en oeuvre.
 
-# Compétences évaluées
+## Compétences évaluées
 Créer une API web avec un web service SOAP ou un microservice REST
 Concevoir une application web avec une approche par composants
 Respecter les bonnes pratiques de développement en vigueur
