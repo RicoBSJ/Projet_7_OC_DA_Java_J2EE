@@ -5,18 +5,19 @@ import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
 import com.aubrun.eric.projet7.consumer.dao.BookDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookService {
 
     private BookDao bookDao = new BookDao();
 
-    public List<Book> findAll() {
-
-        List<Book> book = bookDao.recupererBooks();
-        for ( Book u : book ) {
-            BookDto bookDto = BookDtoMapper.toDto( u );
-            dto.add( bookDto );
+    public List<BookDto> findAll() {
+        List<Book> book = bookDao.recupererLivres();
+        List<BookDto> dto = new ArrayList<BookDto>();
+        for (Book b : book) {
+            BookDto bookDto = BookDtoMapper.toDto(b);
+            dto.add(bookDto);
         }
         return dto;
     }

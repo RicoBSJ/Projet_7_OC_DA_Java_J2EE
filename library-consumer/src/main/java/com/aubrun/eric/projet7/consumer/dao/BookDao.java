@@ -16,7 +16,7 @@ public class BookDao {
 
     SessionFactory factory = HibernateUtils.getSessionFactory();
 
-    public List<Book> recupererBooks() {
+    public List<Book> recupererLivres() {
 
         Session session = factory.openSession();
         List<Book> books = null;
@@ -121,7 +121,7 @@ public class BookDao {
         return resultat;
     }
 
-    public void modifierBook( Book book ) {
+    public void modifierLivre( Book book ) {
 
         Session session = factory.getCurrentSession();
 
