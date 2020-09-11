@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.beans.Book;
+import com.aubrun.eric.projet7.beans.SearchModel;
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
 import com.aubrun.eric.projet7.consumer.dao.BookDao;
@@ -32,6 +33,11 @@ public class BookService {
     public Book findById( Integer id ) {
 
         return bookDao.afficherParId( id );
+    }
+
+    public List<Book> searchBook( SearchModel searchForm ) {
+
+        return bookDao.recherche( searchForm );
     }
 
     public Book deleteBook( Integer id ) {
