@@ -1,30 +1,30 @@
 package com.aubrun.eric.projet7.beans;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "category")
     private String category;
+    @Column(name = "quantity")
     private Integer quantity;
+    @Column(name = "renewalLoan")
     private Boolean renewalLoan;
+    @Column(name = "quantityLoan")
     private Integer quantityLoan;
+    @Column(name = "year")
     private Date year;
+    @ManyToOne( cascade = { CascadeType.ALL } )
+    @JoinColumn( name = "id_book" )
     private Author author;
-
-    public Book() {
-    }
-
-    public Book(String title, String category, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date year, Author author) {
-        this.title = title;
-        this.category = category;
-        this.quantity = quantity;
-        this.renewalLoan = renewalLoan;
-        this.quantityLoan = quantityLoan;
-        this.year = year;
-        this.author = author;
-    }
 
     public Integer getId() {
         return id;
@@ -88,19 +88,5 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", category='" + category + '\'' +
-                ", quantity=" + quantity +
-                ", renewalLoan=" + renewalLoan +
-                ", quantityLoan=" + quantityLoan +
-                ", year=" + year +
-                ", author=" + author +
-                '}';
     }
 }

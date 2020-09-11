@@ -1,20 +1,20 @@
 package com.aubrun.eric.projet7.beans;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table
 public class Loan {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "booksList")
     private List<Book> books;
+    @ManyToOne( cascade = { CascadeType.ALL } )
+    @JoinColumn( name = "id_loan" )
     private User user;
-
-    public Loan() {
-    }
-
-    public Loan(List<Book> books, User user) {
-        this.books = books;
-        this.user = user;
-    }
 
     public Integer getId() {
         return id;
@@ -38,14 +38,5 @@ public class Loan {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Loan{" +
-                "id=" + id +
-                ", books=" + books +
-                ", user=" + user +
-                '}';
     }
 }

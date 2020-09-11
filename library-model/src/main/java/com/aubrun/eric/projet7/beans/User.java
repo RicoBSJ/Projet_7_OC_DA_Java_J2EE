@@ -1,12 +1,25 @@
 package com.aubrun.eric.projet7.beans;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "title")
     private String firstName;
+    @Column(name = "title")
     private String name;
+    @OneToMany( cascade = CascadeType.ALL )
+    @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_user")
     private List<Loan> loans;
 
     public User() {
