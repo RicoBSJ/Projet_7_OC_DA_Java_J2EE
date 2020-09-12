@@ -1,29 +1,22 @@
 package com.aubrun.eric.projet7.beans;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue
     private Integer id;
-    @Column(name = "firstName")
     private String firstName;
-    @Column(name = "name")
     private String name;
-    @Column(name = "loan")
     private Boolean loan;
-    @OneToMany( cascade = CascadeType.ALL )
-    @LazyCollection( LazyCollectionOption.FALSE )
-    @JoinColumn( name = "id_author" )
+    @OneToMany
     private List<Book> books;
+
+    public Author() {
+    }
 
     public Integer getId() {
         return id;
@@ -63,5 +56,16 @@ public class Author {
 
     public void setBooks(List<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", name='" + name + '\'' +
+                ", loan=" + loan +
+                ", books=" + books +
+                '}';
     }
 }

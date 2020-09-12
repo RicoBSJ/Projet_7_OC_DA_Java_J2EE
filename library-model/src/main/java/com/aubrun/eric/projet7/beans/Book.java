@@ -4,27 +4,22 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
-    @Column(name = "title")
     private String title;
-    @Column(name = "category")
     private String category;
-    @Column(name = "quantity")
     private Integer quantity;
-    @Column(name = "renewalLoan")
     private Boolean renewalLoan;
-    @Column(name = "quantityLoan")
     private Integer quantityLoan;
-    @Column(name = "year")
     private Date year;
-    @ManyToOne( cascade = { CascadeType.ALL } )
-    @JoinColumn( name = "id_book" )
+    @ManyToOne
     private Author author;
+
+    public Book() {
+    }
 
     public Integer getId() {
         return id;
@@ -88,5 +83,19 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", quantity=" + quantity +
+                ", renewalLoan=" + renewalLoan +
+                ", quantityLoan=" + quantityLoan +
+                ", year=" + year +
+                ", author=" + author +
+                '}';
     }
 }
