@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="library-exposition.war">
+    <root id="archive" name="library-exposition-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="library-exposition:war exploded" />
     </root>
   </artifact>
