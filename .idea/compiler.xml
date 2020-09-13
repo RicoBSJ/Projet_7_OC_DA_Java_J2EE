@@ -15,7 +15,7 @@
     <bytecodeTargetLevel>
       <module name="library-business" target="1.8" />
       <module name="library-consumer" target="1.8" />
-      <module name="library-exposition" target="1.7" />
+      <module name="library-exposition" target="1.8" />
       <module name="library-model" target="1.8" />
       <module name="Projet_7_OC_DA_Java_J2EE" target="1.8" />
     </bytecodeTargetLevel>
