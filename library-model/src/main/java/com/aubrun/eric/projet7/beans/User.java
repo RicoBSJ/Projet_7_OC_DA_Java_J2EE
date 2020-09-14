@@ -7,11 +7,14 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "firstName")
     private String firstName;
+    @Column(name = "name")
     private String name;
     @OneToMany
+    @JoinColumn(name = "id_loans")
     private List<Loan> loans;
 
     public User() {

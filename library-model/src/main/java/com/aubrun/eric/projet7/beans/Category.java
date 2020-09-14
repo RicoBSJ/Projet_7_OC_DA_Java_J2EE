@@ -7,12 +7,15 @@ import java.util.List;
 public class Category {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "category")
     private String category;
     @OneToMany
+    @JoinColumn(name = "id_authors")
     private List<Author> authors;
     @OneToMany
+    @JoinColumn(name = "id_books")
     private List<Book> books;
 
     public Category() {

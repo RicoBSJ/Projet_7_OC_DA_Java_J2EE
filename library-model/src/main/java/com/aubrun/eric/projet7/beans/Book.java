@@ -7,15 +7,22 @@ import java.util.Date;
 public class Book {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "category")
     private String category;
+    @Column(name = "quantity")
     private Integer quantity;
+    @Column(name = "renewalLoan")
     private Boolean renewalLoan;
+    @Column(name = "quantityLoan")
     private Integer quantityLoan;
+    @Column(name = "year")
     private Date year;
     @ManyToOne
+    @JoinColumn(name = "id_author")
     private Author author;
 
     public Book() {
