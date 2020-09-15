@@ -15,9 +15,9 @@ public class Book {
     private String category;
     @Column(name = "quantity")
     private Integer quantity;
-    @Column(name = "renewalLoan")
+    @Column(name = "renewal_loan")
     private Boolean renewalLoan;
-    @Column(name = "quantityLoan")
+    @Column(name = "quantity_loan")
     private Integer quantityLoan;
     @Column(name = "year")
     private Date year;

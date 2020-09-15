@@ -10,7 +10,7 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToMany
-    @JoinColumn(name = "id_books")
+    @JoinColumn(name = "booksList")
     private List<Book> books;
     @ManyToOne
     @JoinColumn(name = "id_user")
