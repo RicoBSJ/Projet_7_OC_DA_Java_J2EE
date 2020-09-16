@@ -1,11 +1,8 @@
 package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.beans.Book;
-import com.aubrun.eric.projet7.beans.SearchModel;
 import com.aubrun.eric.projet7.business.dto.BookDto;
-import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookService {
@@ -20,11 +17,6 @@ public class BookService {
     }
 
     public Book findById(Integer id) {
-
-        return null;
-    }
-
-    public List<Book> searchBook(SearchModel searchForm) {
 
         return null;
     }
