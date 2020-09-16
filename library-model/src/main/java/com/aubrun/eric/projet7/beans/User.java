@@ -14,7 +14,6 @@ public class User {
     @Column(name = "name")
     private String name;
     @OneToMany
-    @JoinColumn(name = "loansList")
     private List<Loan> loans;
 
     public User() {

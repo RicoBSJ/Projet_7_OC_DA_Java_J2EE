@@ -16,7 +16,6 @@ public class Author {
     @Column(name = "loan")
     private Boolean loan;
     @OneToMany
-    @JoinColumn(name = "booksList")
     private List<Book> books;
 
     public Author() {

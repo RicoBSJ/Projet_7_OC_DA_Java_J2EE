@@ -25,8 +25,4 @@ public class AuthorService {
 
         return null;
     }
-
-    public void registeredAuthor(Author registerAuthor) {
-
-    }
 }

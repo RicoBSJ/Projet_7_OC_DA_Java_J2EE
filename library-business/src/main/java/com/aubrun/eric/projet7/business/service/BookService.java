@@ -25,8 +25,4 @@ public class BookService {
 
         return null;
     }
-
-    public void registeredBook(Book registerBook) {
-
-    }
 }

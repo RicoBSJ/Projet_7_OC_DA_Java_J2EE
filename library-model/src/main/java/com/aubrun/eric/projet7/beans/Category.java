@@ -11,11 +11,10 @@ public class Category {
     private Integer id;
     @Column(name = "category")
     private String category;
-/*    @OneToMany
-    @JoinColumn(name = "authorsList")
-    private List<Author> authors;*/
     @OneToMany
-    @JoinColumn(name = "booksList")
+    @JoinColumn(name = "authorsList")
+    private List<Author> authors;
+    @OneToMany
     private List<Book> books;
 
     public Category() {
@@ -37,13 +36,13 @@ public class Category {
         this.category = category;
     }
 
-    /*public List<Author> getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
-    }*/
+    }
 
     public List<Book> getBooks() {
         return books;
@@ -58,7 +57,7 @@ public class Category {
         return "Category{" +
                 "id=" + id +
                 ", category='" + category + '\'' +
-                /*", authors=" + authors +*/
+                ", authors=" + authors +
                 ", books=" + books +
                 '}';
     }
