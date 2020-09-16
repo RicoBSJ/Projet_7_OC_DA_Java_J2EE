@@ -7,12 +7,12 @@ import java.util.List;
 public class Loan {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
     @OneToMany
     private List<Book> books;
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn
     private User user;
 
     public Loan() {

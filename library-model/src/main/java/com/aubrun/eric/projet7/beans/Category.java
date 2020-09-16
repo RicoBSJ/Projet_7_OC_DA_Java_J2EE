@@ -9,10 +9,10 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "category")
+    @Column
     private String category;
     @OneToMany
-    @JoinColumn(name = "authorsList")
+    @JoinColumn
     private List<Author> authors;
     @OneToMany
     private List<Book> books;

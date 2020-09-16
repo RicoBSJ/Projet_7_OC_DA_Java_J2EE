@@ -9,20 +9,20 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "title")
+    @Column
     private String title;
-    @Column(name = "category")
+    @Column
     private String category;
-    @Column(name = "quantity")
+    @Column
     private Integer quantity;
-    @Column(name = "renewal_loan")
+    @Column
     private Boolean renewalLoan;
-    @Column(name = "quantity_loan")
+    @Column
     private Integer quantityLoan;
-    @Column(name = "year")
+    @Column
     private Date year;
     @ManyToOne
-    @JoinColumn(name = "id_author")
+    @JoinColumn
     private Author author;
 
     public Book() {

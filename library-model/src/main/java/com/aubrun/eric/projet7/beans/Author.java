@@ -9,11 +9,11 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "firstName")
+    @Column
     private String firstName;
-    @Column(name = "name")
+    @Column
     private String name;
-    @Column(name = "loan")
+    @Column
     private Boolean loan;
     @OneToMany
     private List<Book> books;
