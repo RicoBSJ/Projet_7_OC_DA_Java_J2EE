@@ -29,6 +29,27 @@ public class Book {
     public Book() {
     }
 
+    public Book(Integer id, String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date year, Author author, Category category) {
+        this.id = id;
+        this.title = title;
+        this.quantity = quantity;
+        this.renewalLoan = renewalLoan;
+        this.quantityLoan = quantityLoan;
+        this.year = year;
+        this.author = author;
+        this.category = category;
+    }
+
+    public Book(String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date year, Author author, Category category) {
+        this.title = title;
+        this.quantity = quantity;
+        this.renewalLoan = renewalLoan;
+        this.quantityLoan = quantityLoan;
+        this.year = year;
+        this.author = author;
+        this.category = category;
+    }
+
     public Integer getId() {
         return id;
     }

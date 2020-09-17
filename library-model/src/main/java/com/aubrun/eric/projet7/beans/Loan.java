@@ -15,6 +15,15 @@ public class Loan {
     public Loan() {
     }
 
+    public Loan(Integer id, Book book) {
+        this.id = id;
+        this.book = book;
+    }
+
+    public Loan(Book book) {
+        this.book = book;
+    }
+
     public Integer getId() {
         return id;
     }
