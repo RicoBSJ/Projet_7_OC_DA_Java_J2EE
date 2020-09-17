@@ -9,13 +9,12 @@ public class BookDtoMapper {
 
         BookDto dto = new BookDto();
         dto.setId(book.getId());
-        dto.setTitle(book.getTitle());
-        dto.setCategory(book.getCategory());
         dto.setQuantity(book.getQuantity());
         dto.setRenewalLoan(book.getRenewalLoan());
         dto.setQuantityLoan(book.getQuantityLoan());
         dto.setYear(book.getYear());
         dto.setAuthor(book.getAuthor());
+        dto.setCategory(book.getCategory());
         return dto;
     }
 
@@ -24,12 +23,12 @@ public class BookDtoMapper {
         Book entity = new Book();
         entity.setId(bookDto.getId());
         entity.setTitle(bookDto.getTitle());
-        entity.setCategory(bookDto.getCategory());
         entity.setQuantity(bookDto.getQuantity());
         entity.setRenewalLoan(bookDto.getRenewalLoan());
         entity.setQuantityLoan(bookDto.getQuantityLoan());
         entity.setYear(bookDto.getYear());
         entity.setAuthor(bookDto.getAuthor());
+        entity.setCategory(bookDto.getCategory());
         return entity;
     }
 }

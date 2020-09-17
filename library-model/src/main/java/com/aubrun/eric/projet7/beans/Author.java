@@ -7,15 +7,14 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
     @Column
     private String firstName;
     @Column
     private String name;
-    @Column
-    private Boolean loan;
     @OneToMany
+    @JoinColumn
     private List<Book> books;
 
     public Author() {
@@ -45,14 +44,6 @@ public class Author {
         this.name = name;
     }
 
-    public Boolean getLoan() {
-        return loan;
-    }
-
-    public void setLoan(Boolean loan) {
-        this.loan = loan;
-    }
-
     public List<Book> getBooks() {
         return books;
     }
@@ -67,7 +58,6 @@ public class Author {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", name='" + name + '\'' +
-                ", loan=" + loan +
                 ", books=" + books +
                 '}';
     }

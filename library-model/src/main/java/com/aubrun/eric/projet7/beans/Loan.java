@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet7.beans;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Loan {
@@ -9,11 +8,9 @@ public class Loan {
     @Id
     @GeneratedValue
     private Integer id;
-    @OneToMany
-    private List<Book> books;
-    @ManyToOne
+    @OneToOne
     @JoinColumn
-    private User user;
+    private Book book;
 
     public Loan() {
     }
@@ -26,28 +23,19 @@ public class Loan {
         this.id = id;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     @Override
     public String toString() {
         return "Loan{" +
                 "id=" + id +
-                ", books=" + books +
-                ", user=" + user +
+                ", book=" + book +
                 '}';
     }
 }

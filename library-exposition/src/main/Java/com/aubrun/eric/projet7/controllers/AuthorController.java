@@ -39,7 +39,6 @@ public class AuthorController {
         existingAuthor.setFirstName(author.getFirstName());
         existingAuthor.setName(author.getName());
         existingAuthor.setBooks(author.getBooks());
-        existingAuthor.setLoan(author.getLoan());
         return this.authorRepository.save(existingAuthor);
     }
 

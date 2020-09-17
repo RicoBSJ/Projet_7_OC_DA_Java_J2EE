@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet7.business.dto;
 
 import com.aubrun.eric.projet7.beans.Author;
+import com.aubrun.eric.projet7.beans.Category;
 
 import java.util.Date;
 
@@ -8,12 +9,12 @@ public class BookDto {
 
     private Integer id;
     private String title;
-    private String category;
     private Integer quantity;
     private Boolean renewalLoan;
     private Integer quantityLoan;
     private Date year;
     private Author author;
+    private Category category;
 
     public Integer getId() {
         return id;
@@ -29,14 +30,6 @@ public class BookDto {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public Integer getQuantity() {
@@ -77,5 +70,13 @@ public class BookDto {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

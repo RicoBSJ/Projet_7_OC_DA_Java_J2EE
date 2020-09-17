@@ -9,7 +9,6 @@ public class AuthorDto {
     private Integer id;
     private String firstName;
     private String name;
-    private Boolean loan;
     private List<Book> books;
 
     public Integer getId() {
@@ -34,14 +33,6 @@ public class AuthorDto {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Boolean getLoan() {
-        return loan;
-    }
-
-    public void setLoan(Boolean loan) {
-        this.loan = loan;
     }
 
     public List<Book> getBooks() {

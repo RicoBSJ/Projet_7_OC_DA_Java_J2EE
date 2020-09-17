@@ -37,11 +37,11 @@ public class BookController {
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found with id : "+bookId));
         existingBook.setAuthor(book.getAuthor());
         existingBook.setTitle(book.getTitle());
-        existingBook.setCategory(book.getCategory());
         existingBook.setQuantity(book.getQuantity());
         existingBook.setQuantityLoan(book.getQuantityLoan());
         existingBook.setRenewalLoan(book.getRenewalLoan());
         existingBook.setYear(book.getYear());
+        existingBook.setCategory(book.getCategory());
         return this.bookRepository.save(existingBook);
     }
 

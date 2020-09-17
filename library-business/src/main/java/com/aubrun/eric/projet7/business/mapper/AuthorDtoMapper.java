@@ -11,7 +11,6 @@ public class AuthorDtoMapper {
         dto.setId(author.getId());
         dto.setFirstName(author.getFirstName());
         dto.setName(author.getName());
-        dto.setLoan(author.getLoan());
         dto.setBooks(author.getBooks());
         return dto;
     }
@@ -22,7 +21,6 @@ public class AuthorDtoMapper {
         entity.setId(authorDto.getId());
         entity.setFirstName(authorDto.getFirstName());
         entity.setName(authorDto.getName());
-        entity.setLoan(authorDto.getLoan());
         entity.setBooks(authorDto.getBooks());
         return entity;
     }

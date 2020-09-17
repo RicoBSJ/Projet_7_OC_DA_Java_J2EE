@@ -7,12 +7,10 @@ import java.util.Date;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
     @Column
     private String title;
-    @Column
-    private String category;
     @Column
     private Integer quantity;
     @Column
@@ -24,6 +22,9 @@ public class Book {
     @ManyToOne
     @JoinColumn
     private Author author;
+    @ManyToOne
+    @JoinColumn
+    private Category category;
 
     public Book() {
     }
@@ -42,14 +43,6 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public Integer getQuantity() {
@@ -92,17 +85,25 @@ public class Book {
         this.author = author;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", category='" + category + '\'' +
                 ", quantity=" + quantity +
                 ", renewalLoan=" + renewalLoan +
                 ", quantityLoan=" + quantityLoan +
                 ", year=" + year +
                 ", author=" + author +
+                ", category=" + category +
                 '}';
     }
 }
