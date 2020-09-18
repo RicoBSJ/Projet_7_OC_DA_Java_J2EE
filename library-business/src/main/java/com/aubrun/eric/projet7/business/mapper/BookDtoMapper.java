@@ -13,7 +13,7 @@ public class BookDtoMapper {
         dto.setRenewalLoan(book.getRenewalLoan());
         dto.setQuantityLoan(book.getQuantityLoan());
         dto.setYear(book.getYear());
-        dto.setAuthor(book.getAuthor());
+        /*dto.setAuthor(AuthorDtoMapper.toDto(book.getAuthor()));*/
         dto.setCategory(book.getCategory());
         return dto;
     }
@@ -27,7 +27,7 @@ public class BookDtoMapper {
         entity.setRenewalLoan(bookDto.getRenewalLoan());
         entity.setQuantityLoan(bookDto.getQuantityLoan());
         entity.setYear(bookDto.getYear());
-        entity.setAuthor(bookDto.getAuthor());
+        entity.setAuthor(AuthorDtoMapper.toEntity(bookDto.getAuthor()));
         entity.setCategory(bookDto.getCategory());
         return entity;
     }

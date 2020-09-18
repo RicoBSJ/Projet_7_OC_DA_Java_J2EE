@@ -13,7 +13,7 @@ public class BookDto {
     private Boolean renewalLoan;
     private Integer quantityLoan;
     private Date year;
-    private Author author;
+    private AuthorDto authorDto;
     private Category category;
 
     public Integer getId() {
@@ -64,12 +64,12 @@ public class BookDto {
         this.year = year;
     }
 
-    public Author getAuthor() {
-        return author;
+    public AuthorDto getAuthor() {
+        return authorDto;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthor(AuthorDto authorDto) {
+        this.authorDto = authorDto;
     }
 
     public Category getCategory() {

@@ -1,35 +1,38 @@
 package com.aubrun.eric.projet7.controllers;
 
 import com.aubrun.eric.projet7.beans.Author;
-import com.aubrun.eric.projet7.consumer.repository.AuthorRepository;
+import com.aubrun.eric.projet7.business.dto.AuthorDto;
+import com.aubrun.eric.projet7.business.service.AuthorService;
 import com.aubrun.eric.projet7.exception.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/author")
+@RequestMapping("/authors")
 public class AuthorController {
 
-    @Autowired
-    private AuthorRepository authorRepository;
+    private final AuthorService authorService;
 
-    @GetMapping
-    public List<Author> getAllAuthors(){
-        return this.authorRepository.findAll();
+    public AuthorController(AuthorService authorService) {
+        this.authorService = authorService;
     }
 
-    @GetMapping("/{id}")
-    public Author getAuthorById(@PathVariable(value = "id") int authorId){
-        return this.authorRepository.findById(authorId)
+    @GetMapping
+    public List<AuthorDto> getAllAuthors(){
+        return this.authorService.findAll();
+    }
+
+/*    @GetMapping("/{id}")
+    public AuthorDto getAuthorById(@PathVariable(value = "id") int authorId){
+        return this.authorService.findById(authorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Author not found with id : "+authorId));
     }
 
     @PostMapping
     public Author createAuthor(@RequestBody Author author){
-        return this.authorRepository.save(author);
+        return this.authorService.save(author);
     }
 
     @PutMapping("/{id}")
@@ -48,5 +51,5 @@ public class AuthorController {
                 .orElseThrow(() -> new ResourceNotFoundException("Author not found with id : "+authorId));
         this.authorRepository.delete(existingAuthor);
         return ResponseEntity.ok().build();
-    }
+    }*/
 }
