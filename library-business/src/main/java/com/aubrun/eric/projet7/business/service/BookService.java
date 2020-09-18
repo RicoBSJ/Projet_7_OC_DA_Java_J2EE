@@ -2,10 +2,12 @@ package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.business.dto.BookDto;
+import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -18,20 +20,21 @@ public class BookService {
 
     public List<BookDto> findAll() {
 
-        return null;
+        return bookRepository.findAll().stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 
     public void addBook(Book newBook) {
 
+        bookRepository.save(newBook);
     }
 
     public Book findById(Integer id) {
 
-        return null;
+        return bookRepository.findById(id).get();
     }
 
-    public Book deleteBook(Integer id) {
+    public void deleteBook(Integer id) {
 
-        return null;
+        bookRepository.deleteById(id);
     }
 }
