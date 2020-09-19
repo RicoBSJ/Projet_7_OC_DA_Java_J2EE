@@ -1,7 +1,5 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import com.aubrun.eric.projet7.beans.Book;
-
 import java.util.List;
 
 public class AuthorDto {

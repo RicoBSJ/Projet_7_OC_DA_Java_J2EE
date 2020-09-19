@@ -19,23 +19,22 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping
+    @GetMapping("/book")
     public List<AuthorDto> getAllAuthors(){
         return this.authorService.findAll();
     }
 
-/*    @GetMapping("/{id}")
-    public AuthorDto getAuthorById(@PathVariable(value = "id") int authorId){
-        return this.authorService.findById(authorId)
-                .orElseThrow(() -> new ResourceNotFoundException("Author not found with id : "+authorId));
+    @GetMapping("/{id}")
+    public AuthorDto getAuthorById(@PathVariable("authorId") int authorId){
+        return this.authorService.findById(authorId);
     }
 
     @PostMapping
-    public Author createAuthor(@RequestBody Author author){
-        return this.authorService.save(author);
+    public AuthorDto createAuthor(@RequestBody AuthorDto authorDto){
+        return this.authorService.saveOrUpdate(authorDto);
     }
 
-    @PutMapping("/{id}")
+    /*@PutMapping("/{id}")
     public Author updateAuthor(@RequestBody Author author, @PathVariable("id") int authorId){
         Author existingAuthor = this.authorRepository.findById(authorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Author not found with id : "+authorId));

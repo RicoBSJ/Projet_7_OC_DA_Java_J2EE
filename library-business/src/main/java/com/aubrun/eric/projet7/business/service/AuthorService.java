@@ -32,11 +32,12 @@ public class AuthorService {
         return authorRepository.findAll().stream().map(AuthorDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void addAuthor(Author newAuthor) {
+    public AuthorDto saveOrUpdate(AuthorDto newAuthor) {
 
+        return null;
     }
 
-    public Author findById(Integer id) {
+    public AuthorDto findById(Integer id) {
 
         return null;
     }

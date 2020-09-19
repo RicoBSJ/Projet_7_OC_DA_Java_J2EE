@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import com.aubrun.eric.projet7.beans.Author;
 import com.aubrun.eric.projet7.beans.Category;
 
 import java.util.Date;
