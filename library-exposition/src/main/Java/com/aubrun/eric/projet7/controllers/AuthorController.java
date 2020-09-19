@@ -1,10 +1,7 @@
 package com.aubrun.eric.projet7.controllers;
 
-import com.aubrun.eric.projet7.beans.Author;
 import com.aubrun.eric.projet7.business.dto.AuthorDto;
 import com.aubrun.eric.projet7.business.service.AuthorService;
-import com.aubrun.eric.projet7.exception.ResourceNotFoundException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,13 +22,13 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
-    public AuthorDto getAuthorById(@PathVariable("authorId") int authorId){
+    public AuthorDto getAuthorById(@PathVariable(value = "id") int authorId){
         return this.authorService.findById(authorId);
     }
 
     @PostMapping
-    public AuthorDto createAuthor(@RequestBody AuthorDto authorDto){
-        return this.authorService.saveOrUpdate(authorDto);
+    public void createAuthor(@RequestBody AuthorDto authorDto){
+        authorService.saveOrUpdate(authorDto);
     }
 
     /*@PutMapping("/{id}")
