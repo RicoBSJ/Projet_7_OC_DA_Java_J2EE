@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.Author;
 import com.aubrun.eric.projet7.business.dto.AuthorDto;
 import com.aubrun.eric.projet7.business.mapper.AuthorDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.AuthorRepository;
@@ -33,11 +34,13 @@ public class AuthorService {
 
     public AuthorDto saveOrUpdate(AuthorDto newAuthor) {
 
-        return null;
+        return AuthorDtoMapper.toDto(authorRepository.save(AuthorDtoMapper.toEntity(newAuthor)));
     }
 
     public AuthorDto findById(Integer id) {
 
+        AuthorDto authorDto = new AuthorDto();
+        /*AuthorDtoMapper.toDto(authorRepository.findById(AuthorDtoMapper.toEntity(authorDto).getId();*/
         return null;
     }
 
