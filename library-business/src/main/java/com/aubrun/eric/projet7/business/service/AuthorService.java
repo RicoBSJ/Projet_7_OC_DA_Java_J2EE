@@ -32,20 +32,14 @@ public class AuthorService {
         return authorRepository.findAll().stream().map(AuthorDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public AuthorDto saveOrUpdate(AuthorDto newAuthor) {
+    public void saveOrUpdate(AuthorDto newAuthor) {
 
-        return AuthorDtoMapper.toDto(authorRepository.save(AuthorDtoMapper.toEntity(newAuthor)));
+        AuthorDtoMapper.toDto(authorRepository.save(AuthorDtoMapper.toEntity(newAuthor)));
     }
+/*
+    public AuthorDto findById(AuthorDto authorDto, Integer id) {
 
-    public AuthorDto findById(Integer id) {
-
-        AuthorDto authorDto = new AuthorDto();
-        /*AuthorDtoMapper.toDto(authorRepository.findById(AuthorDtoMapper.toEntity(authorDto).getId();*/
-        return null;
-    }
-
-    public AuthorDto deleteAuthor(Integer id) {
-
-        return null;
-    }
+        authorDto.setId(id);
+        return AuthorDtoMapper.toDto(authorRepository.findById(AuthorDtoMapper.toEntity(authorDto)));
+    }*/
 }
