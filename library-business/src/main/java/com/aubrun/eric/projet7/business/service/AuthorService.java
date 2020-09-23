@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.Author;
 import com.aubrun.eric.projet7.business.dto.AuthorDto;
 import com.aubrun.eric.projet7.business.mapper.AuthorDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.AuthorRepository;
@@ -32,14 +31,19 @@ public class AuthorService {
         return authorRepository.findAll().stream().map(AuthorDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void saveOrUpdate(AuthorDto newAuthor) {
+    public AuthorDto saveOrUpdate(AuthorDto newAuthor) {
 
-        AuthorDtoMapper.toDto(authorRepository.save(AuthorDtoMapper.toEntity(newAuthor)));
+        return AuthorDtoMapper.toDto(authorRepository.save(AuthorDtoMapper.toEntity(newAuthor)));
     }
-/*
-    public AuthorDto findById(AuthorDto authorDto, Integer id) {
 
-        authorDto.setId(id);
-        return AuthorDtoMapper.toDto(authorRepository.findById(AuthorDtoMapper.toEntity(authorDto)));
-    }*/
+    public AuthorDto findById(Integer id) {
+
+        return AuthorDtoMapper.toDto(authorRepository.findById(id).get());
+    }
+
+    public AuthorDto delete(AuthorDto authorDto) {
+
+        /*return AuthorDtoMapper.toDto(authorRepository.deleteById(AuthorDtoMapper.toEntity(authorDto.getClass())));*/
+        return null;
+    }
 }

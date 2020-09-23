@@ -26,26 +26,23 @@ public class AuthorController {
         return this.authorService.findById(authorId);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public void createAuthor(@RequestBody AuthorDto authorDto){
         authorService.saveOrUpdate(authorDto);
     }
 
-    /*@PutMapping("/{id}")
-    public Author updateAuthor(@RequestBody Author author, @PathVariable("id") int authorId){
-        Author existingAuthor = this.authorRepository.findById(authorId)
-                .orElseThrow(() -> new ResourceNotFoundException("Author not found with id : "+authorId));
-        existingAuthor.setFirstName(author.getFirstName());
-        existingAuthor.setName(author.getName());
-        existingAuthor.setBooks(author.getBooks());
-        return this.authorRepository.save(existingAuthor);
+    @PutMapping("/update/{id}")
+    public AuthorDto updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable("id") int authorId){
+        AuthorDto existingAuthor = authorService.findById(authorId);
+        existingAuthor.setFirstName(authorDto.getFirstName());
+        existingAuthor.setName(authorDto.getName());
+        existingAuthor.setBooks(authorDto.getBooks());
+        return authorService.saveOrUpdate(existingAuthor);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Author> deleteAuthor(@PathVariable("id") int authorId){
-        Author existingAuthor = this.authorRepository.findById(authorId)
-                .orElseThrow(() -> new ResourceNotFoundException("Author not found with id : "+authorId));
-        this.authorRepository.delete(existingAuthor);
-        return ResponseEntity.ok().build();
-    }*/
+    @DeleteMapping("/delete/{id}")
+    public AuthorDto deleteAuthor(@PathVariable("id") int authorId){
+        AuthorDto existingAuthor = authorService.findById(authorId);
+        return authorService.delete(existingAuthor);
+    }
 }
