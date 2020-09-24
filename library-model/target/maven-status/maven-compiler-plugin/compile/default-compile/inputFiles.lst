@@ -1,1 +1,5 @@
-/Users/ricobsj/intellij-workspace/Projet_7_OC_DA_Java_J2EE/library-model/src/main/java/com/aubrun/eric/projet7/model/App.java
+/Users/ricobsj/intellij-workspace/Projet_7_OC_DA_Java_J2EE/library-model/src/main/java/com/aubrun/eric/projet7/beans/Book.java
+/Users/ricobsj/intellij-workspace/Projet_7_OC_DA_Java_J2EE/library-model/src/main/java/com/aubrun/eric/projet7/beans/User.java
+/Users/ricobsj/intellij-workspace/Projet_7_OC_DA_Java_J2EE/library-model/src/main/java/com/aubrun/eric/projet7/beans/Loan.java
+/Users/ricobsj/intellij-workspace/Projet_7_OC_DA_Java_J2EE/library-model/src/main/java/com/aubrun/eric/projet7/beans/Category.java
+/Users/ricobsj/intellij-workspace/Projet_7_OC_DA_Java_J2EE/library-model/src/main/java/com/aubrun/eric/projet7/beans/Author.java

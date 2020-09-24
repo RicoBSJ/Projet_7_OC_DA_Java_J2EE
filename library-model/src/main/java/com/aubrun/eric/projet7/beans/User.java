@@ -20,19 +20,6 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String firstName, String name, List<Loan> loans) {
-        this.id = id;
-        this.firstName = firstName;
-        this.name = name;
-        this.loans = loans;
-    }
-
-    public User(String firstName, String name, List<Loan> loans) {
-        this.firstName = firstName;
-        this.name = name;
-        this.loans = loans;
-    }
-
     public Integer getId() {
         return id;
     }
