@@ -26,12 +26,12 @@ public class BookController {
         return bookService.findById(bookId);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/")
     public void createBook(@RequestBody BookDto bookDto){
         bookService.saveOrUpdate(bookDto);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void updateBook(@RequestBody BookDto bookDto, @PathVariable("id") int bookId){
         BookDto existingBook = bookService.findById(bookId);
         existingBook.setAuthor(bookDto.getAuthor());
@@ -44,7 +44,7 @@ public class BookController {
         bookService.saveOrUpdate(existingBook);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable("id") int bookId){
         BookDto existingBook = bookService.findById(bookId);
         bookService.delete(existingBook.getId());

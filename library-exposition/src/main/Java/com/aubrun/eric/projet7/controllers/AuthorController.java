@@ -16,7 +16,7 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/allAuthors")
+    @GetMapping("/")
     public List<AuthorDto> getAllAuthors(){
         return this.authorService.findAll();
     }
@@ -26,12 +26,12 @@ public class AuthorController {
         return this.authorService.findById(authorId);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/")
     public void createAuthor(@RequestBody AuthorDto authorDto){
         authorService.saveOrUpdate(authorDto);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable("id") int authorId){
         AuthorDto existingAuthor = authorService.findById(authorId);
         existingAuthor.setFirstName(authorDto.getFirstName());
@@ -40,7 +40,7 @@ public class AuthorController {
         authorService.saveOrUpdate(existingAuthor);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteAuthor(@PathVariable("id") int authorId){
         AuthorDto existingAuthor = authorService.findById(authorId);
         authorService.delete(existingAuthor.getId());
