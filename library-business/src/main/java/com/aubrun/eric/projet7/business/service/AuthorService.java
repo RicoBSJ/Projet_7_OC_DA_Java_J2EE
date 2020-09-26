@@ -7,6 +7,7 @@ import com.aubrun.eric.projet7.consumer.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,17 +21,16 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public List<AuthorDto> findAll() {
+        public List<AuthorDto> findAll() {
 
-        /*List<AuthorDto> dtos = new ArrayList<>();
+        List<AuthorDto> dtos = new ArrayList<>();
         List<Author> authors = new ArrayList<>();
         for(Author a : authors){
             AuthorDto dto = AuthorDtoMapper.toDto(a);
             dtos.add(dto);
         }
-        return dtos;*/
-
-        return authorRepository.findAll().stream().map(AuthorDtoMapper::toDto).collect(Collectors.toList());
+        return dtos;
+       /*return authorRepository.findAll().stream().map(AuthorDtoMapper::toDto).collect(Collectors.toList());*/
     }
 
     public void saveOrUpdate(AuthorDto newAuthor) {
