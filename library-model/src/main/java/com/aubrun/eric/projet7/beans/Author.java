@@ -1,8 +1,5 @@
 package com.aubrun.eric.projet7.beans;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,8 +13,7 @@ public class Author {
     private String firstName;
     @Column
     private String name;
-    @OneToMany( cascade = CascadeType.ALL )
-    @LazyCollection( LazyCollectionOption.FALSE )
+    @OneToMany
     @JoinColumn
     private List<Book> books;
 

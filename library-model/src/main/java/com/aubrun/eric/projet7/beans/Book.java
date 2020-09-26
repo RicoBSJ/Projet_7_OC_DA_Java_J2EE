@@ -19,10 +19,10 @@ public class Book {
     private Integer quantityLoan;
     @Column
     private Date year;
-    @ManyToOne( cascade = { CascadeType.ALL } )
+    @ManyToOne
     @JoinColumn
     private Author author;
-    @ManyToOne( cascade = { CascadeType.ALL } )
+    @ManyToOne
     @JoinColumn
     private Category category;
 

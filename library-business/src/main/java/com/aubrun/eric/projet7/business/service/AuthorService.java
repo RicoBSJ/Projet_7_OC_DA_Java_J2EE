@@ -23,6 +23,7 @@ public class AuthorService {
     public List<AuthorDto> findAll() {
 
         /*List<AuthorDto> dtos = new ArrayList<>();
+        List<Author> authors = new ArrayList<>();
         for(Author a : authors){
             AuthorDto dto = AuthorDtoMapper.toDto(a);
             dtos.add(dto);

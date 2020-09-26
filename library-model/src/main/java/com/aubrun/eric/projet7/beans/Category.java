@@ -9,8 +9,7 @@ public class Category {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column
-    private String category;
+    private String name;
 
     public Category() {
     }
@@ -23,19 +22,19 @@ public class Category {
         this.id = id;
     }
 
-    public String getCategory() {
-        return category;
+    public String getName() {
+        return name;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", category='" + category + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
