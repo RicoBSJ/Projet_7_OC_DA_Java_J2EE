@@ -11,6 +11,8 @@ public class UserDtoMapper {
         dto.setId(user.getId());
         dto.setFirstName(user.getFirstName());
         dto.setName(user.getName());
+        dto.setEmail(user.getEmail());
+        dto.setMotDePasse(user.getMotDePasse());
         dto.setLoans(user.getLoans());
         return dto;
     }
@@ -21,6 +23,8 @@ public class UserDtoMapper {
         entity.setId(userDto.getId());
         entity.setFirstName(userDto.getFirstName());
         entity.setName(entity.getName());
+        entity.setEmail(userDto.getEmail());
+        entity.setMotDePasse(userDto.getMotDePasse());
         entity.setLoans(userDto.getLoans());
         return entity;
     }

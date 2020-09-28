@@ -13,6 +13,10 @@ public class User {
     private String firstName;
     @Column
     private String name;
+    @Column
+    private String email;
+    @Column
+    private String motDePasse;
     @OneToMany
     @JoinColumn
     private List<Loan> loans;
@@ -44,6 +48,22 @@ public class User {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
     public List<Loan> getLoans() {
         return loans;
     }
@@ -58,6 +78,8 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", motDePasse='" + motDePasse + '\'' +
                 ", loans=" + loans +
                 '}';
     }

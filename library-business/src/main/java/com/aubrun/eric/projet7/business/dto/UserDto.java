@@ -9,6 +9,8 @@ public class UserDto {
     private Integer id;
     private String firstName;
     private String name;
+    private String email;
+    private String motDePasse;
     private List<Loan> loans;
 
     public Integer getId() {
@@ -33,6 +35,22 @@ public class UserDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 
     public List<Loan> getLoans() {

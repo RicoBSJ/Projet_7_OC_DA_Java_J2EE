@@ -36,6 +36,8 @@ public class UserController {
         UserDto existingUser = userService.findById(userId);
         existingUser.setFirstName(userDto.getFirstName());
         existingUser.setName(userDto.getFirstName());
+        existingUser.setEmail(userDto.getEmail());
+        existingUser.setMotDePasse(userDto.getMotDePasse());
         existingUser.setLoans(userDto.getLoans());
         userService.saveOrUpdate(existingUser);
     }

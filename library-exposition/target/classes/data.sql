@@ -35,9 +35,9 @@ values
 
 insert into user
 values
-(1,'Elon', 'Musk'),
-(2,'Steve', 'Jobs'),
-(3,'Jack', 'Ma');
+(1, 'e.musk@gmail.com', 'Musk', 'eM86', 'Elon'),
+(2, 's_jobs@gmail.com', 'Jobs', 'sJ53','Steve'),
+(3, 'j-ma@gmail.com', 'Ma', 'jM68', 'Jack');
 
 insert into loan
 values
