@@ -9,9 +9,12 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
+    @Column
     private String firstName;
+    @Column
     private String name;
     @OneToMany
+    @JoinColumn
     private List<Loan> loans;
 
     public User() {

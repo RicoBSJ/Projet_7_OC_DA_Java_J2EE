@@ -32,3 +32,15 @@ values
 (18, 3, 1, false, 'La Vertu d’Égoïsme', '2008-01-09', 1, 1, 1),
 (19, 3, 1, false, 'We the Living', '2011-06-07', 1, 1, 1),
 (20, 3, 1, false, 'Capitalism', '1986-07-15', 1, 1, 1);
+
+insert into user
+values
+(1,'Elon', 'Musk'),
+(2,'Steve', 'Jobs'),
+(3,'Jack', 'Ma');
+
+insert into loan
+values
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3);

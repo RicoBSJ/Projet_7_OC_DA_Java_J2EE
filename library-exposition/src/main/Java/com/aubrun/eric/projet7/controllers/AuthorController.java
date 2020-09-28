@@ -26,7 +26,7 @@ public class AuthorController {
         return this.authorService.findById(authorId);
     }
 
-    @PostMapping(name = "/", consumes = "application/json", produces = "application/json")
+    @PostMapping("/")
     public void createAuthor(@RequestBody AuthorDto authorDto){
         authorService.saveOrUpdate(authorDto);
     }
