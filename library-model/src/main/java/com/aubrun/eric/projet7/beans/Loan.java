@@ -9,6 +9,7 @@ public class Loan {
     @GeneratedValue
     private Integer id;
     @OneToOne
+    @JoinColumn
     private Book book;
 
     public Loan() {
