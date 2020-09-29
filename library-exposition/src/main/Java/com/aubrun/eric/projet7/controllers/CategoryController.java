@@ -27,7 +27,7 @@ public class CategoryController {
         return this.categoryService.findById(categoryId);
     }
 
-    @PostMapping(name = "/", consumes = "application/json", produces = "application/json")
+    @PostMapping("/")
     public void createCategory(@RequestBody CategoryDto categoryDto){
         categoryService.saveOrUpdate(categoryDto);
     }

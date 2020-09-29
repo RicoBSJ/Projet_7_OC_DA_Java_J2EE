@@ -26,7 +26,7 @@ public class LoanController {
         return this.loanService.findById(loanId);
     }
 
-    @PostMapping(name = "/", consumes = "application/json", produces = "application/json")
+    @PostMapping("/")
     public void createLoan(@RequestBody LoanDto loanDto){
         loanService.saveOrUpdate(loanDto);
     }

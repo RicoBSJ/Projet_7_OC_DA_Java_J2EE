@@ -34,13 +34,13 @@ public class BookController {
     @PutMapping("/{id}")
     public void updateBook(@RequestBody BookDto bookDto, @PathVariable("id") int bookId){
         BookDto existingBook = bookService.findById(bookId);
-        existingBook.setAuthor(bookDto.getAuthor());
+        existingBook.setAuthorDto(bookDto.getAuthorDto());
         existingBook.setTitle(bookDto.getTitle());
         existingBook.setQuantity(bookDto.getQuantity());
         existingBook.setQuantityLoan(bookDto.getQuantityLoan());
         existingBook.setRenewalLoan(bookDto.getRenewalLoan());
         existingBook.setYear(bookDto.getYear());
-        existingBook.setCategory(bookDto.getCategory());
+        existingBook.setCategoryDto(bookDto.getCategoryDto());
         bookService.saveOrUpdate(existingBook);
     }
 

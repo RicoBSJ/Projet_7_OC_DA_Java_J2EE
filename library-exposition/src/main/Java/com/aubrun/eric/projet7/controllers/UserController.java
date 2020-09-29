@@ -26,7 +26,7 @@ public class UserController {
         return this.userService.findById(userId);
     }
 
-    @PostMapping(name = "/", consumes = "application/json", produces = "application/json")
+    @PostMapping("/")
     public void createUser(@RequestBody UserDto userDto){
         userService.saveOrUpdate(userDto);
     }
