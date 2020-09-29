@@ -7,7 +7,6 @@ import com.aubrun.eric.projet7.business.dto.BookDto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AuthorDtoMapper {
 

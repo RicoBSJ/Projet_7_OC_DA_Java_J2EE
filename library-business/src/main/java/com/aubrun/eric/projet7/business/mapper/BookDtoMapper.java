@@ -1,8 +1,6 @@
 package com.aubrun.eric.projet7.business.mapper;
 
-import com.aubrun.eric.projet7.beans.Author;
 import com.aubrun.eric.projet7.beans.Book;
-import com.aubrun.eric.projet7.business.dto.AuthorDto;
 import com.aubrun.eric.projet7.business.dto.BookDto;
 
 public class BookDtoMapper {
@@ -15,9 +13,7 @@ public class BookDtoMapper {
         dto.setRenewalLoan(book.getRenewalLoan());
         dto.setQuantityLoan(book.getQuantityLoan());
         dto.setYear(book.getYear());
-        /*dto.setAuthorDto(dto.getAuthorDto());*/
         dto.setAuthorDto(AuthorDtoMapper.toDto(book.getAuthor()));
-        /*dto.setCategoryDto(dto.getCategoryDto());*/
         dto.setCategoryDto(CategoryDtoMapper.toDto(book.getCategory()));
         return dto;
     }
@@ -31,9 +27,7 @@ public class BookDtoMapper {
         entity.setRenewalLoan(bookDto.getRenewalLoan());
         entity.setQuantityLoan(bookDto.getQuantityLoan());
         entity.setYear(bookDto.getYear());
-        /*entity.setAuthor(entity.getAuthor());*/
         entity.setAuthor(AuthorDtoMapper.toEntity(bookDto.getAuthorDto()));
-        /*entity.setCategory(entity.getCategory());*/
         entity.setCategory(CategoryDtoMapper.toEntity(bookDto.getCategoryDto()));
         return entity;
     }
