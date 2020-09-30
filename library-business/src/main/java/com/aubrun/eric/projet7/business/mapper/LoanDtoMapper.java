@@ -9,7 +9,7 @@ public class LoanDtoMapper {
 
         LoanDto dto = new LoanDto();
         dto.setId(loan.getId());
-        dto.setBook(loan.getBook());
+        dto.setBookDto(BookDtoMapper.toDto(loan.getBook()));
         return dto;
     }
 
@@ -17,7 +17,7 @@ public class LoanDtoMapper {
 
         Loan entity = new Loan();
         entity.setId(loanDto.getId());
-        entity.setBook(loanDto.getBook());
+        entity.setBook(BookDtoMapper.toEntity(loanDto.getBookDto()));
         return entity;
     }
 }

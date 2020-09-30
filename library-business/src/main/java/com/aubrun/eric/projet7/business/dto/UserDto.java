@@ -1,7 +1,5 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import com.aubrun.eric.projet7.beans.Loan;
-
 import java.util.List;
 
 public class UserDto {
@@ -11,7 +9,7 @@ public class UserDto {
     private String name;
     private String email;
     private String motDePasse;
-    private List<Loan> loans;
+    private List<LoanDto> loans;
 
     public Integer getId() {
         return id;
@@ -53,11 +51,11 @@ public class UserDto {
         this.motDePasse = motDePasse;
     }
 
-    public List<Loan> getLoans() {
+    public List<LoanDto> getLoans() {
         return loans;
     }
 
-    public void setLoans(List<Loan> loans) {
+    public void setLoans(List<LoanDto> loans) {
         this.loans = loans;
     }
 }

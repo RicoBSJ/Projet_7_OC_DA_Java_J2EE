@@ -5,7 +5,7 @@ import com.aubrun.eric.projet7.beans.Book;
 public class LoanDto {
 
     private Integer id;
-    private Book book;
+    private BookDto bookDto;
 
     public Integer getId() {
         return id;
@@ -15,11 +15,11 @@ public class LoanDto {
         this.id = id;
     }
 
-    public Book getBook() {
-        return book;
+    public BookDto getBookDto() {
+        return bookDto;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBookDto(BookDto bookDto) {
+        this.bookDto = bookDto;
     }
 }

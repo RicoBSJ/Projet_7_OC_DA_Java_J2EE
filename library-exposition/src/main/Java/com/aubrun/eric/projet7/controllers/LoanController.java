@@ -34,7 +34,7 @@ public class LoanController {
     @PutMapping("/{id}")
     public void updateLoan(@RequestBody LoanDto loanDto, @PathVariable("id") int loanId){
         LoanDto existingLoan = loanService.findById(loanId);
-        existingLoan.setBook(loanDto.getBook());
+        existingLoan.setBookDto(loanDto.getBookDto());
         loanService.saveOrUpdate(existingLoan);
     }
 
