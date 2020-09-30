@@ -7,7 +7,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
     private String firstName;
@@ -17,7 +17,7 @@ public class User {
     private String email;
     @Column
     private String motDePasse;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn
     private List<Loan> loans;
 
