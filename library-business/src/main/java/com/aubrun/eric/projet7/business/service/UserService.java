@@ -24,7 +24,7 @@ public class UserService {
 
         List<UserDto> dtos = new ArrayList<>();
         List<User> users = new ArrayList<>();
-        for(User a : users){
+        for (User a : users) {
             UserDto dto = UserDtoMapper.toDto(a);
             dtos.add(dto);
         }

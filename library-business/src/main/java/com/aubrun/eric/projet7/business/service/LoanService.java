@@ -24,7 +24,7 @@ public class LoanService {
 
         List<LoanDto> dtos = new ArrayList<>();
         List<Loan> loans = new ArrayList<>();
-        for(Loan a : loans){
+        for (Loan a : loans) {
             LoanDto dto = LoanDtoMapper.toDto(a);
             dtos.add(dto);
         }

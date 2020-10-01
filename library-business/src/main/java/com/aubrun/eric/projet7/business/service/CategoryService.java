@@ -24,7 +24,7 @@ public class CategoryService {
 
         List<CategoryDto> dtos = new ArrayList<>();
         List<Category> categorys = new ArrayList<>();
-        for(Category a : categorys){
+        for (Category a : categorys) {
             CategoryDto dto = CategoryDtoMapper.toDto(a);
             dtos.add(dto);
         }
