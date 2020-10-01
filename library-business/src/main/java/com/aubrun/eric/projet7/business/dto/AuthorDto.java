@@ -7,7 +7,7 @@ public class AuthorDto {
     private Integer id;
     private String firstName;
     private String name;
-    private List<BookDto> bookDtos;
+    private List<BookDto> books;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class AuthorDto {
         this.name = name;
     }
 
-    public List<BookDto> getBookDtos() {
-        return bookDtos;
+    public List<BookDto> getBooks() {
+        return books;
     }
 
-    public void setBookDtos(List<BookDto> bookDtos) {
-        this.bookDtos = bookDtos;
+    public void setBooks(List<BookDto> books) {
+        this.books = books;
     }
 }

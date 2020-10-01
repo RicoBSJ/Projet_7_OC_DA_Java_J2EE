@@ -21,7 +21,7 @@ public class AuthorDtoMapper {
             BookDto bookDto = BookDtoMapper.toDto(book);
             list.add(bookDto);
         }
-        dto.setBookDtos(list);
+        dto.setBooks(list);
         /*dto.setBookDtos(author.getBooks().stream().map(BookDtoMapper::toDto).collect(Collectors.toList()));*/
         return dto;
     }
@@ -33,7 +33,7 @@ public class AuthorDtoMapper {
         entity.setFirstName(authorDto.getFirstName());
         entity.setName(authorDto.getName());
         List<Book> list = new ArrayList<>();
-        for (BookDto bookDto : authorDto.getBookDtos()) {
+        for (BookDto bookDto : authorDto.getBooks()) {
             Book book = BookDtoMapper.toEntity(bookDto);
             list.add(book);
         }
