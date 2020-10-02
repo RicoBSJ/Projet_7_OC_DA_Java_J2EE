@@ -7,13 +7,13 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column
     private String firstName;
     @Column
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany (cascade = CascadeType.ALL)
     @JoinColumn
     private List<Book> books;
 

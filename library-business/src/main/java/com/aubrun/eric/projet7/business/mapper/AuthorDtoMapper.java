@@ -16,13 +16,6 @@ public class AuthorDtoMapper {
         dto.setId(author.getId());
         dto.setFirstName(author.getFirstName());
         dto.setName(author.getName());
-        List<BookDto> list = new ArrayList<>();
-        for (Book book : author.getBooks()) {
-            BookDto bookDto = BookDtoMapper.toDto(book);
-            list.add(bookDto);
-        }
-        dto.setBooks(list);
-        /*dto.setBookDtos(author.getBooks().stream().map(BookDtoMapper::toDto).collect(Collectors.toList()));*/
         return dto;
     }
 
@@ -32,13 +25,6 @@ public class AuthorDtoMapper {
         entity.setId(authorDto.getId());
         entity.setFirstName(authorDto.getFirstName());
         entity.setName(authorDto.getName());
-        List<Book> list = new ArrayList<>();
-        for (BookDto bookDto : authorDto.getBooks()) {
-            Book book = BookDtoMapper.toEntity(bookDto);
-            list.add(book);
-        }
-        entity.setBooks(list);
-        /*entity.setBooks(authorDto.getBookDtos().stream().map(BookDtoMapper::toEntity).collect(Collectors.toList()));*/
         return entity;
     }
 }

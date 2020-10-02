@@ -7,7 +7,7 @@ import java.util.Date;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column
     private String title;
@@ -19,10 +19,10 @@ public class Book {
     private Integer quantityLoan;
     @Column
     private Date year;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn
     private Author author;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn
     private Category category;
 
