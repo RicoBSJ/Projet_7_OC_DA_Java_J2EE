@@ -1,12 +1,7 @@
 package com.aubrun.eric.projet7.business.mapper;
 
 import com.aubrun.eric.projet7.beans.Author;
-import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.business.dto.AuthorDto;
-import com.aubrun.eric.projet7.business.dto.BookDto;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AuthorDtoMapper {
 

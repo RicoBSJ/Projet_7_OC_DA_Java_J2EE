@@ -21,13 +21,6 @@ public class BookService {
 
     public List<BookDto> findAll() {
 
-        /*List<BookDto> dtos = new ArrayList<>();
-        List<Book> books = new ArrayList<>();
-        for (Book b : books) {
-            BookDto dto = BookDtoMapper.toDto(b);
-            dtos.add(dto);
-        }
-        return dtos;*/
         return bookRepository.findAll().stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 

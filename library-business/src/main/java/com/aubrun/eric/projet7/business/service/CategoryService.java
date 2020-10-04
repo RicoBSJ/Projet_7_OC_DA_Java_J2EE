@@ -7,8 +7,8 @@ import com.aubrun.eric.projet7.consumer.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -22,14 +22,7 @@ public class CategoryService {
 
     public List<CategoryDto> findAll() {
 
-        List<CategoryDto> dtos = new ArrayList<>();
-        List<Category> categorys = new ArrayList<>();
-        for (Category a : categorys) {
-            CategoryDto dto = CategoryDtoMapper.toDto(a);
-            dtos.add(dto);
-        }
-        return dtos;
-        /*return categoryRepository.findAll().stream().map(CategoryDtoMapper::toDto).collect(Collectors.toList());*/
+        return categoryRepository.findAll().stream().map(CategoryDtoMapper::toDto).collect(Collectors.toList());
     }
 
     public void saveOrUpdate(CategoryDto newCategory) {

@@ -7,8 +7,8 @@ import com.aubrun.eric.projet7.consumer.repository.LoanRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -22,14 +22,7 @@ public class LoanService {
 
     public List<LoanDto> findAll() {
 
-        List<LoanDto> dtos = new ArrayList<>();
-        List<Loan> loans = new ArrayList<>();
-        for (Loan a : loans) {
-            LoanDto dto = LoanDtoMapper.toDto(a);
-            dtos.add(dto);
-        }
-        return dtos;
-        /*return loanRepository.findAll().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList());*/
+        return loanRepository.findAll().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList());
     }
 
     public void saveOrUpdate(LoanDto newLoan) {
