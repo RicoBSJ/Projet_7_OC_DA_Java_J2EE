@@ -39,4 +39,8 @@ public class BookService {
         BookDto bookDto = BookDtoMapper.toDto(bookRepository.findById(id).get());
         bookRepository.delete(BookDtoMapper.toEntity(bookDto));
     }
+
+    public List<BookDto> searchBook(BookDto bookDto){
+        return null;
+    }
 }

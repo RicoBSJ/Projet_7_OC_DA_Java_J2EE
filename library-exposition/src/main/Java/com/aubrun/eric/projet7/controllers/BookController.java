@@ -1,6 +1,9 @@
 package com.aubrun.eric.projet7.controllers;
 
+import com.aubrun.eric.projet7.beans.Book;
+import com.aubrun.eric.projet7.beans.SearchBook;
 import com.aubrun.eric.projet7.business.dto.BookDto;
+import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,5 +51,23 @@ public class BookController {
     public void deleteBook(@PathVariable("id") int bookId){
         BookDto existingBook = bookService.findById(bookId);
         bookService.delete(existingBook.getId());
+    }
+
+    @GetMapping("/")
+    public List<BookDto> searchBook(SearchBookDto searchBookDto){
+
+        searchBookDto.setAuthor(searchBookDto.getAuthor());
+        searchBookDto.setTitle(searchBookDto.getTitle());
+        searchBookDto.setCategory(searchBookDto.getCategory());
+        searchBookDto.setQuantity(searchBookDto.getQuantity());
+        searchBookDto.setQuantityLoan(searchBookDto.getQuantityLoan());
+        searchBookDto.setRenewalLoan(searchBookDto.getRenewalLoan());
+        searchBookDto.setYear(searchBookDto.getYear());
+
+        /*List<BookDto> books = bookService.searchBook(searchBookDto);
+
+        return books;*/
+
+        return null;
     }
 }
