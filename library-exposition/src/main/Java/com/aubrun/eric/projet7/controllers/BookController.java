@@ -53,7 +53,7 @@ public class BookController {
         bookService.delete(existingBook.getId());
     }
 
-    @GetMapping("/")
+    @GetMapping("/search")
     public List<BookDto> searchBook(SearchBookDto searchBookDto){
 
         searchBookDto.setAuthor(searchBookDto.getAuthor());
