@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.business.dto.BookDto;
+import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,19 @@ public class BookService {
         bookRepository.delete(BookDtoMapper.toEntity(bookDto));
     }
 
-    public List<BookDto> searchBook(BookDto bookDto){
+    public List<BookDto> searchBook(SearchBookDto searchBookDto) {
+
+        List<BookDto> bookDtoList = findAll();
+
+        /*BookDto bookDtoStream = bookDtoList.stream()
+                .filter(bookDto -> " ".equals(bookDto.getTitle()))
+                .filter(bookDto -> " ".equals(bookDto.getAuthorDto()))
+                .filter(bookDto -> " ".equals(bookDto.getCategoryDto()))
+                .filter(bookDto -> " ".equals(bookDto.getQuantity()))
+                .filter(bookDto -> " ".equals(bookDto.getQuantityLoan()))
+                .filter(bookDto -> " ".equals(bookDto.getRenewalLoan()))
+                .filter(bookDto -> " ".equals(bookDto.getYear())).findAny().orElse(null);*/
+
         return null;
     }
 }
