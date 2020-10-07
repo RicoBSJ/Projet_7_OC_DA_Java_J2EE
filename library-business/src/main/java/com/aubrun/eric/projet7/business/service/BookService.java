@@ -41,19 +41,11 @@ public class BookService {
         bookRepository.delete(BookDtoMapper.toEntity(bookDto));
     }
 
-    public List<BookDto> searchBook(SearchBookDto searchBookDto) {
+    public List<BookDto> searchBook() {
 
         List<BookDto> bookDtoList = findAll();
+        List<BookDto> books = bookDtoList.stream().sorted().collect(Collectors.toList());
 
-        /*BookDto bookDtoStream = bookDtoList.stream()
-                .filter(bookDto -> " ".equals(bookDto.getTitle()))
-                .filter(bookDto -> " ".equals(bookDto.getAuthorDto()))
-                .filter(bookDto -> " ".equals(bookDto.getCategoryDto()))
-                .filter(bookDto -> " ".equals(bookDto.getQuantity()))
-                .filter(bookDto -> " ".equals(bookDto.getQuantityLoan()))
-                .filter(bookDto -> " ".equals(bookDto.getRenewalLoan()))
-                .filter(bookDto -> " ".equals(bookDto.getYear())).findAny().orElse(null);*/
-
-        return null;
+        return books;
     }
 }
