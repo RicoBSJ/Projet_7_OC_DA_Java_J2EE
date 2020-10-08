@@ -13,7 +13,7 @@ public class Author {
     private String firstName;
     @Column
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY)
     @JoinColumn
     private List<Book> books;
 
