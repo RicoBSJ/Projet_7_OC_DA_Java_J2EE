@@ -7,35 +7,36 @@ public class Loan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @Column(name = "loan_id")
+    private Integer loanId;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Book book;
+    @JoinColumn(name = "loan_book")
+    private Book loanBook;
 
     public Loan() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getLoanId() {
+        return loanId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLoanId(Integer loanId) {
+        this.loanId = loanId;
     }
 
-    public Book getBook() {
-        return book;
+    public Book getLoanBook() {
+        return loanBook;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setLoanBook(Book loanBook) {
+        this.loanBook = loanBook;
     }
 
     @Override
     public String toString() {
         return "Loan{" +
-                "id=" + id +
-                ", book=" + book +
+                "id=" + loanId +
+                ", book=" + loanBook +
                 '}';
     }
 }

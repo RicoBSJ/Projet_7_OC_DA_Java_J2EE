@@ -35,13 +35,13 @@ public class CategoryController {
     @PutMapping("/{id}")
     public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable("id") int categoryId){
         CategoryDto existingCategory = categoryService.findById(categoryId);
-        existingCategory.setName(categoryDto.getName());
+        existingCategory.setNameCategory(categoryDto.getNameCategory());
         categoryService.saveOrUpdate(existingCategory);
     }
 
     @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable("id") int categoryId){
         CategoryDto existingCategory = categoryService.findById(categoryId);
-        categoryService.delete(existingCategory.getId());
+        categoryService.delete(existingCategory.getCategoryId());
     }
 }

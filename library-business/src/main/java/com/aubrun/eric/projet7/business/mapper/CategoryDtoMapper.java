@@ -8,16 +8,16 @@ public class CategoryDtoMapper {
     static public CategoryDto toDto(Category category) {
 
         CategoryDto dto = new CategoryDto();
-        dto.setId(category.getId());
-        dto.setName(category.getName());
+        dto.setCategoryId(category.getCategoryId());
+        dto.setNameCategory(category.getNameCategory());
         return dto;
     }
 
     static public Category toEntity(CategoryDto categoryDto) {
 
         Category entity = new Category();
-        entity.setId(categoryDto.getId());
-        entity.setName(categoryDto.getName());
+        entity.setCategoryId(categoryDto.getCategoryId());
+        entity.setNameCategory(categoryDto.getNameCategory());
         return entity;
     }
 }

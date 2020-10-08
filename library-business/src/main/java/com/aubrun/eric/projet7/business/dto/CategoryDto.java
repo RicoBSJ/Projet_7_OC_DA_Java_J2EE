@@ -2,22 +2,22 @@ package com.aubrun.eric.projet7.business.dto;
 
 public class CategoryDto {
 
-    private Integer id;
-    private String name;
+    private Integer categoryId;
+    private String nameCategory;
 
-    public Integer getId() {
-        return id;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getName() {
-        return name;
+    public String getNameCategory() {
+        return nameCategory;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCategory(String nameCategory) {
+        this.nameCategory = nameCategory;
     }
 }

@@ -10,20 +10,20 @@ public class AuthorDtoMapper {
     static public AuthorDto toDto(Author author) {
 
         AuthorDto dto = new AuthorDto();
-        dto.setId(author.getId());
+        dto.setAuthorId(author.getAuthorId());
         dto.setFirstName(author.getFirstName());
-        dto.setName(author.getName());
-        dto.setBooks(author.getBooks().stream().map(BookDtoMapper::toDto).collect(Collectors.toList()));
+        dto.setNameAuthor(author.getNameAuthor());
+        dto.setAuthorBooks(author.getAuthorBooks().stream().map(BookDtoMapper::toDto).collect(Collectors.toList()));
         return dto;
     }
 
     static public Author toEntity(AuthorDto authorDto) {
 
         Author entity = new Author();
-        entity.setId(authorDto.getId());
+        entity.setAuthorId(authorDto.getAuthorId());
         entity.setFirstName(authorDto.getFirstName());
-        entity.setName(authorDto.getName());
-        entity.setBooks(authorDto.getBooks().stream().map(BookDtoMapper::toEntity).collect(Collectors.toList()));
+        entity.setNameAuthor(authorDto.getNameAuthor());
+        entity.setAuthorBooks(authorDto.getAuthorBooks().stream().map(BookDtoMapper::toEntity).collect(Collectors.toList()));
         return entity;
     }
 }

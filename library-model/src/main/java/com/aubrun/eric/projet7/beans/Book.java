@@ -8,33 +8,34 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    @Column
+    @Column(name = "book_id")
+    private Integer bookId;
+    @Column(name = "title")
     private String title;
-    @Column
+    @Column(name = "quantity")
     private Integer quantity;
-    @Column
+    @Column(name = "renewal_loan")
     private Boolean renewalLoan;
-    @Column
+    @Column(name = "quantity_loan")
     private Integer quantityLoan;
-    @Column
-    private Date year;
-    @JoinColumn(name = "author_id")
+    @Column(name = "year_book")
+    private Date yearBook;
+    @JoinColumn(name = "book_author")
     @ManyToOne
-    private Author author;
-    @JoinColumn(name = "category_id")
+    private Author bookAuthor;
+    @JoinColumn(name = "book_category")
     @ManyToOne
-    private Category category;
+    private Category bookCategory;
 
     public Book() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getBookId() {
+        return bookId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
@@ -69,41 +70,41 @@ public class Book {
         this.quantityLoan = quantityLoan;
     }
 
-    public Date getYear() {
-        return year;
+    public Date getYearBook() {
+        return yearBook;
     }
 
-    public void setYear(Date year) {
-        this.year = year;
+    public void setYearBook(Date yearBook) {
+        this.yearBook = yearBook;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Author getBookAuthor() {
+        return bookAuthor;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setBookAuthor(Author bookAuthor) {
+        this.bookAuthor = bookAuthor;
     }
 
-    public Category getCategory() {
-        return category;
+    public Category getBookCategory() {
+        return bookCategory;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setBookCategory(Category bookCategory) {
+        this.bookCategory = bookCategory;
     }
 
     @Override
     public String toString() {
         return "Book{" +
-                "id=" + id +
+                "bookId=" + bookId +
                 ", title='" + title + '\'' +
                 ", quantity=" + quantity +
                 ", renewalLoan=" + renewalLoan +
                 ", quantityLoan=" + quantityLoan +
-                ", year=" + year +
-                ", author=" + author +
-                ", category=" + category +
+                ", yearBook=" + yearBook +
+                ", author=" + bookAuthor +
+                ", category=" + bookCategory +
                 '}';
     }
 }

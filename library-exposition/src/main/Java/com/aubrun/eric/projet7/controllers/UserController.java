@@ -35,16 +35,16 @@ public class UserController {
     public void updateUser(@RequestBody UserDto userDto, @PathVariable("id") int userId){
         UserDto existingUser = userService.findById(userId);
         existingUser.setFirstName(userDto.getFirstName());
-        existingUser.setName(userDto.getFirstName());
+        existingUser.setNameUser(userDto.getNameUser());
         existingUser.setEmail(userDto.getEmail());
         existingUser.setMotDePasse(userDto.getMotDePasse());
-        existingUser.setLoans(userDto.getLoans());
+        existingUser.setLoanList(userDto.getLoanList());
         userService.saveOrUpdate(existingUser);
     }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable("id") int userId){
         UserDto existingUser = userService.findById(userId);
-        userService.delete(existingUser.getId());
+        userService.delete(existingUser.getUserId());
     }
 }

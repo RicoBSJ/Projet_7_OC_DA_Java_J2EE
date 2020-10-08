@@ -4,21 +4,21 @@ import java.util.Date;
 
 public class BookDto {
 
-    private Integer id;
+    private Integer bookId;
     private String title;
     private Integer quantity;
     private Boolean renewalLoan;
     private Integer quantityLoan;
-    private Date year;
-    private AuthorDto authorDto;
-    private CategoryDto categoryDto;
+    private Date yearBook;
+    private AuthorDto bookAuthor;
+    private CategoryDto bookCategory;
 
-    public Integer getId() {
-        return id;
+    public Integer getBookId() {
+        return bookId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
@@ -53,27 +53,27 @@ public class BookDto {
         this.quantityLoan = quantityLoan;
     }
 
-    public Date getYear() {
-        return year;
+    public Date getYearBook() {
+        return yearBook;
     }
 
-    public void setYear(Date year) {
-        this.year = year;
+    public void setYearBook(Date yearBook) {
+        this.yearBook = yearBook;
     }
 
-    public AuthorDto getAuthorDto() {
-        return authorDto;
+    public AuthorDto getBookAuthor() {
+        return bookAuthor;
     }
 
-    public void setAuthorDto(AuthorDto authorDto) {
-        this.authorDto = authorDto;
+    public void setBookAuthor(AuthorDto bookAuthor) {
+        this.bookAuthor = bookAuthor;
     }
 
-    public CategoryDto getCategoryDto() {
-        return categoryDto;
+    public CategoryDto getBookCategory() {
+        return bookCategory;
     }
 
-    public void setCategoryDto(CategoryDto categoryDto) {
-        this.categoryDto = categoryDto;
+    public void setBookCategory(CategoryDto bookCategory) {
+        this.bookCategory = bookCategory;
     }
 }

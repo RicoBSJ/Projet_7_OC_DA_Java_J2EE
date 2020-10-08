@@ -1,6 +1,5 @@
-com\aubrun\eric\projet7\beans\Loan.class
-com\aubrun\eric\projet7\beans\Author.class
-com\aubrun\eric\projet7\beans\User.class
-com\aubrun\eric\projet7\beans\Book.class
-com\aubrun\eric\projet7\beans\SearchBook.class
-com\aubrun\eric\projet7\beans\Category.class
+com/aubrun/eric/projet7/beans/Loan.class
+com/aubrun/eric/projet7/beans/Author.class
+com/aubrun/eric/projet7/beans/Book.class
+com/aubrun/eric/projet7/beans/User.class
+com/aubrun/eric/projet7/beans/Category.class

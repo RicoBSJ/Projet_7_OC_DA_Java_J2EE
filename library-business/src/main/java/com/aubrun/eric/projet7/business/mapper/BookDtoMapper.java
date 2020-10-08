@@ -8,27 +8,28 @@ public class BookDtoMapper {
     static public BookDto toDto(Book book) {
 
         BookDto dto = new BookDto();
-        dto.setId(book.getId());
+        dto.setBookId(book.getBookId());
+        dto.setTitle(book.getTitle());
         dto.setQuantity(book.getQuantity());
         dto.setRenewalLoan(book.getRenewalLoan());
         dto.setQuantityLoan(book.getQuantityLoan());
-        dto.setYear(book.getYear());
-        dto.setAuthorDto(AuthorDtoMapper.toDto(book.getAuthor()));
-        dto.setCategoryDto(CategoryDtoMapper.toDto(book.getCategory()));
+        dto.setYearBook(book.getYearBook());
+        dto.setBookAuthor(AuthorDtoMapper.toDto(book.getBookAuthor()));
+        dto.setBookCategory(CategoryDtoMapper.toDto(book.getBookCategory()));
         return dto;
     }
 
     static public Book toEntity(BookDto bookDto) {
 
         Book entity = new Book();
-        entity.setId(bookDto.getId());
+        entity.setBookId(bookDto.getBookId());
         entity.setTitle(bookDto.getTitle());
         entity.setQuantity(bookDto.getQuantity());
         entity.setRenewalLoan(bookDto.getRenewalLoan());
         entity.setQuantityLoan(bookDto.getQuantityLoan());
-        entity.setYear(bookDto.getYear());
-        entity.setAuthor(AuthorDtoMapper.toEntity(bookDto.getAuthorDto()));
-        entity.setCategory(CategoryDtoMapper.toEntity(bookDto.getCategoryDto()));
+        entity.setYearBook(bookDto.getYearBook());
+        entity.setBookAuthor(AuthorDtoMapper.toEntity(bookDto.getBookAuthor()));
+        entity.setBookCategory(CategoryDtoMapper.toEntity(bookDto.getBookCategory()));
         return entity;
     }
 }

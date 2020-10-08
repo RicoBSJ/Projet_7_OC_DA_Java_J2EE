@@ -1,25 +1,23 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import com.aubrun.eric.projet7.beans.Book;
-
 public class LoanDto {
 
-    private Integer id;
-    private BookDto bookDto;
+    private Integer loanId;
+    private BookDto loanBook;
 
-    public Integer getId() {
-        return id;
+    public Integer getLoanId() {
+        return loanId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLoanId(Integer loanId) {
+        this.loanId = loanId;
     }
 
-    public BookDto getBookDto() {
-        return bookDto;
+    public BookDto getLoanBook() {
+        return loanBook;
     }
 
-    public void setBookDto(BookDto bookDto) {
-        this.bookDto = bookDto;
+    public void setLoanBook(BookDto loanBook) {
+        this.loanBook = loanBook;
     }
 }

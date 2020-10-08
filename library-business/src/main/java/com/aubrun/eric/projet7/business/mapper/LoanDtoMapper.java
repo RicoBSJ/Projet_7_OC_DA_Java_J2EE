@@ -8,16 +8,16 @@ public class LoanDtoMapper {
     static public LoanDto toDto(Loan loan) {
 
         LoanDto dto = new LoanDto();
-        dto.setId(loan.getId());
-        dto.setBookDto(BookDtoMapper.toDto(loan.getBook()));
+        dto.setLoanId(loan.getLoanId());
+        dto.setLoanBook(BookDtoMapper.toDto(loan.getLoanBook()));
         return dto;
     }
 
     static public Loan toEntity(LoanDto loanDto) {
 
         Loan entity = new Loan();
-        entity.setId(loanDto.getId());
-        entity.setBook(BookDtoMapper.toEntity(loanDto.getBookDto()));
+        entity.setLoanId(loanDto.getLoanId());
+        entity.setLoanBook(BookDtoMapper.toEntity(loanDto.getLoanBook()));
         return entity;
     }
 }

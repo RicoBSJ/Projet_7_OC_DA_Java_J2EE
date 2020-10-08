@@ -8,24 +8,25 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    @Column
+    @Column(name = "author_id")
+    private Integer authorId;
+    @Column(name = "first_name")
     private String firstName;
-    @Column
-    private String name;
+    @Column(name = "name_author")
+    private String nameAuthor;
     @OneToMany(fetch=FetchType.LAZY)
-    @JoinColumn
-    private List<Book> books;
+    @JoinColumn(name = "author_books")
+    private List<Book> authorBooks;
 
     public Author() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
     }
 
     public String getFirstName() {
@@ -36,29 +37,29 @@ public class Author {
         this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getNameAuthor() {
+        return nameAuthor;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameAuthor(String nameAuthor) {
+        this.nameAuthor = nameAuthor;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<Book> getAuthorBooks() {
+        return authorBooks;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setAuthorBooks(List<Book> authorBooks) {
+        this.authorBooks = authorBooks;
     }
 
     @Override
     public String toString() {
         return "Author{" +
-                "id=" + id +
+                "id=" + authorId +
                 ", firstName='" + firstName + '\'' +
-                ", name='" + name + '\'' +
-                ", books=" + books +
+                ", name='" + nameAuthor + '\'' +
+                ", books=" + authorBooks +
                 '}';
     }
 }

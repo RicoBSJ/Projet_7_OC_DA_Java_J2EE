@@ -1,16 +1,13 @@
 package com.aubrun.eric.projet7.controllers;
 
-import com.aubrun.eric.projet7.beans.Book;
-import com.aubrun.eric.projet7.beans.SearchBook;
 import com.aubrun.eric.projet7.business.dto.BookDto;
-import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping(value = "/books")
 public class BookController {
 
     private final BookService bookService;
@@ -37,37 +34,26 @@ public class BookController {
     @PutMapping("/{id}")
     public void updateBook(@RequestBody BookDto bookDto, @PathVariable("id") int bookId){
         BookDto existingBook = bookService.findById(bookId);
-        existingBook.setAuthorDto(bookDto.getAuthorDto());
         existingBook.setTitle(bookDto.getTitle());
         existingBook.setQuantity(bookDto.getQuantity());
         existingBook.setQuantityLoan(bookDto.getQuantityLoan());
         existingBook.setRenewalLoan(bookDto.getRenewalLoan());
-        existingBook.setYear(bookDto.getYear());
-        existingBook.setCategoryDto(bookDto.getCategoryDto());
+        existingBook.setYearBook(bookDto.getYearBook());
+        existingBook.setBookAuthor(bookDto.getBookAuthor());
+        existingBook.setBookCategory(bookDto.getBookCategory());
         bookService.saveOrUpdate(existingBook);
     }
+
+    /*@GetMapping("/test/{name}")
+    public List<BookDto> testSearch(@PathVariable("name") String name){
+
+        return bookService.findBooksByName(name);
+    }*/
 
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable("id") int bookId){
         BookDto existingBook = bookService.findById(bookId);
-        bookService.delete(existingBook.getId());
+        bookService.delete(existingBook.getBookId());
     }
 
-    @GetMapping("/search")
-    public List<BookDto> searchBook(SearchBookDto searchBookDto){
-
-        searchBookDto.setAuthor(searchBookDto.getAuthor());
-        searchBookDto.setTitle(searchBookDto.getTitle());
-        searchBookDto.setCategory(searchBookDto.getCategory());
-        searchBookDto.setQuantity(searchBookDto.getQuantity());
-        searchBookDto.setQuantityLoan(searchBookDto.getQuantityLoan());
-        searchBookDto.setRenewalLoan(searchBookDto.getRenewalLoan());
-        searchBookDto.setYear(searchBookDto.getYear());
-
-        /*List<BookDto> books = bookService.searchBook(searchBookDto);
-
-        return books;*/
-
-        return null;
-    }
 }

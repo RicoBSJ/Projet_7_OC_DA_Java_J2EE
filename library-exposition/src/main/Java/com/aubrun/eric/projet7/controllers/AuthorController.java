@@ -35,14 +35,14 @@ public class AuthorController {
     public void updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable("id") int authorId){
         AuthorDto existingAuthor = authorService.findById(authorId);
         existingAuthor.setFirstName(authorDto.getFirstName());
-        existingAuthor.setName(authorDto.getName());
-        existingAuthor.setBooks(authorDto.getBooks());
+        existingAuthor.setNameAuthor(authorDto.getNameAuthor());
+        existingAuthor.setAuthorBooks(authorDto.getAuthorBooks());
         authorService.saveOrUpdate(existingAuthor);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAuthor(@PathVariable("id") int authorId){
-        AuthorDto existingAuthor = authorService.findById(authorId);
-        authorService.delete(existingAuthor.getId());
+    public void deleteAuthor(@PathVariable("id") int id){
+        AuthorDto existingAuthor = authorService.findById(id);
+        authorService.delete(existingAuthor.getAuthorId());
     }
 }

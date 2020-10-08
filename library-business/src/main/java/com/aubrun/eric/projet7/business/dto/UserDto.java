@@ -4,19 +4,19 @@ import java.util.List;
 
 public class UserDto {
 
-    private Integer id;
+    private Integer userId;
     private String firstName;
-    private String name;
+    private String nameUser;
     private String email;
     private String motDePasse;
-    private List<LoanDto> loans;
+    private List<LoanDto> loanList;
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -27,12 +27,12 @@ public class UserDto {
         this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getNameUser() {
+        return nameUser;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
     }
 
     public String getEmail() {
@@ -51,11 +51,11 @@ public class UserDto {
         this.motDePasse = motDePasse;
     }
 
-    public List<LoanDto> getLoans() {
-        return loans;
+    public List<LoanDto> getLoanList() {
+        return loanList;
     }
 
-    public void setLoans(List<LoanDto> loans) {
-        this.loans = loans;
+    public void setLoanList(List<LoanDto> loanList) {
+        this.loanList = loanList;
     }
 }

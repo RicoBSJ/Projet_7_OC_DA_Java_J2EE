@@ -8,28 +8,29 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    @Column
+    @Column(name = "user_id")
+    private Integer userId;
+    @Column(name = "first_name")
     private String firstName;
-    @Column
-    private String name;
-    @Column
+    @Column(name = "name_user")
+    private String nameUser;
+    @Column(name = "email")
     private String email;
-    @Column
+    @Column(name = "mot_de_passe")
     private String motDePasse;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
-    private List<Loan> loans;
+    @JoinColumn(name = "loan_list")
+    private List<Loan> loanList;
 
     public User() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -40,12 +41,12 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getNameUser() {
+        return nameUser;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
     }
 
     public String getEmail() {
@@ -64,23 +65,23 @@ public class User {
         this.motDePasse = motDePasse;
     }
 
-    public List<Loan> getLoans() {
-        return loans;
+    public List<Loan> getLoanList() {
+        return loanList;
     }
 
-    public void setLoans(List<Loan> loans) {
-        this.loans = loans;
+    public void setLoanList(List<Loan> loanList) {
+        this.loanList = loanList;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + userId +
                 ", firstName='" + firstName + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + nameUser + '\'' +
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
-                ", loans=" + loans +
+                ", loans=" + loanList +
                 '}';
     }
 }

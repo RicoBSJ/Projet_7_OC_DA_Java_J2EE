@@ -34,13 +34,13 @@ public class LoanController {
     @PutMapping("/{id}")
     public void updateLoan(@RequestBody LoanDto loanDto, @PathVariable("id") int loanId){
         LoanDto existingLoan = loanService.findById(loanId);
-        existingLoan.setBookDto(loanDto.getBookDto());
+        existingLoan.setLoanBook(loanDto.getLoanBook());
         loanService.saveOrUpdate(existingLoan);
     }
 
     @DeleteMapping("/{id}")
     public void deleteLoan(@PathVariable("id") int loanId){
         LoanDto existingLoan = loanService.findById(loanId);
-        loanService.delete(existingLoan.getId());
+        loanService.delete(existingLoan.getLoanId());
     }
 }

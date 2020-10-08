@@ -4,17 +4,17 @@ import java.util.List;
 
 public class AuthorDto {
 
-    private Integer id;
+    private Integer authorId;
     private String firstName;
-    private String name;
-    private List<BookDto> books;
+    private String nameAuthor;
+    private List<BookDto> authorBooks;
 
-    public Integer getId() {
-        return id;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
     }
 
     public String getFirstName() {
@@ -25,19 +25,19 @@ public class AuthorDto {
         this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getNameAuthor() {
+        return nameAuthor;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameAuthor(String nameAuthor) {
+        this.nameAuthor = nameAuthor;
     }
 
-    public List<BookDto> getBooks() {
-        return books;
+    public List<BookDto> getAuthorBooks() {
+        return authorBooks;
     }
 
-    public void setBooks(List<BookDto> books) {
-        this.books = books;
+    public void setAuthorBooks(List<BookDto> authorBooks) {
+        this.authorBooks = authorBooks;
     }
 }

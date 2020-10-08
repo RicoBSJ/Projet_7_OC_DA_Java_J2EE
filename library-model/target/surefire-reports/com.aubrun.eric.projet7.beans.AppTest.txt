@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.aubrun.eric.projet7.beans.AppTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in com.aubrun.eric.projet7.beans.AppTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in com.aubrun.eric.projet7.beans.AppTest

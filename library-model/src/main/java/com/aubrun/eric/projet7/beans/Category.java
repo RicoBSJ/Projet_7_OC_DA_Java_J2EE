@@ -7,34 +7,35 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    @Column
-    private String name;
+    @Column(name = "category_id")
+    private Integer categoryId;
+    @Column(name = "name_category")
+    private String nameCategory;
 
     public Category() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getName() {
-        return name;
+    public String getNameCategory() {
+        return nameCategory;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCategory(String nameCategory) {
+        this.nameCategory = nameCategory;
     }
 
     @Override
     public String toString() {
         return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "categoryId=" + categoryId +
+                ", nameCategory='" + nameCategory + '\'' +
                 '}';
     }
 }
