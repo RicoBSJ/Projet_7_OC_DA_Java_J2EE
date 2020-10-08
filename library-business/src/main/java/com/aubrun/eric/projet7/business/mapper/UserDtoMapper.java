@@ -7,6 +7,7 @@ import com.aubrun.eric.projet7.business.dto.UserDto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserDtoMapper {
 
@@ -18,13 +19,7 @@ public class UserDtoMapper {
         dto.setName(user.getName());
         dto.setEmail(user.getEmail());
         dto.setMotDePasse(user.getMotDePasse());
-        List<LoanDto> list = new ArrayList<>();
-        for (Loan loan : user.getLoans()) {
-            LoanDto loanDto = LoanDtoMapper.toDto(loan);
-            list.add(loanDto);
-        }
-        dto.setLoans(list);
-        /*dto.setLoans(user.getLoans().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList()));*/
+        dto.setLoans(user.getLoans().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList()));
         return dto;
     }
 
@@ -36,13 +31,7 @@ public class UserDtoMapper {
         entity.setName(entity.getName());
         entity.setEmail(userDto.getEmail());
         entity.setMotDePasse(userDto.getMotDePasse());
-        List<Loan> list = new ArrayList<>();
-        for (LoanDto loanDto : userDto.getLoans()) {
-            Loan loan = LoanDtoMapper.toEntity(loanDto);
-            list.add(loan);
-        }
-        entity.setLoans(list);
-        /*entity.setLoans(userDto.getLoans().stream().map(LoanDtoMapper::toEntity).collect(Collectors.toList()));*/
+        entity.setLoans(userDto.getLoans().stream().map(LoanDtoMapper::toEntity).collect(Collectors.toList()));
         return entity;
     }
 }
