@@ -1,6 +1,6 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.User;
+import com.aubrun.eric.projet7.beans.UserAccount;
 import com.aubrun.eric.projet7.business.dto.UserDto;
 import com.aubrun.eric.projet7.business.mapper.UserDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserRepository;
@@ -37,7 +37,7 @@ public class UserService {
 
     public void delete(Integer id) {
 
-        User user = userRepository.findById(id).get();
-        userRepository.delete(user);
+        UserAccount userAccount = userRepository.findById(id).get();
+        userRepository.delete(userAccount);
     }
 }

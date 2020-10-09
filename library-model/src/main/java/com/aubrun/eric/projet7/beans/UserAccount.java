@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +22,7 @@ public class User {
     @JoinColumn(name = "loan_list")
     private List<Loan> loanList;
 
-    public User() {
+    public UserAccount() {
     }
 
     public Integer getUserId() {

@@ -34,6 +34,7 @@ public class AuthorController {
     @PutMapping("/{id}")
     public void updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable("id") int authorId){
         AuthorDto existingAuthor = authorService.findById(authorId);
+        existingAuthor.setAuthorId(authorDto.getAuthorId());
         existingAuthor.setFirstName(authorDto.getFirstName());
         existingAuthor.setNameAuthor(authorDto.getNameAuthor());
         existingAuthor.setAuthorBooks(authorDto.getAuthorBooks());

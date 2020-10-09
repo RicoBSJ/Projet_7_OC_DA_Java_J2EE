@@ -1,27 +1,27 @@
 package com.aubrun.eric.projet7.business.mapper;
 
-import com.aubrun.eric.projet7.beans.User;
+import com.aubrun.eric.projet7.beans.UserAccount;
 import com.aubrun.eric.projet7.business.dto.UserDto;
 
 import java.util.stream.Collectors;
 
 public class UserDtoMapper {
 
-    static public UserDto toDto(User user) {
+    static public UserDto toDto(UserAccount userAccount) {
 
         UserDto dto = new UserDto();
-        dto.setUserId(user.getUserId());
-        dto.setFirstName(user.getFirstName());
-        dto.setNameUser(user.getNameUser());
-        dto.setEmail(user.getEmail());
-        dto.setMotDePasse(user.getMotDePasse());
-        dto.setLoanList(user.getLoanList().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList()));
+        dto.setUserId(userAccount.getUserId());
+        dto.setFirstName(userAccount.getFirstName());
+        dto.setNameUser(userAccount.getNameUser());
+        dto.setEmail(userAccount.getEmail());
+        dto.setMotDePasse(userAccount.getMotDePasse());
+        dto.setLoanList(userAccount.getLoanList().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList()));
         return dto;
     }
 
-    static public User toEntity(UserDto userDto) {
+    static public UserAccount toEntity(UserDto userDto) {
 
-        User entity = new User();
+        UserAccount entity = new UserAccount();
         entity.setUserId(userDto.getUserId());
         entity.setFirstName(userDto.getFirstName());
         entity.setNameUser(entity.getNameUser());

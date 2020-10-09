@@ -34,6 +34,7 @@ public class BookController {
     @PutMapping("/{id}")
     public void updateBook(@RequestBody BookDto bookDto, @PathVariable("id") int bookId){
         BookDto existingBook = bookService.findById(bookId);
+        existingBook.setBookId(bookDto.getBookId());
         existingBook.setTitle(bookDto.getTitle());
         existingBook.setQuantity(bookDto.getQuantity());
         existingBook.setQuantityLoan(bookDto.getQuantityLoan());
