@@ -25,6 +25,23 @@ public class UserAccount {
     public UserAccount() {
     }
 
+    public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse, List<Loan> loanList) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.nameUser = nameUser;
+        this.email = email;
+        this.motDePasse = motDePasse;
+        this.loanList = loanList;
+    }
+
+    public UserAccount(String firstName, String nameUser, String email, String motDePasse, List<Loan> loanList) {
+        this.firstName = firstName;
+        this.nameUser = nameUser;
+        this.email = email;
+        this.motDePasse = motDePasse;
+        this.loanList = loanList;
+    }
+
     public Integer getUserId() {
         return userId;
     }

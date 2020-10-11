@@ -21,6 +21,19 @@ public class Author {
     public Author() {
     }
 
+    public Author(Integer authorId, String firstName, String nameAuthor, List<Book> authorBooks) {
+        this.authorId = authorId;
+        this.firstName = firstName;
+        this.nameAuthor = nameAuthor;
+        this.authorBooks = authorBooks;
+    }
+
+    public Author(String firstName, String nameAuthor, List<Book> authorBooks) {
+        this.firstName = firstName;
+        this.nameAuthor = nameAuthor;
+        this.authorBooks = authorBooks;
+    }
+
     public Integer getAuthorId() {
         return authorId;
     }
@@ -53,4 +66,13 @@ public class Author {
         this.authorBooks = authorBooks;
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorId=" + authorId +
+                ", firstName='" + firstName + '\'' +
+                ", nameAuthor='" + nameAuthor + '\'' +
+                ", authorBooks=" + authorBooks +
+                '}';
+    }
 }

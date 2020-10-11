@@ -21,11 +21,4 @@ public class CategoryDto {
         this.nameCategory = nameCategory;
     }
 
-    @Override
-    public String toString() {
-        return "CategoryDto{" +
-                "categoryId=" + categoryId +
-                ", nameCategory='" + nameCategory + '\'' +
-                '}';
-    }
 }

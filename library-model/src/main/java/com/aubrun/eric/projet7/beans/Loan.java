@@ -16,6 +16,15 @@ public class Loan {
     public Loan() {
     }
 
+    public Loan(Integer loanId, Book loanBook) {
+        this.loanId = loanId;
+        this.loanBook = loanBook;
+    }
+
+    public Loan(Book loanBook) {
+        this.loanBook = loanBook;
+    }
+
     public Integer getLoanId() {
         return loanId;
     }

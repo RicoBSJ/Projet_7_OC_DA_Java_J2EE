@@ -59,15 +59,4 @@ public class UserDto {
         this.loanList = loanList;
     }
 
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", nameUser='" + nameUser + '\'' +
-                ", email='" + email + '\'' +
-                ", motDePasse='" + motDePasse + '\'' +
-                ", loanList=" + loanList +
-                '}';
-    }
 }

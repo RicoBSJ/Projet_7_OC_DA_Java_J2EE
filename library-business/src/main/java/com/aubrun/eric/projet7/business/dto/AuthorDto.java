@@ -41,13 +41,4 @@ public class AuthorDto {
         this.authorBooks = authorBooks;
     }
 
-    @Override
-    public String toString() {
-        return "AuthorDto{" +
-                "authorId=" + authorId +
-                ", firstName='" + firstName + '\'' +
-                ", nameAuthor='" + nameAuthor + '\'' +
-                ", authorBooks=" + authorBooks +
-                '}';
-    }
 }

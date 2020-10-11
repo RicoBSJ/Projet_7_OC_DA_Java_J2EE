@@ -15,6 +15,15 @@ public class Category {
     public Category() {
     }
 
+    public Category(Integer categoryId, String nameCategory) {
+        this.categoryId = categoryId;
+        this.nameCategory = nameCategory;
+    }
+
+    public Category(String nameCategory) {
+        this.nameCategory = nameCategory;
+    }
+
     public Integer getCategoryId() {
         return categoryId;
     }

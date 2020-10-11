@@ -30,6 +30,27 @@ public class Book {
     public Book() {
     }
 
+    public Book(Integer bookId, String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory) {
+        this.bookId = bookId;
+        this.title = title;
+        this.quantity = quantity;
+        this.renewalLoan = renewalLoan;
+        this.quantityLoan = quantityLoan;
+        this.yearBook = yearBook;
+        this.bookAuthor = bookAuthor;
+        this.bookCategory = bookCategory;
+    }
+
+    public Book(String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory) {
+        this.title = title;
+        this.quantity = quantity;
+        this.renewalLoan = renewalLoan;
+        this.quantityLoan = quantityLoan;
+        this.yearBook = yearBook;
+        this.bookAuthor = bookAuthor;
+        this.bookCategory = bookCategory;
+    }
+
     public Integer getBookId() {
         return bookId;
     }
@@ -94,4 +115,17 @@ public class Book {
         this.bookCategory = bookCategory;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", quantity=" + quantity +
+                ", renewalLoan=" + renewalLoan +
+                ", quantityLoan=" + quantityLoan +
+                ", yearBook=" + yearBook +
+                ", bookAuthor=" + bookAuthor +
+                ", bookCategory=" + bookCategory +
+                '}';
+    }
 }

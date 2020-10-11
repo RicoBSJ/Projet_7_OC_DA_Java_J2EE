@@ -77,14 +77,4 @@ public class BookDto {
         this.bookCategory = bookCategory;
     }
 
-    @Override
-    public String toString() {
-        return "BookDto{" +
-                "bookId=" + bookId +
-                ", title='" + title + '\'' +
-                ", quantity=" + quantity +
-                ", renewalLoan=" + renewalLoan +
-                ", quantityLoan=" + quantityLoan +
-                '}';
-    }
 }

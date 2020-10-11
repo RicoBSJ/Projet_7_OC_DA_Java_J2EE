@@ -21,11 +21,4 @@ public class LoanDto {
         this.loanBook = loanBook;
     }
 
-    @Override
-    public String toString() {
-        return "LoanDto{" +
-                "loanId=" + loanId +
-                ", loanBook=" + loanBook +
-                '}';
-    }
 }
