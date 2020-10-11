@@ -40,4 +40,14 @@ public class AuthorDto {
     public void setAuthorBooks(List<BookDto> authorBooks) {
         this.authorBooks = authorBooks;
     }
+
+    @Override
+    public String toString() {
+        return "AuthorDto{" +
+                "authorId=" + authorId +
+                ", firstName='" + firstName + '\'' +
+                ", nameAuthor='" + nameAuthor + '\'' +
+                ", authorBooks=" + authorBooks +
+                '}';
+    }
 }

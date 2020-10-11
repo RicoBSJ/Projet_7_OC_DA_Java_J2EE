@@ -58,4 +58,16 @@ public class UserDto {
     public void setLoanList(List<LoanDto> loanList) {
         this.loanList = loanList;
     }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", nameUser='" + nameUser + '\'' +
+                ", email='" + email + '\'' +
+                ", motDePasse='" + motDePasse + '\'' +
+                ", loanList=" + loanList +
+                '}';
+    }
 }

@@ -94,17 +94,4 @@ public class Book {
         this.bookCategory = bookCategory;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "bookId=" + bookId +
-                ", title='" + title + '\'' +
-                ", quantity=" + quantity +
-                ", renewalLoan=" + renewalLoan +
-                ", quantityLoan=" + quantityLoan +
-                ", yearBook=" + yearBook +
-                ", author=" + bookAuthor +
-                ", category=" + bookCategory +
-                '}';
-    }
 }

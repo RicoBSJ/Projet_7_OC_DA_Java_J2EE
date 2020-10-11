@@ -76,4 +76,15 @@ public class BookDto {
     public void setBookCategory(CategoryDto bookCategory) {
         this.bookCategory = bookCategory;
     }
+
+    @Override
+    public String toString() {
+        return "BookDto{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", quantity=" + quantity +
+                ", renewalLoan=" + renewalLoan +
+                ", quantityLoan=" + quantityLoan +
+                '}';
+    }
 }

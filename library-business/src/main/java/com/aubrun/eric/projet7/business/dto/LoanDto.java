@@ -20,4 +20,12 @@ public class LoanDto {
     public void setLoanBook(BookDto loanBook) {
         this.loanBook = loanBook;
     }
+
+    @Override
+    public String toString() {
+        return "LoanDto{" +
+                "loanId=" + loanId +
+                ", loanBook=" + loanBook +
+                '}';
+    }
 }

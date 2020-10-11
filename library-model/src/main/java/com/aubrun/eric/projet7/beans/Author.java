@@ -7,7 +7,7 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
     private Integer authorId;
     @Column(name = "first_name")
@@ -53,13 +53,4 @@ public class Author {
         this.authorBooks = authorBooks;
     }
 
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + authorId +
-                ", firstName='" + firstName + '\'' +
-                ", name='" + nameAuthor + '\'' +
-                ", books=" + authorBooks +
-                '}';
-    }
 }

@@ -20,4 +20,12 @@ public class CategoryDto {
     public void setNameCategory(String nameCategory) {
         this.nameCategory = nameCategory;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryDto{" +
+                "categoryId=" + categoryId +
+                ", nameCategory='" + nameCategory + '\'' +
+                '}';
+    }
 }
