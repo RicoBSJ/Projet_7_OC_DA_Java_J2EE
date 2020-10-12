@@ -28,16 +28,16 @@ public class BookController {
 
     @PostMapping("/")
     public void createBook(@RequestBody BookDto bookDto){
-        BookDto existingBook = new BookDto();
-        existingBook.setBookId(bookDto.getBookId());
-        existingBook.setTitle(bookDto.getTitle());
-        existingBook.setQuantity(bookDto.getQuantity());
-        existingBook.setQuantityLoan(bookDto.getQuantityLoan());
-        existingBook.setRenewalLoan(bookDto.getRenewalLoan());
-        existingBook.setYearBook(bookDto.getYearBook());
-        existingBook.setBookAuthor(bookDto.getBookAuthor());
-        existingBook.setBookCategory(bookDto.getBookCategory());
-        bookService.save(existingBook);
+        BookDto newBook = new BookDto();
+        newBook.setBookId(bookDto.getBookId());
+        newBook.setTitle(bookDto.getTitle());
+        newBook.setQuantity(bookDto.getQuantity());
+        newBook.setQuantityLoan(bookDto.getQuantityLoan());
+        newBook.setRenewalLoan(bookDto.getRenewalLoan());
+        newBook.setYearBook(bookDto.getYearBook());
+        newBook.setBookAuthor(bookDto.getBookAuthor());
+        newBook.setBookCategory(bookDto.getBookCategory());
+        bookService.save(newBook);
     }
 
     @PutMapping("/{id}")

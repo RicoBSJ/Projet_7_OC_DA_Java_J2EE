@@ -7,7 +7,7 @@ import java.util.List;
 public class UserAccount {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.TABLE)
     @Column(name = "user_id")
     private Integer userId;
     @Column(name = "first_name")
