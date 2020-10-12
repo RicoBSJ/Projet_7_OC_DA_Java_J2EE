@@ -25,7 +25,12 @@ public class AuthorService {
         return authorRepository.findAll().stream().map(AuthorDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void saveOrUpdate(AuthorDto newAuthor) {
+    public void save(AuthorDto newAuthor) {
+
+        authorRepository.save(AuthorDtoMapper.toEntity(newAuthor));
+    }
+
+    public void update(AuthorDto newAuthor) {
 
         authorRepository.save(AuthorDtoMapper.toEntity(newAuthor));
     }

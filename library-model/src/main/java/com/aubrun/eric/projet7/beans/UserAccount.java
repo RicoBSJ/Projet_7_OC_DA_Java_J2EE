@@ -23,9 +23,11 @@ public class UserAccount {
     private List<Loan> loanList;
 
     public UserAccount() {
+        super();
     }
 
     public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse, List<Loan> loanList) {
+        super();
         this.userId = userId;
         this.firstName = firstName;
         this.nameUser = nameUser;
@@ -35,6 +37,7 @@ public class UserAccount {
     }
 
     public UserAccount(String firstName, String nameUser, String email, String motDePasse, List<Loan> loanList) {
+        super();
         this.firstName = firstName;
         this.nameUser = nameUser;
         this.email = email;

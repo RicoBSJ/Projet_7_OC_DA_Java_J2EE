@@ -13,14 +13,17 @@ public class Category {
     private String nameCategory;
 
     public Category() {
+        super();
     }
 
     public Category(Integer categoryId, String nameCategory) {
+        super();
         this.categoryId = categoryId;
         this.nameCategory = nameCategory;
     }
 
     public Category(String nameCategory) {
+        super();
         this.nameCategory = nameCategory;
     }
 

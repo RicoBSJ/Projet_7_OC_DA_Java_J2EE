@@ -14,14 +14,17 @@ public class Loan {
     private Book loanBook;
 
     public Loan() {
+        super();
     }
 
     public Loan(Integer loanId, Book loanBook) {
+        super();
         this.loanId = loanId;
         this.loanBook = loanBook;
     }
 
     public Loan(Book loanBook) {
+        super();
         this.loanBook = loanBook;
     }
 

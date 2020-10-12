@@ -28,7 +28,11 @@ public class AuthorController {
 
     @PostMapping("/")
     public void createAuthor(@RequestBody AuthorDto authorDto){
-        authorService.saveOrUpdate(authorDto);
+        AuthorDto existingAuthor = new AuthorDto();
+        existingAuthor.setAuthorId(authorDto.getAuthorId());
+        existingAuthor.setFirstName(authorDto.getFirstName());
+        existingAuthor.setNameAuthor(authorDto.getNameAuthor());
+        authorService.save(existingAuthor);
     }
 
     @PutMapping("/{id}")
@@ -37,7 +41,7 @@ public class AuthorController {
         existingAuthor.setAuthorId(authorDto.getAuthorId());
         existingAuthor.setFirstName(authorDto.getFirstName());
         existingAuthor.setNameAuthor(authorDto.getNameAuthor());
-        authorService.saveOrUpdate(existingAuthor);
+        authorService.update(existingAuthor);
     }
 
     @DeleteMapping("/{id}")

@@ -28,9 +28,11 @@ public class Book {
     private Category bookCategory;
 
     public Book() {
+        super();
     }
 
     public Book(Integer bookId, String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory) {
+        super();
         this.bookId = bookId;
         this.title = title;
         this.quantity = quantity;
@@ -42,6 +44,7 @@ public class Book {
     }
 
     public Book(String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory) {
+        super();
         this.title = title;
         this.quantity = quantity;
         this.renewalLoan = renewalLoan;

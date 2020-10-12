@@ -16,15 +16,18 @@ public class Author {
     private String nameAuthor;
 
     public Author() {
+        super();
     }
 
     public Author(Integer authorId, String firstName, String nameAuthor) {
+        super();
         this.authorId = authorId;
         this.firstName = firstName;
         this.nameAuthor = nameAuthor;
     }
 
     public Author(String firstName, String nameAuthor) {
+        super();
         this.firstName = firstName;
         this.nameAuthor = nameAuthor;
     }

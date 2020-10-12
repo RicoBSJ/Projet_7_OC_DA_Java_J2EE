@@ -28,7 +28,16 @@ public class BookController {
 
     @PostMapping("/")
     public void createBook(@RequestBody BookDto bookDto){
-        bookService.saveOrUpdate(bookDto);
+        BookDto existingBook = new BookDto();
+        existingBook.setBookId(bookDto.getBookId());
+        existingBook.setTitle(bookDto.getTitle());
+        existingBook.setQuantity(bookDto.getQuantity());
+        existingBook.setQuantityLoan(bookDto.getQuantityLoan());
+        existingBook.setRenewalLoan(bookDto.getRenewalLoan());
+        existingBook.setYearBook(bookDto.getYearBook());
+        existingBook.setBookAuthor(bookDto.getBookAuthor());
+        existingBook.setBookCategory(bookDto.getBookCategory());
+        bookService.save(existingBook);
     }
 
     @PutMapping("/{id}")
@@ -42,7 +51,7 @@ public class BookController {
         existingBook.setYearBook(bookDto.getYearBook());
         existingBook.setBookAuthor(bookDto.getBookAuthor());
         existingBook.setBookCategory(bookDto.getBookCategory());
-        bookService.saveOrUpdate(existingBook);
+        bookService.update(existingBook);
     }
 
     /*@GetMapping("/test/{name}")
