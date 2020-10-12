@@ -17,26 +17,26 @@ public class AuthorController {
     }
 
     @GetMapping("/")
-    public List<AuthorDto> getAllAuthors(){
+    public List<AuthorDto> getAllAuthors() {
         return this.authorService.findAll();
     }
 
     @GetMapping("/{id}")
-    public AuthorDto getAuthorById(@PathVariable(value = "id") int authorId){
+    public AuthorDto getAuthorById(@PathVariable(value = "id") int authorId) {
         return this.authorService.findById(authorId);
     }
 
     @PostMapping("/")
-    public void createAuthor(@RequestBody AuthorDto authorDto){
-        AuthorDto existingAuthor = new AuthorDto();
-        existingAuthor.setAuthorId(authorDto.getAuthorId());
-        existingAuthor.setFirstName(authorDto.getFirstName());
-        existingAuthor.setNameAuthor(authorDto.getNameAuthor());
-        authorService.save(existingAuthor);
+    public void createAuthor(@RequestBody AuthorDto authorDto) {
+        AuthorDto newAuthor = new AuthorDto();
+        newAuthor.setAuthorId(authorDto.getAuthorId());
+        newAuthor.setFirstName(authorDto.getFirstName());
+        newAuthor.setNameAuthor(authorDto.getNameAuthor());
+        authorService.save(newAuthor);
     }
 
     @PutMapping("/{id}")
-    public void updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable("id") int authorId){
+    public void updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable("id") int authorId) {
         AuthorDto existingAuthor = authorService.findById(authorId);
         existingAuthor.setAuthorId(authorDto.getAuthorId());
         existingAuthor.setFirstName(authorDto.getFirstName());
@@ -45,7 +45,7 @@ public class AuthorController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAuthor(@PathVariable("id") int id){
+    public void deleteAuthor(@PathVariable("id") int id) {
         AuthorDto existingAuthor = authorService.findById(id);
         authorService.delete(existingAuthor.getAuthorId());
     }
