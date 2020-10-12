@@ -37,7 +37,6 @@ public class AuthorController {
         existingAuthor.setAuthorId(authorDto.getAuthorId());
         existingAuthor.setFirstName(authorDto.getFirstName());
         existingAuthor.setNameAuthor(authorDto.getNameAuthor());
-        existingAuthor.setAuthorBooks(authorDto.getAuthorBooks());
         authorService.saveOrUpdate(existingAuthor);
     }
 

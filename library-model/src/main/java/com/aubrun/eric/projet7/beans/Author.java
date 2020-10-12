@@ -14,24 +14,19 @@ public class Author {
     private String firstName;
     @Column(name = "name_author")
     private String nameAuthor;
-    @OneToMany(fetch=FetchType.LAZY)
-    @JoinColumn(name = "author_books")
-    private List<Book> authorBooks;
 
     public Author() {
     }
 
-    public Author(Integer authorId, String firstName, String nameAuthor, List<Book> authorBooks) {
+    public Author(Integer authorId, String firstName, String nameAuthor) {
         this.authorId = authorId;
         this.firstName = firstName;
         this.nameAuthor = nameAuthor;
-        this.authorBooks = authorBooks;
     }
 
-    public Author(String firstName, String nameAuthor, List<Book> authorBooks) {
+    public Author(String firstName, String nameAuthor) {
         this.firstName = firstName;
         this.nameAuthor = nameAuthor;
-        this.authorBooks = authorBooks;
     }
 
     public Integer getAuthorId() {
@@ -58,21 +53,12 @@ public class Author {
         this.nameAuthor = nameAuthor;
     }
 
-    public List<Book> getAuthorBooks() {
-        return authorBooks;
-    }
-
-    public void setAuthorBooks(List<Book> authorBooks) {
-        this.authorBooks = authorBooks;
-    }
-
     @Override
     public String toString() {
         return "Author{" +
                 "authorId=" + authorId +
                 ", firstName='" + firstName + '\'' +
                 ", nameAuthor='" + nameAuthor + '\'' +
-                ", authorBooks=" + authorBooks +
                 '}';
     }
 }

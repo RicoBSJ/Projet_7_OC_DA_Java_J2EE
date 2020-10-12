@@ -76,5 +76,4 @@ public class BookDto {
     public void setBookCategory(CategoryDto bookCategory) {
         this.bookCategory = bookCategory;
     }
-
 }

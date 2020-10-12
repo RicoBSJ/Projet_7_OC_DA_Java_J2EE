@@ -13,7 +13,6 @@ public class AuthorDtoMapper {
         dto.setAuthorId(author.getAuthorId());
         dto.setFirstName(author.getFirstName());
         dto.setNameAuthor(author.getNameAuthor());
-        dto.setAuthorBooks(author.getAuthorBooks().stream().map(BookDtoMapper::toDto).collect(Collectors.toList()));
         return dto;
     }
 
@@ -23,7 +22,6 @@ public class AuthorDtoMapper {
         entity.setAuthorId(authorDto.getAuthorId());
         entity.setFirstName(authorDto.getFirstName());
         entity.setNameAuthor(authorDto.getNameAuthor());
-        entity.setAuthorBooks(authorDto.getAuthorBooks().stream().map(BookDtoMapper::toEntity).collect(Collectors.toList()));
         return entity;
     }
 }

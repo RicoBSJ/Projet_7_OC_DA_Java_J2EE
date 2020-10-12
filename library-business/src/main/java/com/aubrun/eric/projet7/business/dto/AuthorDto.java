@@ -7,7 +7,6 @@ public class AuthorDto {
     private Integer authorId;
     private String firstName;
     private String nameAuthor;
-    private List<BookDto> authorBooks;
 
     public Integer getAuthorId() {
         return authorId;
@@ -32,13 +31,4 @@ public class AuthorDto {
     public void setNameAuthor(String nameAuthor) {
         this.nameAuthor = nameAuthor;
     }
-
-    public List<BookDto> getAuthorBooks() {
-        return authorBooks;
-    }
-
-    public void setAuthorBooks(List<BookDto> authorBooks) {
-        this.authorBooks = authorBooks;
-    }
-
 }
