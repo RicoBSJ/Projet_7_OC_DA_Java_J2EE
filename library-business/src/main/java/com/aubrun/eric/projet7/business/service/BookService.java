@@ -39,10 +39,10 @@ public class BookService {
         return BookDtoMapper.toDto(bookRepository.findById(id).get());
     }
 
-    public void delete(Integer id) {
+    public void delete(int id) {
 
-        BookDto bookDto = BookDtoMapper.toDto(bookRepository.findById(id).get());
-        bookRepository.delete(BookDtoMapper.toEntity(bookDto));
+        bookRepository.deleteById(id);
+
     }
 
     /*public List<BookDto> findBooksByName(String name){

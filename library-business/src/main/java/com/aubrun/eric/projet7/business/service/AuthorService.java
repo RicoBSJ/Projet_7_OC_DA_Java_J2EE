@@ -40,9 +40,9 @@ public class AuthorService {
         return AuthorDtoMapper.toDto(authorRepository.findById(id).get());
     }
 
-    public void delete(Integer id) {
+    public void delete(int id) {
 
-        Author author = authorRepository.findById(id).get();
-        authorRepository.delete(author);
+        authorRepository.deleteById(id);
+
     }
 }
