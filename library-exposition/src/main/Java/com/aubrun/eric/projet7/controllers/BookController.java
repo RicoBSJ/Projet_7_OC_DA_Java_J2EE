@@ -12,11 +12,9 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
-    private final LoanService loanService;
 
     public BookController(BookService bookService, LoanService loanService) {
         this.bookService = bookService;
-        this.loanService = loanService;
     }
 
     @GetMapping("/")
@@ -44,7 +42,6 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     private void deleteBook(@PathVariable("id") int bookId) {
-        loanService.delete(bookId);
         bookService.delete(bookId);
     }
 
