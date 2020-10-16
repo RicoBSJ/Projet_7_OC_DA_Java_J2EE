@@ -4,10 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "AUTHOR")
 public class Author {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "author_id_generator")
+    @SequenceGenerator(name="author_id_generator", sequenceName = "author_id_seq", allocationSize=1)
     @Column(name = "author_id")
     private Integer authorId;
     @Column(name = "first_name")

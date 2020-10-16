@@ -4,10 +4,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "BOOK")
 public class Book {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "book_id_generator")
+    @SequenceGenerator(name="book_id_generator", sequenceName = "book_id_seq", allocationSize=1)
     @Column(name = "book_id")
     private Integer bookId;
     @Column(name = "title")
