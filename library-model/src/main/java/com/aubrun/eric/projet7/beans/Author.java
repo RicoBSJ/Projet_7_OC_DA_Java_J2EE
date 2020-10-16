@@ -7,7 +7,7 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "author_id")
     private Integer authorId;
     @Column(name = "first_name")

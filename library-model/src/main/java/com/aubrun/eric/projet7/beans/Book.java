@@ -7,7 +7,7 @@ import java.util.Date;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "book_id")
     private Integer bookId;
     @Column(name = "title")

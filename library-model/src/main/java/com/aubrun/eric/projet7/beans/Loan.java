@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Loan {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "loan_id")
     private Integer loanId;
     @OneToOne(cascade = CascadeType.ALL)
