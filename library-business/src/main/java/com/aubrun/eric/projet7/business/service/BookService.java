@@ -57,8 +57,8 @@ public class BookService {
 
     }
 
-    /*public List<BookDto> findBooksByName(String name){
+    public List<BookDto> findBooksByName(String name){
 
-        return bookRepository.findBookByNameLike(name);
-    }*/
+        return bookRepository.findBooksByTitleLike(name).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
+    }
 }

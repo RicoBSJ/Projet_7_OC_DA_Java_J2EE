@@ -45,9 +45,9 @@ public class BookController {
         bookService.delete(bookId);
     }
 
-    /*@GetMapping("/test/{name}")
+    @GetMapping("/test/{name}")
     public List<BookDto> testSearch(@PathVariable("name") String name){
 
         return bookService.findBooksByName(name);
-    }*/
+    }
 }
