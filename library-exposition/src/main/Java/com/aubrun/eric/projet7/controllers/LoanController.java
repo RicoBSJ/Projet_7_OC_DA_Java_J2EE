@@ -17,30 +17,29 @@ public class LoanController {
     }
 
     @GetMapping("/")
-    public List<LoanDto> getAllLoans(){
+    public List<LoanDto> getAllLoans() {
         return this.loanService.findAll();
     }
 
     @GetMapping("/{id}")
-    public LoanDto getLoanById(@PathVariable(value = "id") int loanId){
+    public LoanDto getLoanById(@PathVariable(value = "id") int loanId) {
         return this.loanService.findById(loanId);
     }
 
     @PostMapping("/")
-    public void createLoan(@RequestBody LoanDto loanDto){
-        loanService.saveOrUpdate(loanDto);
+    public int createLoan(@RequestBody LoanDto loanDto) {
+        loanService.save(loanDto);
+        return loanDto.getLoanId();
     }
 
-    @PutMapping("/{id}")
-    public void updateLoan(@RequestBody LoanDto loanDto, @PathVariable("id") int loanId){
-        LoanDto existingLoan = loanService.findById(loanId);
-        existingLoan.setLoanBook(loanDto.getLoanBook());
-        loanService.saveOrUpdate(existingLoan);
+    @PutMapping("/loan")
+    public LoanDto updateLoan(@RequestBody LoanDto loanDto) {
+        loanService.update(loanDto);
+        return loanDto;
     }
 
     @DeleteMapping("/{id}")
-    public void deleteLoan(@PathVariable("id") int loanId){
-        LoanDto existingLoan = loanService.findById(loanId);
-        loanService.delete(existingLoan.getLoanId());
+    public void deleteLoan(@PathVariable("id") int loanId) {
+        loanService.delete(loanId);
     }
 }

@@ -17,34 +17,29 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public List<UserDto> getAllUsers(){
+    public List<UserDto> getAllUsers() {
         return this.userService.findAll();
     }
 
     @GetMapping("/{id}")
-    public UserDto getUserById(@PathVariable(value = "id") int userId){
+    public UserDto getUserById(@PathVariable(value = "id") int userId) {
         return this.userService.findById(userId);
     }
 
     @PostMapping("/")
-    public void createUser(@RequestBody UserDto userDto){
-        userService.saveOrUpdate(userDto);
+    public int createUser(@RequestBody UserDto userDto) {
+        userService.save(userDto);
+        return userDto.getUserId();
     }
 
-    @PutMapping("/{id}")
-    public void updateUser(@RequestBody UserDto userDto, @PathVariable("id") int userId){
-        UserDto existingUser = userService.findById(userId);
-        existingUser.setFirstName(userDto.getFirstName());
-        existingUser.setNameUser(userDto.getNameUser());
-        existingUser.setEmail(userDto.getEmail());
-        existingUser.setMotDePasse(userDto.getMotDePasse());
-        existingUser.setLoanList(userDto.getLoanList());
-        userService.saveOrUpdate(existingUser);
+    @PutMapping("/user")
+    public UserDto updateUser(@RequestBody UserDto userDto) {
+        userService.update(userDto);
+        return userDto;
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") int userId){
-        UserDto existingUser = userService.findById(userId);
-        userService.delete(existingUser.getUserId());
+    public void deleteUser(@PathVariable("id") int userId) {
+        userService.delete(userId);
     }
 }

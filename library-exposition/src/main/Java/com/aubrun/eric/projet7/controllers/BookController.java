@@ -2,18 +2,17 @@ package com.aubrun.eric.projet7.controllers;
 
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.service.BookService;
-import com.aubrun.eric.projet7.business.service.LoanService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/books")
+@RequestMapping("/books")
 public class BookController {
 
     private final BookService bookService;
 
-    public BookController(BookService bookService, LoanService loanService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
@@ -27,14 +26,13 @@ public class BookController {
         return bookService.findById(bookId);
     }
 
-    //creating post mapping that post the book detail in the database
     @PostMapping("/")
     private int createBook(@RequestBody BookDto bookDto) {
         bookService.save(bookDto);
         return bookDto.getBookId();
     }
 
-    @PutMapping("/books")
+    @PutMapping("/book")
     private BookDto updateBook(@RequestBody BookDto bookDto) {
         bookService.update(bookDto);
         return bookDto;
@@ -46,8 +44,7 @@ public class BookController {
     }
 
     @GetMapping("/test/{name}")
-    public List<BookDto> testSearch(@PathVariable("name") String name){
-
+    public List<BookDto> testSearch(@PathVariable("name") String name) {
         return bookService.findBooksByName(name);
     }
 }

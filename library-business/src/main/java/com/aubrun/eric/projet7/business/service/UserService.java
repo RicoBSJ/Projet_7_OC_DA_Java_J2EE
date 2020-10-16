@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.UserAccount;
 import com.aubrun.eric.projet7.business.dto.UserDto;
 import com.aubrun.eric.projet7.business.mapper.UserDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserRepository;
@@ -25,7 +24,12 @@ public class UserService {
         return userRepository.findAll().stream().map(UserDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void saveOrUpdate(UserDto newUser) {
+    public int save(UserDto newUser) {
+
+        return userRepository.save(UserDtoMapper.toEntity(newUser)).getUserId();
+    }
+
+    public void update(UserDto newUser) {
 
         userRepository.save(UserDtoMapper.toEntity(newUser));
     }
@@ -37,7 +41,6 @@ public class UserService {
 
     public void delete(Integer id) {
 
-        UserAccount userAccount = userRepository.findById(id).get();
-        userRepository.delete(userAccount);
+        userRepository.deleteById(id);
     }
 }

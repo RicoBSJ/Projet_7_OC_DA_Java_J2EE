@@ -18,30 +18,29 @@ public class CategoryController {
 
 
     @GetMapping("/")
-    public List<CategoryDto> getAllCategorys(){
+    public List<CategoryDto> getAllCategorys() {
         return this.categoryService.findAll();
     }
 
     @GetMapping("/{id}")
-    public CategoryDto getCategoryById(@PathVariable(value = "id") int categoryId){
+    public CategoryDto getCategoryById(@PathVariable(value = "id") int categoryId) {
         return this.categoryService.findById(categoryId);
     }
 
     @PostMapping("/")
-    public void createCategory(@RequestBody CategoryDto categoryDto){
-        categoryService.saveOrUpdate(categoryDto);
+    public int createCategory(@RequestBody CategoryDto categoryDto) {
+        categoryService.save(categoryDto);
+        return categoryDto.getCategoryId();
     }
 
-    @PutMapping("/{id}")
-    public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable("id") int categoryId){
-        CategoryDto existingCategory = categoryService.findById(categoryId);
-        existingCategory.setNameCategory(categoryDto.getNameCategory());
-        categoryService.saveOrUpdate(existingCategory);
+    @PutMapping("/category")
+    public CategoryDto updateCategory(@RequestBody CategoryDto categoryDto) {
+        categoryService.update(categoryDto);
+        return categoryDto;
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCategory(@PathVariable("id") int categoryId){
-        CategoryDto existingCategory = categoryService.findById(categoryId);
-        categoryService.delete(existingCategory.getCategoryId());
+    public void deleteCategory(@PathVariable("id") int categoryId) {
+        categoryService.delete(categoryId);
     }
 }

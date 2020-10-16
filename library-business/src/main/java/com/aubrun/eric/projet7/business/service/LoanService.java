@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.Loan;
 import com.aubrun.eric.projet7.business.dto.LoanDto;
 import com.aubrun.eric.projet7.business.mapper.LoanDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.LoanRepository;
@@ -25,7 +24,12 @@ public class LoanService {
         return loanRepository.findAll().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void saveOrUpdate(LoanDto newLoan) {
+    public int save(LoanDto newLoan) {
+
+        return loanRepository.save(LoanDtoMapper.toEntity(newLoan)).getLoanId();
+    }
+
+    public void update(LoanDto newLoan) {
 
         loanRepository.save(LoanDtoMapper.toEntity(newLoan));
     }
@@ -37,7 +41,6 @@ public class LoanService {
 
     public void delete(Integer id) {
 
-        Loan loan = loanRepository.findById(id).get();
-        loanRepository.delete(loan);
+        loanRepository.deleteById(id);
     }
 }

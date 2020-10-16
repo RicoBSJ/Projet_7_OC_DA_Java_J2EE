@@ -6,7 +6,7 @@ insert into author(
     name_author
 )
 values
-(setval('author_id_seq', 1),'Ayn', 'Rand'),
+(nextval('author_id_seq'),'Ayn', 'Rand'),
 (nextval('author_id_seq'),'Eliyahu M.', 'Goldratt'),
 (nextval('author_id_seq'),'Jiddu', 'Krishnamurti');
 
@@ -17,7 +17,7 @@ insert into category (
     name_category
 )
 values
-(setval('category_id_seq', 1),'roman'),
+(nextval('category_id_seq'),'roman'),
 (nextval('category_id_seq'),'management'),
 (nextval('category_id_seq'),'spiritualité');
 
@@ -31,7 +31,7 @@ insert into user_account(
     mot_de_passe
 )
 values
-(setval('user_account_id_seq', 1), 'Elon', 'Musk', 'e.musk@gmail.com', 'eM86'),
+(nextval('user_account_id_seq'), 'Elon', 'Musk', 'e.musk@gmail.com', 'eM86'),
 (nextval('user_account_id_seq'), 'Steve', 'Jobs', 's_jobs@gmail.com','sJ53'),
 (nextval('user_account_id_seq'), 'Jack', 'Ma', 'j-ma@gmail.com', 'jM68');
 
@@ -48,7 +48,7 @@ insert into book(
     book_category
 )
 values
-(setval('book_id_seq', 1), 3, 1, false, 'La grève', '2017-03-09', 1, 1),
+(nextval('book_id_seq'), 3, 1, false, 'La grève', '2017-03-09', 1, 1),
 (nextval('book_id_seq'), 3, 1, false, 'La source vive', '2018-03-01', 1, 1),
 (nextval('book_id_seq'), 3, 1, false, 'La Vertu d’Égoïsme', '2008-01-09', 1, 1),
 (nextval('book_id_seq'), 3, 1, false, 'We the Living', '2011-06-07', 1, 1),
@@ -77,6 +77,6 @@ insert into loan(
     loan_list
 )
 values
-(setval('loan_id_seq', 1), 1, 1),
+(nextval('loan_id_seq'), 1, 1),
 (nextval('loan_id_seq'), 2, 2),
 (nextval('loan_id_seq'), 3, 3);

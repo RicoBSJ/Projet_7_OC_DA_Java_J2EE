@@ -12,11 +12,9 @@ import java.util.List;
 public class AuthorController {
 
     private final AuthorService authorService;
-    private final BookService bookService;
 
     public AuthorController(AuthorService authorService, BookService bookService) {
         this.authorService = authorService;
-        this.bookService = bookService;
     }
 
     @GetMapping("/")
@@ -29,15 +27,14 @@ public class AuthorController {
         return this.authorService.findById(authorId);
     }
 
-    //creating post mapping that post the author detail in the database
     @PostMapping("/")
     private int createAuthor(@RequestBody AuthorDto authorDto) {
         authorService.save(authorDto);
         return authorDto.getAuthorId();
     }
 
-    @PutMapping("/{id}")
-    private AuthorDto updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable("id") int authorId) {
+    @PutMapping("/author")
+    private AuthorDto updateAuthor(@RequestBody AuthorDto authorDto) {
         authorService.update(authorDto);
         return authorDto;
     }

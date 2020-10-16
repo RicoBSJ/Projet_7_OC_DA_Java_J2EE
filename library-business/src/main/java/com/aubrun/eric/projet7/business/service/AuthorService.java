@@ -4,8 +4,8 @@ import com.aubrun.eric.projet7.business.dto.AuthorDto;
 import com.aubrun.eric.projet7.business.mapper.AuthorDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +24,9 @@ public class AuthorService {
         return authorRepository.findAll().stream().map(AuthorDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void save(AuthorDto newAuthor) {
+    public int save(AuthorDto newAuthor) {
 
-        authorRepository.save(AuthorDtoMapper.toEntity(newAuthor));
+        return authorRepository.save(AuthorDtoMapper.toEntity(newAuthor)).getAuthorId();
     }
 
     public void update(AuthorDto newAuthor) {

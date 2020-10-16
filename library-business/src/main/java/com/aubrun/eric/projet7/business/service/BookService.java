@@ -2,10 +2,7 @@ package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
-import com.aubrun.eric.projet7.consumer.repository.AuthorRepository;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
-import com.aubrun.eric.projet7.consumer.repository.CategoryRepository;
-import com.aubrun.eric.projet7.consumer.repository.LoanRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,15 +14,9 @@ import java.util.stream.Collectors;
 public class BookService {
 
     private final BookRepository bookRepository;
-    private final AuthorRepository authorRepository;
-    private final LoanRepository loanRepository;
-    private final CategoryRepository categoryRepository;
 
-    public BookService(BookRepository bookRepository, AuthorService authorService, AuthorRepository authorRepository, LoanRepository loanRepository, CategoryRepository categoryRepository) {
+    public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
-        this.authorRepository = authorRepository;
-        this.loanRepository = loanRepository;
-        this.categoryRepository = categoryRepository;
     }
 
     public List<BookDto> findAll() {
@@ -33,9 +24,9 @@ public class BookService {
         return bookRepository.findAll().stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void save(BookDto newBook) {
+    public int save(BookDto newBook) {
 
-        BookDtoMapper.toDto(bookRepository.saveAndFlush(BookDtoMapper.toEntity(newBook)));
+        return bookRepository.save(BookDtoMapper.toEntity(newBook)).getBookId();
     }
 
     public void update(BookDto newBook) {
@@ -50,9 +41,6 @@ public class BookService {
 
     public void delete(int id) {
 
-        categoryRepository.deleteById(id);
-        loanRepository.deleteById(id);
-        authorRepository.deleteById(id);
         bookRepository.deleteById(id);
 
     }

@@ -3,12 +3,12 @@ package com.aubrun.eric.projet7.beans;
 import javax.persistence.*;
 
 @Entity
+@SequenceGenerator(name="loan_id_generator", sequenceName = "loan_id_seq", allocationSize=1)
 @Table(name = "LOAN")
 public class Loan {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "loan_id_generator")
-    @SequenceGenerator(name="loan_id_generator", sequenceName = "loan_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "loan_id_generator")
     @Column(name = "loan_id")
     private Integer loanId;
     @OneToOne(cascade = CascadeType.ALL)

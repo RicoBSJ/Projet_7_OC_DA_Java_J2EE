@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.Category;
 import com.aubrun.eric.projet7.business.dto.CategoryDto;
 import com.aubrun.eric.projet7.business.mapper.CategoryDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.CategoryRepository;
@@ -25,7 +24,12 @@ public class CategoryService {
         return categoryRepository.findAll().stream().map(CategoryDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void saveOrUpdate(CategoryDto newCategory) {
+    public int save(CategoryDto newCategory) {
+
+        return categoryRepository.save(CategoryDtoMapper.toEntity(newCategory)).getCategoryId();
+    }
+
+    public void update(CategoryDto newCategory) {
 
         categoryRepository.save(CategoryDtoMapper.toEntity(newCategory));
     }
@@ -37,7 +41,6 @@ public class CategoryService {
 
     public void delete(Integer id) {
 
-        Category category = categoryRepository.findById(id).get();
-        categoryRepository.delete(category);
+        categoryRepository.deleteById(id);
     }
 }
