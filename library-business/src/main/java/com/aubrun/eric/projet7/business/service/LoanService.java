@@ -24,9 +24,9 @@ public class LoanService {
         return loanRepository.findAll().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public int save(LoanDto newLoan) {
+    public void save(LoanDto newLoan) {
 
-        return loanRepository.save(LoanDtoMapper.toEntity(newLoan)).getLoanId();
+        loanRepository.save(LoanDtoMapper.toEntity(newLoan)).getLoanId();
     }
 
     public void update(LoanDto newLoan) {

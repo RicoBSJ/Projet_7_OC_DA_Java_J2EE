@@ -24,9 +24,9 @@ public class UserService {
         return userRepository.findAll().stream().map(UserDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public int save(UserDto newUser) {
+    public void save(UserDto newUser) {
 
-        return userRepository.save(UserDtoMapper.toEntity(newUser)).getUserId();
+        userRepository.save(UserDtoMapper.toEntity(newUser)).getUserId();
     }
 
     public void update(UserDto newUser) {

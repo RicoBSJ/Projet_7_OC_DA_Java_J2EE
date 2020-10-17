@@ -27,15 +27,13 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public int createUser(@RequestBody UserDto userDto) {
+    public void createUser(@RequestBody UserDto userDto) {
         userService.save(userDto);
-        return userDto.getUserId();
     }
 
     @PutMapping("/user")
-    public UserDto updateUser(@RequestBody UserDto userDto) {
+    public void updateUser(@RequestBody UserDto userDto) {
         userService.update(userDto);
-        return userDto;
     }
 
     @DeleteMapping("/{id}")

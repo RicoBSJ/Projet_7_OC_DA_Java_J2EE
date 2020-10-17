@@ -24,9 +24,9 @@ public class CategoryService {
         return categoryRepository.findAll().stream().map(CategoryDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public int save(CategoryDto newCategory) {
+    public void save(CategoryDto newCategory) {
 
-        return categoryRepository.save(CategoryDtoMapper.toEntity(newCategory)).getCategoryId();
+        categoryRepository.save(CategoryDtoMapper.toEntity(newCategory)).getCategoryId();
     }
 
     public void update(CategoryDto newCategory) {

@@ -28,15 +28,13 @@ public class CategoryController {
     }
 
     @PostMapping("/")
-    public int createCategory(@RequestBody CategoryDto categoryDto) {
+    public void createCategory(@RequestBody CategoryDto categoryDto) {
         categoryService.save(categoryDto);
-        return categoryDto.getCategoryId();
     }
 
     @PutMapping("/category")
-    public CategoryDto updateCategory(@RequestBody CategoryDto categoryDto) {
+    public void updateCategory(@RequestBody CategoryDto categoryDto) {
         categoryService.update(categoryDto);
-        return categoryDto;
     }
 
     @DeleteMapping("/{id}")

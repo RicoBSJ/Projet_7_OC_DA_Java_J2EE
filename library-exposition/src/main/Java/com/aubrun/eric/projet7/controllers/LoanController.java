@@ -27,15 +27,13 @@ public class LoanController {
     }
 
     @PostMapping("/")
-    public int createLoan(@RequestBody LoanDto loanDto) {
+    public void createLoan(@RequestBody LoanDto loanDto) {
         loanService.save(loanDto);
-        return loanDto.getLoanId();
     }
 
     @PutMapping("/loan")
-    public LoanDto updateLoan(@RequestBody LoanDto loanDto) {
+    public void updateLoan(@RequestBody LoanDto loanDto) {
         loanService.update(loanDto);
-        return loanDto;
     }
 
     @DeleteMapping("/{id}")
