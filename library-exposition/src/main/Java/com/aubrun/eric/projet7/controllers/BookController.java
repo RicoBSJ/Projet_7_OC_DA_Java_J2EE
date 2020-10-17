@@ -27,15 +27,13 @@ public class BookController {
     }
 
     @PostMapping("/")
-    private int createBook(@RequestBody BookDto bookDto) {
+    private void createBook(@RequestBody BookDto bookDto) {
         bookService.save(bookDto);
-        return bookDto.getBookId();
     }
 
     @PutMapping("/book")
-    private BookDto updateBook(@RequestBody BookDto bookDto) {
+    private void updateBook(@RequestBody BookDto bookDto) {
         bookService.update(bookDto);
-        return bookDto;
     }
 
     @DeleteMapping("/{id}")

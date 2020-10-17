@@ -24,9 +24,9 @@ public class BookService {
         return bookRepository.findAll().stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public int save(BookDto newBook) {
+    public void save(BookDto newBook) {
 
-        return bookRepository.save(BookDtoMapper.toEntity(newBook)).getBookId();
+        bookRepository.save(BookDtoMapper.toEntity(newBook)).getBookId();
     }
 
     public void update(BookDto newBook) {

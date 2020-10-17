@@ -2,7 +2,6 @@ package com.aubrun.eric.projet7.controllers;
 
 import com.aubrun.eric.projet7.business.dto.AuthorDto;
 import com.aubrun.eric.projet7.business.service.AuthorService;
-import com.aubrun.eric.projet7.business.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class AuthorController {
 
     private final AuthorService authorService;
 
-    public AuthorController(AuthorService authorService, BookService bookService) {
+    public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
     }
 
@@ -28,15 +27,13 @@ public class AuthorController {
     }
 
     @PostMapping("/")
-    private int createAuthor(@RequestBody AuthorDto authorDto) {
+    private void createAuthor(@RequestBody AuthorDto authorDto) {
         authorService.save(authorDto);
-        return authorDto.getAuthorId();
     }
 
     @PutMapping("/author")
-    private AuthorDto updateAuthor(@RequestBody AuthorDto authorDto) {
+    private void updateAuthor(@RequestBody AuthorDto authorDto) {
         authorService.update(authorDto);
-        return authorDto;
     }
 
     @DeleteMapping("/{id}")
