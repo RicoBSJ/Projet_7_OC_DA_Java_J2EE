@@ -52,9 +52,4 @@ public class BookController {
     private void List<BookDto> recherche(SearchBookDto searchBookDto ) {
         bookService.searchBook();
     }*/
-
-    /*@PostMapping("/searchBook")
-    private void List<BookDto> search(SearchBookDto searchBookDto){
-
-    }*/
 }
