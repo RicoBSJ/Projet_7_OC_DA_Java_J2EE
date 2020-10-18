@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
     /*List<Book> findBooksByTitleContains(String name);*/
-
 }

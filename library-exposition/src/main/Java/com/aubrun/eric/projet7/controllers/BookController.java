@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.controllers;
 
-import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.service.BookService;
@@ -39,7 +38,7 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    private void deleteBook(@PathVariable("id") int bookId) {
+    private void deleteBook(@PathVariable(value = "id") int bookId) {
         bookService.delete(bookId);
     }
 
@@ -52,4 +51,11 @@ public class BookController {
     private void List<BookDto> recherche(SearchBookDto searchBookDto ) {
         bookService.searchBook();
     }*/
+
+    @PostMapping(value = "/books")
+    private List<BookDto> search(@RequestBody SearchBookDto searchBookDto) {
+
+        return bookService.searchBook(searchBookDto);
+    }
+
 }
