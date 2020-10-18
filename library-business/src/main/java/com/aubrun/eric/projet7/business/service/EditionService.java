@@ -24,14 +24,14 @@ public class EditionService {
         return editionRepository.findAll().stream().map(EditionDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void save(EditionDto newEdition) {
+    public int save(EditionDto newEdition) {
 
-        editionRepository.save(EditionDtoMapper.toEntity(newEdition)).getEditionId();
+        return editionRepository.save(EditionDtoMapper.toEntity(newEdition)).getEditionId();
     }
 
-    public void update(EditionDto newEdition) {
+    public EditionDto update(EditionDto newEdition) {
 
-        editionRepository.save(EditionDtoMapper.toEntity(newEdition));
+        return EditionDtoMapper.toDto(editionRepository.save(EditionDtoMapper.toEntity(newEdition)));
     }
 
     public EditionDto findById(Integer id) {

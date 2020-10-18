@@ -6,6 +6,7 @@ import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.awt.print.Book;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,14 +25,14 @@ public class BookService {
         return bookRepository.findAll().stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void save(BookDto newBook) {
+    public int save(BookDto newBook) {
 
-        bookRepository.save(BookDtoMapper.toEntity(newBook)).getBookId();
+        return bookRepository.save(BookDtoMapper.toEntity(newBook)).getBookId();
     }
 
-    public void update(BookDto newBook) {
+    public BookDto update(BookDto newBook) {
 
-        BookDtoMapper.toDto(bookRepository.save(BookDtoMapper.toEntity(newBook)));
+        return BookDtoMapper.toDto(bookRepository.save(BookDtoMapper.toEntity(newBook)));
     }
 
     public BookDto findById(Integer id) {

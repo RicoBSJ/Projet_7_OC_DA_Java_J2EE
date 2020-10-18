@@ -24,14 +24,14 @@ public class UserService {
         return userRepository.findAll().stream().map(UserDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void save(UserDto newUser) {
+    public int save(UserDto newUser) {
 
-        userRepository.save(UserDtoMapper.toEntity(newUser)).getUserId();
+        return userRepository.save(UserDtoMapper.toEntity(newUser)).getUserId();
     }
 
-    public void update(UserDto newUser) {
+    public UserDto update(UserDto newUser) {
 
-        userRepository.save(UserDtoMapper.toEntity(newUser));
+        return UserDtoMapper.toDto(userRepository.save(UserDtoMapper.toEntity(newUser)));
     }
 
     public UserDto findById(Integer id) {

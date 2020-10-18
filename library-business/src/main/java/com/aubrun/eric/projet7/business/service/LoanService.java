@@ -24,14 +24,14 @@ public class LoanService {
         return loanRepository.findAll().stream().map(LoanDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void save(LoanDto newLoan) {
+    public int save(LoanDto newLoan) {
 
-        loanRepository.save(LoanDtoMapper.toEntity(newLoan)).getLoanId();
+        return loanRepository.save(LoanDtoMapper.toEntity(newLoan)).getLoanId();
     }
 
-    public void update(LoanDto newLoan) {
+    public LoanDto update(LoanDto newLoan) {
 
-        loanRepository.save(LoanDtoMapper.toEntity(newLoan));
+        return LoanDtoMapper.toDto(loanRepository.save(LoanDtoMapper.toEntity(newLoan)));
     }
 
     public LoanDto findById(Integer id) {

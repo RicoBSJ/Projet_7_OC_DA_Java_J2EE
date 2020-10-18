@@ -24,14 +24,14 @@ public class CategoryService {
         return categoryRepository.findAll().stream().map(CategoryDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public void save(CategoryDto newCategory) {
+    public int save(CategoryDto newCategory) {
 
-        categoryRepository.save(CategoryDtoMapper.toEntity(newCategory)).getCategoryId();
+        return categoryRepository.save(CategoryDtoMapper.toEntity(newCategory)).getCategoryId();
     }
 
-    public void update(CategoryDto newCategory) {
+    public CategoryDto update(CategoryDto newCategory) {
 
-        categoryRepository.save(CategoryDtoMapper.toEntity(newCategory));
+        return CategoryDtoMapper.toDto(categoryRepository.save(CategoryDtoMapper.toEntity(newCategory)));
     }
 
     public CategoryDto findById(Integer id) {
