@@ -1,6 +1,8 @@
 package com.aubrun.eric.projet7.controllers;
 
+import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.business.dto.BookDto;
+import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +43,18 @@ public class BookController {
         bookService.delete(bookId);
     }
 
-    @GetMapping("/test/{name}")
+    /*@GetMapping("/test/{name}")
     public List<BookDto> testSearch(@PathVariable("name") String name) {
         return bookService.findBooksByName(name);
-    }
+    }*/
+
+    /*@PostMapping("/searchBook")
+    private void List<BookDto> recherche(SearchBookDto searchBookDto ) {
+        bookService.searchBook();
+    }*/
+
+    /*@PostMapping("/searchBook")
+    private void List<BookDto> search(SearchBookDto searchBookDto){
+
+    }*/
 }

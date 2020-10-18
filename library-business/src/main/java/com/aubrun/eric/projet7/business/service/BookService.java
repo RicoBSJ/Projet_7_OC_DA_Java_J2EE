@@ -1,13 +1,17 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.awt.print.Book;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,8 +50,64 @@ public class BookService {
 
     }
 
-    public List<BookDto> findBooksByName(String name){
+    /*public List<BookDto> findBooksByName(String name){
 
         return bookRepository.findBooksByTitleContains(name).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
-    }
+    }*/
+
+    /*private Book List<BookDto> recherche(SearchBookDto searchBookDto ) {
+        Session session = factory.openSession();
+        List<Site> resultat = null;
+        try {
+            Map<String, String> parameters = new HashMap();
+            String q = "SELECT s FROM Site s WHERE 1=1 ";
+            if ( searchForm.getNom() != "" ) {
+                q += "AND s.nom LIKE :nom ";
+                parameters.put( "nom", "%" + searchForm.getNom() + "%" );
+            }
+            if ( searchForm.getPays() != "" ) {
+                q += "AND s.pays LIKE :pays ";
+                parameters.put( "pays", "%" + searchForm.getPays() + "%" );
+            }
+            if ( searchForm.getRegion() != "" ) {
+                q += "AND s.region LIKE :region ";
+                parameters.put( "region", "%" + searchForm.getRegion() + "%" );
+            }
+            if ( searchForm.getDescription() != "" ) {
+                q += "AND s.description LIKE :description ";
+                parameters.put( "description", "%" + searchForm.getDescription() + "%" );
+            }
+            if ( searchForm.getCotation() != "" ) {
+                q += "AND s.cotation LIKE :cotation ";
+                parameters.put( "cotation", "%" + searchForm.getCotation() + "%" );
+            }
+            if ( searchForm.getHauteur() != "" ) {
+                q += "AND s.hauteur LIKE :hauteur ";
+                parameters.put( "hauteur", "%" + searchForm.getHauteur() + "%" );
+            }
+            if ( searchForm.getOrientation() != "" ) {
+                q += "AND s.orientation LIKE :orientation ";
+                parameters.put( "orientation", "%" + searchForm.getOrientation() + "%" );
+            }
+            if ( searchForm.getSecteurs() != "" ) {
+                q += "AND s.secteurs LIKE :secteurs ";
+                parameters.put( "secteurs", "%" + searchForm.getSecteurs() + "%" );
+            }
+            if ( searchForm.getVoies() != "" ) {
+                q += "AND s.voies LIKE :voies ";
+                parameters.put( "voies", "%" + searchForm.getVoies() + "%" );
+            }
+            if ( searchForm.getLongueurs() != "" ) {
+                q += "AND s.longueurs LIKE :longueurs ";
+                parameters.put( "longueurs", "%" + searchForm.getLongueurs() + "%" );
+            }
+            Query<Site> query = session.createQuery( q );
+            query.setProperties( parameters );
+            resultat = query.getResultList();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+        return resultat;
+    }*/
 }
