@@ -48,9 +48,9 @@ public class BookController {
     }*/
 
     @PostMapping(value = "/books")
-    private List<BookDto> search(@RequestBody SearchBookDto searchBookDto) {
+    private List<BookDto> search() {
 
-        return bookService.searchBook(searchBookDto);
+        return bookService.searchBook();
     }
 
 }

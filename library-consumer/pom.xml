@@ -47,5 +47,9 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.aubrun.eric.projet7</groupId>
+            <artifactId>library-business</artifactId>
+        </dependency>
     </dependencies>
 </project>
