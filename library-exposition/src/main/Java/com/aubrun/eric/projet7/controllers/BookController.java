@@ -47,11 +47,6 @@ public class BookController {
         return bookService.findBooksByName(name);
     }*/
 
-    /*@PostMapping("/searchBook")
-    private void List<BookDto> recherche(SearchBookDto searchBookDto ) {
-        bookService.searchBook();
-    }*/
-
     @PostMapping(value = "/books")
     private List<BookDto> search(@RequestBody SearchBookDto searchBookDto) {
 
