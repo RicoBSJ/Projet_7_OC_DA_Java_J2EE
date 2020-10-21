@@ -81,6 +81,6 @@ public class BookService {
 
     public List<BookDto> searchBook() {
 
-        return bookRepository.findAllByBookAuthorAndTitleAndYearBook().stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
+        return bookRepository.findAllByBookAuthorAndTitle().stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 }
