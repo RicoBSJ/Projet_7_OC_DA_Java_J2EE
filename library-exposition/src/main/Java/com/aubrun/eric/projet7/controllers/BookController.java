@@ -47,8 +47,8 @@ public class BookController {
         return bookService.findBooksByName(name);
     }*/
 
-    @PostMapping(value = "/books")
-    private List<BookDto> search() {
+    @PostMapping(value = "/books/{title}")
+    private List<BookDto> search(@PathVariable(value = "title") String title) {
 
         return bookService.searchBook();
     }

@@ -4,49 +4,49 @@ import java.util.Date;
 
 public class SearchBookDto {
 
-    private Integer searchDtoId;
-    private String titleSearchDto;
-    private String nameAuthor;
-    private String publishingHouse;
-    private Date releaseDate;
+    private Integer searchId;
+    private String searchTitle;
+    private String searchAuthor;
+    private String searchPublishingHouse;
+    private String searchReleaseDate;
 
-    public Integer getSearchDtoId() {
-        return searchDtoId;
+    public Integer getSearchId() {
+        return searchId;
     }
 
-    public void setSearchDtoId(Integer searchDtoId) {
-        this.searchDtoId = searchDtoId;
+    public void setSearchId(Integer searchId) {
+        this.searchId = searchId;
     }
 
-    public String getTitleSearchDto() {
-        return titleSearchDto;
+    public String getSearchTitle() {
+        return searchTitle;
     }
 
-    public void setTitleSearchDto(String titleSearchDto) {
-        this.titleSearchDto = titleSearchDto;
+    public void setSearchTitle(String searchTitle) {
+        this.searchTitle = searchTitle;
     }
 
-    public String getNameAuthor() {
-        return nameAuthor;
+    public String getSearchAuthor() {
+        return searchAuthor;
     }
 
-    public void setNameAuthor(String nameAuthor) {
-        this.nameAuthor = nameAuthor;
+    public void setSearchAuthor(String searchAuthor) {
+        this.searchAuthor = searchAuthor;
     }
 
-    public String getPublishingHouse() {
-        return publishingHouse;
+    public String getSearchPublishingHouse() {
+        return searchPublishingHouse;
     }
 
-    public void setPublishingHouse(String publishingHouse) {
-        this.publishingHouse = publishingHouse;
+    public void setSearchPublishingHouse(String searchPublishingHouse) {
+        this.searchPublishingHouse = searchPublishingHouse;
     }
 
-    public Date getReleaseDate() {
-        return releaseDate;
+    public String getSearchReleaseDate() {
+        return searchReleaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setSearchReleaseDate(String searchReleaseDate) {
+        this.searchReleaseDate = searchReleaseDate;
     }
 }
