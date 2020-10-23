@@ -1,8 +1,10 @@
 package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.business.dto.BookDto;
+import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
+import com.aubrun.eric.projet7.consumer.repository.SearchRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,9 +16,11 @@ import java.util.stream.Collectors;
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final SearchRepository searchRepository;
 
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository, SearchRepository searchRepository) {
         this.bookRepository = bookRepository;
+        this.searchRepository = searchRepository;
     }
 
     public List<BookDto> findAll() {
@@ -50,37 +54,8 @@ public class BookService {
         return bookRepository.findBooksByTitleContains(name).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }*/
 
-    /*public List<BookDto> searchBook(SearchBookDto searchBookDto) {
-        Session session = factory.openSession();
-        List<BookDto> resultat = null;
+    public List<BookDto> searchBook(SearchBookDto searchBookDto) {
 
-        try {
-            Map<String, String> parameters = new HashMap();
-            String q = "SELECT b FROM Book b WHERE 1=1 ";
-            if ( searchBookDto.getTitleSearchDto() != "" ) {
-                q += "AND b.titleSearchDto LIKE :titleSearchDto ";
-                parameters.put( "titleSearchDto", "%" + searchBookDto.getTitleSearchDto() + "%" );
-            }
-            if ( searchBookDto.getNameAuthor() != "" ) {
-                q += "AND b.nameAuthor LIKE :nameAuthor ";
-                parameters.put( "nameAuthor", "%" + searchBookDto.getNameAuthor() + "%" );
-            }
-            if ( searchBookDto.getPublishingHouse() != "" ) {
-                q += "AND b.publishingHouse LIKE :publishingHouse ";
-                parameters.put( "publishingHouse", "%" + searchBookDto.getPublishingHouse() + "%" );
-            }
-            Query<BookDto> query = session.createQuery( q );
-            query.setProperties( parameters );
-            resultat = query.getResultList();
-
-        } catch ( Exception e ) {
-            e.printStackTrace();
-        }
-        return resultat;
-    }*/
-
-    public List<BookDto> searchBook(String title) {
-
-        return bookRepository.findAllByTitle(title).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
+        return searchRepository.findAllByTitleAndBookAuthorAndBookEditionAndYearBook(searchBookDto).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 }

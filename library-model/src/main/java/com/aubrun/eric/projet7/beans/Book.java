@@ -1,10 +1,7 @@
 package com.aubrun.eric.projet7.beans;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Entity
@@ -161,5 +158,8 @@ public class Book {
     }
 
     public void setSearchBookDate(String yearBook) {
+        Date date = new Date();
+        Instant instant = date.toInstant();
+        yearBook = instant.toString();
     }
 }

@@ -47,10 +47,10 @@ public class BookController {
         return bookService.findBooksByName(name);
     }*/
 
-    @GetMapping(value = "/search/")
-    private List<BookDto> search(@RequestParam("title") String title) {
+    @PostMapping(value = "/search/")
+    private List<SearchBookDto> search(@RequestBody SearchBookDto searchBookDto) {
 
-        return bookService.searchBook(title);
+        return bookService.searchBook(searchBookDto);
     }
 
 }
