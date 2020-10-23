@@ -60,7 +60,7 @@ insert into book(
     year_book,
     book_author,
     book_category,
-    book_list
+    book_edition
 )
 values
 (nextval('book_id_seq'), 3, 1, false, 'La grève', '2017-03-09', 1, 1, 1),

@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.business.mapper;
 
+import com.aubrun.eric.projet7.beans.Author;
 import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 
@@ -21,9 +22,8 @@ public class SearchBookDtoMapper {
         Book entity = new Book();
         entity.setBookId(searchBookDto.getSearchBookId());
         entity.setTitle(searchBookDto.getSearchBookTitle());
-        /*entity.setBookAuthor((searchBookDto.getSearchBookAuthor()));
-        entity.setRenewalLoan(searchBookDto.getRenewalLoan());
-        entity.setQuantityLoan(searchBookDto.getQuantityLoan());*/
+        entity.setSearchBookAuthor(searchBookDto.getSearchBookAuthor());
+        entity.setSearchBookEdition(searchBookDto.getSearchBookPublishingHouse());
         return entity;
     }
 }
