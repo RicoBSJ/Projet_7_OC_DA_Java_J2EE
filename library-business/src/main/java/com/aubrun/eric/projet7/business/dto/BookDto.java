@@ -12,6 +12,7 @@ public class BookDto {
     private Date yearBook;
     private AuthorDto bookAuthor;
     private CategoryDto bookCategory;
+    private EditionDto bookEdition;
 
     public Integer getBookId() {
         return bookId;
@@ -75,5 +76,13 @@ public class BookDto {
 
     public void setBookCategory(CategoryDto bookCategory) {
         this.bookCategory = bookCategory;
+    }
+
+    public EditionDto getBookEdition() {
+        return bookEdition;
+    }
+
+    public void setBookEdition(EditionDto bookEdition) {
+        this.bookEdition = bookEdition;
     }
 }

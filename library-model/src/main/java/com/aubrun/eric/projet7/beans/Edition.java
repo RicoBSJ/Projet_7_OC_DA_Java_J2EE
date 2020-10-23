@@ -14,9 +14,9 @@ public class Edition {
     private Integer editionId;
     @Column(name = "name_edition")
     private String nameEdition;
-    @OneToMany(cascade = CascadeType.ALL)
+    /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_list")
-    private List<Book> bookList;
+    private List<Book> bookList;*/
 
     public Edition() {
         super();
@@ -26,13 +26,11 @@ public class Edition {
         super();
         this.editionId = editionId;
         this.nameEdition = nameEdition;
-        this.bookList = bookList;
     }
 
     public Edition(String nameEdition, List<Book> bookList) {
         super();
         this.nameEdition = nameEdition;
-        this.bookList = bookList;
     }
 
     public Integer getEditionId() {
@@ -51,20 +49,11 @@ public class Edition {
         this.nameEdition = nameEdition;
     }
 
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
-    }
-
     @Override
     public String toString() {
         return "Edition{" +
                 "editionId=" + editionId +
                 ", nameEdition='" + nameEdition + '\'' +
-                ", bookList=" + bookList +
                 '}';
     }
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@SequenceGenerator(name="book_id_generator", sequenceName = "book_id_seq",allocationSize=1)
+@SequenceGenerator(name = "book_id_generator", sequenceName = "book_id_seq", allocationSize = 1)
 @Table(name = "BOOK")
 public class Book {
 
@@ -28,13 +28,15 @@ public class Book {
     @JoinColumn(name = "book_category")
     @ManyToOne
     private Category bookCategory;
+    @JoinColumn(name = "book_edition")
+    @ManyToOne
+    private Edition bookEdition;
 
     public Book() {
         super();
     }
 
-    public Book(Integer bookId, String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory) {
-        super();
+    public Book(Integer bookId, String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory, Edition bookEdition) {
         this.bookId = bookId;
         this.title = title;
         this.quantity = quantity;
@@ -43,10 +45,10 @@ public class Book {
         this.yearBook = yearBook;
         this.bookAuthor = bookAuthor;
         this.bookCategory = bookCategory;
+        this.bookEdition = bookEdition;
     }
 
-    public Book(String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory) {
-        super();
+    public Book(String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory, Edition bookEdition) {
         this.title = title;
         this.quantity = quantity;
         this.renewalLoan = renewalLoan;
@@ -54,6 +56,7 @@ public class Book {
         this.yearBook = yearBook;
         this.bookAuthor = bookAuthor;
         this.bookCategory = bookCategory;
+        this.bookEdition = bookEdition;
     }
 
     public Integer getBookId() {
@@ -120,6 +123,14 @@ public class Book {
         this.bookCategory = bookCategory;
     }
 
+    public Edition getBookEdition() {
+        return bookEdition;
+    }
+
+    public void setBookEdition(Edition bookEdition) {
+        this.bookEdition = bookEdition;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -131,6 +142,7 @@ public class Book {
                 ", yearBook=" + yearBook +
                 ", bookAuthor=" + bookAuthor +
                 ", bookCategory=" + bookCategory +
+                ", bookEdition=" + bookEdition +
                 '}';
     }
 }

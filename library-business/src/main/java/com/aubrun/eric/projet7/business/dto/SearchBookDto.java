@@ -1,52 +1,50 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import java.util.Date;
-
 public class SearchBookDto {
 
-    private Integer searchId;
-    private String searchTitle;
-    private String searchAuthor;
-    private String searchPublishingHouse;
-    private String searchReleaseDate;
+    private Integer searchBookId;
+    private String searchBookTitle;
+    private String searchBookAuthor;
+    private String searchBookPublishingHouse;
+    private String searchBookReleaseDate;
 
-    public Integer getSearchId() {
-        return searchId;
+    public Integer getSearchBookId() {
+        return searchBookId;
     }
 
-    public void setSearchId(Integer searchId) {
-        this.searchId = searchId;
+    public void setSearchBookId(Integer searchBookId) {
+        this.searchBookId = searchBookId;
     }
 
-    public String getSearchTitle() {
-        return searchTitle;
+    public String getSearchBookTitle() {
+        return searchBookTitle;
     }
 
-    public void setSearchTitle(String searchTitle) {
-        this.searchTitle = searchTitle;
+    public void setSearchBookTitle(String searchBookTitle) {
+        this.searchBookTitle = searchBookTitle;
     }
 
-    public String getSearchAuthor() {
-        return searchAuthor;
+    public String getSearchBookAuthor() {
+        return searchBookAuthor;
     }
 
-    public void setSearchAuthor(String searchAuthor) {
-        this.searchAuthor = searchAuthor;
+    public void setSearchBookAuthor(String searchBookAuthor) {
+        this.searchBookAuthor = searchBookAuthor;
     }
 
-    public String getSearchPublishingHouse() {
-        return searchPublishingHouse;
+    public String getSearchBookPublishingHouse() {
+        return searchBookPublishingHouse;
     }
 
-    public void setSearchPublishingHouse(String searchPublishingHouse) {
-        this.searchPublishingHouse = searchPublishingHouse;
+    public void setSearchBookPublishingHouse(String searchBookPublishingHouse) {
+        this.searchBookPublishingHouse = searchBookPublishingHouse;
     }
 
-    public String getSearchReleaseDate() {
-        return searchReleaseDate;
+    public String getSearchBookReleaseDate() {
+        return searchBookReleaseDate;
     }
 
-    public void setSearchReleaseDate(String searchReleaseDate) {
-        this.searchReleaseDate = searchReleaseDate;
+    public void setSearchBookReleaseDate(String searchBookReleaseDate) {
+        this.searchBookReleaseDate = searchBookReleaseDate;
     }
 }

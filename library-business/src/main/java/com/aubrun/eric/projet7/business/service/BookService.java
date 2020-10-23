@@ -79,8 +79,8 @@ public class BookService {
         return resultat;
     }*/
 
-    public List<BookDto> searchBook() {
+    public List<BookDto> searchBook(String title) {
 
-        return bookRepository.findAllByTitleAndYearBook().stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
+        return bookRepository.findAllByTitle(title).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 }
