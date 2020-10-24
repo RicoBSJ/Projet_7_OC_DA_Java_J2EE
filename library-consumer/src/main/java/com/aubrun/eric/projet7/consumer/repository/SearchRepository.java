@@ -15,12 +15,12 @@ public class SearchRepository {
     private EntityManager entityManager;
 
     public List<Book> findAllByTitleAndBookAuthorAndBookEdition(SearchBookDto searchBookDto) {
-        entityManager.createQuery("SELECT b FROM Book b WHERE 1=1 AND b.title LIKE :title AND b.bookAuthor.firstName LIKE :firstName AND b.bookAuthor.nameAuthor LIKE :lastName AND b.bookEdition.nameEdition LIKE :edition")
-                .setParameter("title", searchBookDto.getSearchBookTitle())
-                .setParameter("firstName", searchBookDto.getSearchBookAuthorFirstName())
-                .setParameter("lastName", searchBookDto.getSearchBookAuthorLastName())
-                .setParameter("edition", searchBookDto.getSearchBookPublishingHouse())
+        List<Book> query = entityManager.createQuery("SELECT b FROM Book b WHERE 1=1 AND b.title LIKE :title AND b.bookAuthor.firstName LIKE :firstName AND b.bookAuthor.nameAuthor LIKE :lastName AND b.bookEdition.nameEdition LIKE :edition")
+                .setParameter("title", "%" + searchBookDto.getSearchBookTitle() + "%")
+                .setParameter("firstName", "%" + searchBookDto.getSearchBookAuthorFirstName() + "%")
+                .setParameter("lastName", "%" + searchBookDto.getSearchBookAuthorLastName() + "%")
+                .setParameter("edition", "%" + searchBookDto.getSearchBookPublishingHouse() + "%")
                 .getResultList();
-        return null;
+        return query;
     }
 }

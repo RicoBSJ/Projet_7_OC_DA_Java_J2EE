@@ -46,13 +46,7 @@ public class BookService {
     public void delete(int id) {
 
         bookRepository.deleteById(id);
-
     }
-
-    /*public List<BookDto> findBooksByName(String name){
-
-        return bookRepository.findBooksByTitleContains(name).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
-    }*/
 
     public List<BookDto> searchBook(SearchBookDto searchBookDto) {
 

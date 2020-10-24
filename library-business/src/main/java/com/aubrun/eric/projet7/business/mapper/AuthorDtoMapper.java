@@ -3,8 +3,6 @@ package com.aubrun.eric.projet7.business.mapper;
 import com.aubrun.eric.projet7.beans.Author;
 import com.aubrun.eric.projet7.business.dto.AuthorDto;
 
-import java.util.stream.Collectors;
-
 public class AuthorDtoMapper {
 
     static public AuthorDto toDto(Author author) {
