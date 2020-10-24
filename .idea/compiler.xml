@@ -10,8 +10,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="library-business" />
-        <module name="library-exposition" />
         <module name="library-consumer" />
+        <module name="library-exposition" />
         <module name="library-model" />
       </profile>
     </annotationProcessing>

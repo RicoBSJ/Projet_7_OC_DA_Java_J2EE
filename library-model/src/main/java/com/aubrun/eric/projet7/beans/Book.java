@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet7.beans;
 
 import javax.persistence.*;
-import java.time.Instant;
 import java.util.Date;
 
 @Entity
@@ -145,21 +144,5 @@ public class Book {
                 ", bookCategory=" + bookCategory +
                 ", bookEdition=" + bookEdition +
                 '}';
-    }
-
-    public void setSearchBookAuthor(String author) {
-        Author bookAuthor = new Author();
-        author = bookAuthor.toString();
-    }
-
-    public void setSearchBookEdition(String edition) {
-        Edition bookEdition = new Edition();
-        edition = bookEdition.toString();
-    }
-
-    public void setSearchBookDate(String yearBook) {
-        Date date = new Date();
-        Instant instant = date.toInstant();
-        yearBook = instant.toString();
     }
 }

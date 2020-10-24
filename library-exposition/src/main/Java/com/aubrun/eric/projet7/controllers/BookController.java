@@ -42,13 +42,8 @@ public class BookController {
         bookService.delete(bookId);
     }
 
-    /*@GetMapping("/test/{name}")
-    public List<BookDto> testSearch(@PathVariable("name") String name) {
-        return bookService.findBooksByName(name);
-    }*/
-
     @PostMapping(value = "/search/")
-    private List<SearchBookDto> search(@RequestBody SearchBookDto searchBookDto) {
+    private List<BookDto> search(@RequestBody SearchBookDto searchBookDto) {
 
         return bookService.searchBook(searchBookDto);
     }

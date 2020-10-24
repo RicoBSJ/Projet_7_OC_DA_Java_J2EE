@@ -4,7 +4,8 @@ public class SearchBookDto {
 
     private Integer searchBookId;
     private String searchBookTitle;
-    private String searchBookAuthor;
+    private String searchBookAuthorFirstName;
+    private String searchBookAuthorLastName;
     private String searchBookPublishingHouse;
     private String searchBookReleaseDate;
 
@@ -24,12 +25,20 @@ public class SearchBookDto {
         this.searchBookTitle = searchBookTitle;
     }
 
-    public String getSearchBookAuthor() {
-        return searchBookAuthor;
+    public String getSearchBookAuthorFirstName() {
+        return searchBookAuthorFirstName;
     }
 
-    public void setSearchBookAuthor(String searchBookAuthor) {
-        this.searchBookAuthor = searchBookAuthor;
+    public void setSearchBookAuthorFirstName(String searchBookAuthorFirstName) {
+        this.searchBookAuthorFirstName = searchBookAuthorFirstName;
+    }
+
+    public String getSearchBookAuthorLastName() {
+        return searchBookAuthorLastName;
+    }
+
+    public void setSearchBookAuthorLastName(String searchBookAuthorLastName) {
+        this.searchBookAuthorLastName = searchBookAuthorLastName;
     }
 
     public String getSearchBookPublishingHouse() {
