@@ -2,7 +2,6 @@ package com.aubrun.eric.projet7.consumer.repository;
 
 import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.beans.SearchBook;
-import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

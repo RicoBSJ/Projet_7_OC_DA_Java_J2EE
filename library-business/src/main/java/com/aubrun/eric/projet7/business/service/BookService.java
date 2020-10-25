@@ -1,7 +1,7 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.SearchBook;
 import com.aubrun.eric.projet7.business.dto.BookDto;
-import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import com.aubrun.eric.projet7.consumer.repository.SearchRepository;
@@ -48,8 +48,8 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public List<BookDto> searchBook(SearchBookDto searchBookDto) {
+    public List<BookDto> searchBook(SearchBook searchBook) {
 
-        return searchRepository.findAllByTitleAndBookAuthorAndBookEdition(searchBookDto).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
+        return searchRepository.findAllByTitleAndBookAuthorAndBookEdition(searchBook).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 }
