@@ -145,4 +145,24 @@ public class Book {
                 ", bookEdition=" + bookEdition +
                 '}';
     }
+
+    public void setSearchBookAuthorFirstName(String bookAuthorFirstName) {
+        Author firstName = new Author();
+        bookAuthorFirstName = firstName.toString();
+    }
+
+    public void setSearchBookAuthorLastName(String bookAuthorLastName) {
+        Author lastName = new Author();
+        bookAuthorLastName = lastName.toString();
+    }
+
+    public void setSearchBookPublishingHouse(String bookPublishingHouse) {
+        Edition bookEdition = new Edition();
+        bookPublishingHouse = bookEdition.toString();
+    }
+
+    public void setSearchBookReleaseDate(String bookReleaseDate) {
+        Date dateEdition = new Date();
+        bookReleaseDate = dateEdition.toString();
+    }
 }

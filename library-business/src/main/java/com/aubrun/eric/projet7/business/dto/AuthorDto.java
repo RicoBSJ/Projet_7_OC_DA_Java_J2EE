@@ -4,7 +4,7 @@ public class AuthorDto {
 
     private Integer authorId;
     private String firstName;
-    private String nameAuthor;
+    private String lastName;
 
     public Integer getAuthorId() {
         return authorId;
@@ -22,11 +22,11 @@ public class AuthorDto {
         this.firstName = firstName;
     }
 
-    public String getNameAuthor() {
-        return nameAuthor;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setNameAuthor(String nameAuthor) {
-        this.nameAuthor = nameAuthor;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

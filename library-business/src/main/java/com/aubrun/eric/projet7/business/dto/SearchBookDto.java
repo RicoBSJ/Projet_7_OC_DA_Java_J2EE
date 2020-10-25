@@ -56,4 +56,20 @@ public class SearchBookDto {
     public void setSearchBookReleaseDate(String searchBookReleaseDate) {
         this.searchBookReleaseDate = searchBookReleaseDate;
     }
+
+    public String getSearchBookAuthorFirstName(String bookAuthorFirstName) {
+        return searchBookAuthorFirstName;
+    }
+
+    public String getSearchBookAuthorLastName(String bookAuthorLastName) {
+        return searchBookAuthorLastName;
+    }
+
+    public String getSearchBookPublishingHouse(String bookPublishingHouse) {
+        return searchBookPublishingHouse;
+    }
+
+    public String getSearchBookReleaseDate(String bookReleaseDate) {
+        return searchBookReleaseDate;
+    }
 }

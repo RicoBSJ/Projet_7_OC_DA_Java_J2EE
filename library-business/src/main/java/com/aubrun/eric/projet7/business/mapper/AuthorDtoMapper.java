@@ -10,7 +10,7 @@ public class AuthorDtoMapper {
         AuthorDto dto = new AuthorDto();
         dto.setAuthorId(author.getAuthorId());
         dto.setFirstName(author.getFirstName());
-        dto.setNameAuthor(author.getNameAuthor());
+        dto.setLastName(author.getNameAuthor());
         return dto;
     }
 
@@ -19,7 +19,7 @@ public class AuthorDtoMapper {
         Author entity = new Author();
         entity.setAuthorId(authorDto.getAuthorId());
         entity.setFirstName(authorDto.getFirstName());
-        entity.setNameAuthor(authorDto.getNameAuthor());
+        entity.setNameAuthor(authorDto.getLastName());
         return entity;
     }
 }
