@@ -3,7 +3,7 @@ CREATE SEQUENCE IF NOT EXISTS author_id_seq;
 insert into author(
     author_id,
     first_name,
-    name_author
+    last_name
 )
 values
 (nextval('author_id_seq'),'Ayn', 'Rand'),
@@ -88,10 +88,9 @@ CREATE SEQUENCE IF NOT EXISTS loan_id_seq;
 
 insert into loan(
     loan_id,
-    loan_book,
-    loan_list
+    user_account
 )
 values
-(nextval('loan_id_seq'), 1, 1),
-(nextval('loan_id_seq'), 2, 2),
-(nextval('loan_id_seq'), 3, 3);
+(nextval('loan_id_seq'), 1),
+(nextval('loan_id_seq'), 2),
+(nextval('loan_id_seq'), 3);

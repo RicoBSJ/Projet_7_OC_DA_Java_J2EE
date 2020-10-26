@@ -16,6 +16,7 @@ public class BookDtoMapper {
         dto.setYearBook(book.getYearBook());
         dto.setBookAuthor(AuthorDtoMapper.toDto(book.getBookAuthor()));
         dto.setBookCategory(CategoryDtoMapper.toDto(book.getBookCategory()));
+        dto.setBookEdition(EditionDtoMapper.toDto(book.getBookEdition()));
         return dto;
     }
 
@@ -30,6 +31,7 @@ public class BookDtoMapper {
         entity.setYearBook(bookDto.getYearBook());
         entity.setBookAuthor(AuthorDtoMapper.toEntity(bookDto.getBookAuthor()));
         entity.setBookCategory(CategoryDtoMapper.toEntity(bookDto.getBookCategory()));
+        entity.setBookEdition(EditionDtoMapper.toEntity(bookDto.getBookEdition()));
         return entity;
     }
 }

@@ -9,17 +9,17 @@ public class SearchBook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "searchBook_id_generator")
-    @Column(name = "searchBook_id")
+    @Column(name = "search_book_id")
     private Integer searchBookId;
-    @Column(name = "searchBook_title")
+    @Column(name = "search_book_title")
     private String searchBookTitle;
-    @Column(name = "searchBook_authorFirstName")
+    @Column(name = "search_book_author_first_name")
     private String searchBookAuthorFirstName;
-    @Column(name = "searchBook_authorLastName")
+    @Column(name = "search_book_author_last_name")
     private String searchBookAuthorLastName;
-    @Column(name = "searchBook_publishingHouse")
+    @Column(name = "search_book_publishing_house")
     private String searchBookPublishingHouse;
-    @Column(name = "searchBook_releaseDate")
+    @Column(name = "search_book_release_date")
     private String searchBookReleaseDate;
 
     public SearchBook() {

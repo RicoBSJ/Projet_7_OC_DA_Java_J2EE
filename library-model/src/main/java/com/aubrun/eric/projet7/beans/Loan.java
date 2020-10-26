@@ -11,23 +11,21 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "loan_id_generator")
     @Column(name = "loan_id")
     private Integer loanId;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "loan_book")
-    private Book loanBook;
+    @JoinColumn(name = "user_account")
+    @ManyToOne
+    private UserAccount userAccount;
 
     public Loan() {
         super();
     }
 
-    public Loan(Integer loanId, Book loanBook) {
-        super();
+    public Loan(Integer loanId, UserAccount userAccount) {
         this.loanId = loanId;
-        this.loanBook = loanBook;
+        this.userAccount = userAccount;
     }
 
-    public Loan(Book loanBook) {
-        super();
-        this.loanBook = loanBook;
+    public Loan(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
 
     public Integer getLoanId() {
@@ -38,19 +36,19 @@ public class Loan {
         this.loanId = loanId;
     }
 
-    public Book getLoanBook() {
-        return loanBook;
+    public UserAccount getUserAccount() {
+        return userAccount;
     }
 
-    public void setLoanBook(Book loanBook) {
-        this.loanBook = loanBook;
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
 
     @Override
     public String toString() {
         return "Loan{" +
-                "id=" + loanId +
-                ", book=" + loanBook +
+                "loanId=" + loanId +
+                ", userAccount=" + userAccount +
                 '}';
     }
 }

@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet7.beans;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @SequenceGenerator(name="user_account_id_generator", sequenceName = "user_account_id_seq", allocationSize=1)
@@ -20,31 +19,24 @@ public class UserAccount {
     private String email;
     @Column(name = "mot_de_passe")
     private String motDePasse;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "loan_list")
-    private List<Loan> loanList;
 
     public UserAccount() {
         super();
     }
 
-    public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse, List<Loan> loanList) {
-        super();
+    public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse) {
         this.userId = userId;
         this.firstName = firstName;
         this.nameUser = nameUser;
         this.email = email;
         this.motDePasse = motDePasse;
-        this.loanList = loanList;
     }
 
-    public UserAccount(String firstName, String nameUser, String email, String motDePasse, List<Loan> loanList) {
-        super();
+    public UserAccount(String firstName, String nameUser, String email, String motDePasse) {
         this.firstName = firstName;
         this.nameUser = nameUser;
         this.email = email;
         this.motDePasse = motDePasse;
-        this.loanList = loanList;
     }
 
     public Integer getUserId() {
@@ -87,23 +79,14 @@ public class UserAccount {
         this.motDePasse = motDePasse;
     }
 
-    public List<Loan> getLoanList() {
-        return loanList;
-    }
-
-    public void setLoanList(List<Loan> loanList) {
-        this.loanList = loanList;
-    }
-
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + userId +
+        return "UserAccount{" +
+                "userId=" + userId +
                 ", firstName='" + firstName + '\'' +
-                ", name='" + nameUser + '\'' +
+                ", nameUser='" + nameUser + '\'' +
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
-                ", loans=" + loanList +
                 '}';
     }
 }

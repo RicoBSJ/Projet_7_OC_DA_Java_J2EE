@@ -26,10 +26,6 @@
             <groupId>com.aubrun.eric.projet7</groupId>
             <artifactId>library-model</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.aubrun.eric.projet7</groupId>
-            <artifactId>library-business</artifactId>
-        </dependency>
 
         <!-- ===== Bibliothèques tierces ===== -->
         <!-- JUnit -->

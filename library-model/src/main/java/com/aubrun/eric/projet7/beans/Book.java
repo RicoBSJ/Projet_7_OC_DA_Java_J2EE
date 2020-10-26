@@ -146,23 +146,25 @@ public class Book {
                 '}';
     }
 
-    public void setSearchBookAuthorFirstName(String bookAuthorFirstName) {
-        Author firstName = new Author();
-        bookAuthorFirstName = firstName.toString();
+    public void setBookAuthorFirstName(String searchBookAuthorFirstName) {
+        Author author = new Author();
+        author.getFirstName();
+        searchBookAuthorFirstName = author.toString();
     }
 
-    public void setSearchBookAuthorLastName(String bookAuthorLastName) {
-        Author lastName = new Author();
-        bookAuthorLastName = lastName.toString();
+    public void setBookAuthorLastName(String searchBookAuthorLastName) {
+        Author author = new Author();
+        author.getLastName();
+        searchBookAuthorLastName = author.toString();
     }
 
-    public void setSearchBookPublishingHouse(String bookPublishingHouse) {
-        Edition bookEdition = new Edition();
-        bookPublishingHouse = bookEdition.toString();
+    public void setBookEdition(String searchBookPublishingHouse) {
+        Edition edition = new Edition();
+        searchBookPublishingHouse = edition.toString();
     }
 
-    public void setSearchBookReleaseDate(String bookReleaseDate) {
-        Date dateEdition = new Date();
-        bookReleaseDate = dateEdition.toString();
+    public void setBookDate(String searchBookPublishingHouse) {
+        Date bookDate = new Date();
+        searchBookPublishingHouse = bookDate.toString();
     }
 }

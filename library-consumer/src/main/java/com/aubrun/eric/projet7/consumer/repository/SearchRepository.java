@@ -15,7 +15,7 @@ public class SearchRepository {
     private EntityManager entityManager;
 
     public List<Book> findAllByTitleAndBookAuthorAndBookEdition(SearchBook searchBook) {
-        List<Book> query = entityManager.createQuery("SELECT b FROM Book b WHERE 1=1 AND b.title LIKE :title AND b.bookAuthor.firstName LIKE :firstName AND b.bookAuthor.nameAuthor LIKE :lastName AND b.bookEdition.nameEdition LIKE :edition")
+        List<Book> query = entityManager.createQuery("SELECT b FROM Book b WHERE 1=1 AND b.title LIKE :title AND b.bookAuthor.firstName LIKE :firstName AND b.bookAuthor.lastName LIKE :lastName AND b.bookEdition.nameEdition LIKE :edition")
                 .setParameter("title", "%" + searchBook.getSearchBookTitle() + "%")
                 .setParameter("firstName", "%" + searchBook.getSearchBookAuthorFirstName() + "%")
                 .setParameter("lastName", "%" + searchBook.getSearchBookAuthorLastName() + "%")

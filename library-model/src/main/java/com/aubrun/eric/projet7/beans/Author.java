@@ -13,24 +13,22 @@ public class Author {
     private Integer authorId;
     @Column(name = "first_name")
     private String firstName;
-    @Column(name = "name_author")
-    private String nameAuthor;
+    @Column(name = "last_name")
+    private String lastName;
 
     public Author() {
         super();
     }
 
-    public Author(Integer authorId, String firstName, String nameAuthor) {
-        super();
+    public Author(Integer authorId, String firstName, String lastName) {
         this.authorId = authorId;
         this.firstName = firstName;
-        this.nameAuthor = nameAuthor;
+        this.lastName = lastName;
     }
 
-    public Author(String firstName, String nameAuthor) {
-        super();
+    public Author(String firstName, String lastName) {
         this.firstName = firstName;
-        this.nameAuthor = nameAuthor;
+        this.lastName = lastName;
     }
 
     public Integer getAuthorId() {
@@ -49,12 +47,12 @@ public class Author {
         this.firstName = firstName;
     }
 
-    public String getNameAuthor() {
-        return nameAuthor;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setNameAuthor(String nameAuthor) {
-        this.nameAuthor = nameAuthor;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
@@ -62,7 +60,7 @@ public class Author {
         return "Author{" +
                 "authorId=" + authorId +
                 ", firstName='" + firstName + '\'' +
-                ", nameAuthor='" + nameAuthor + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }

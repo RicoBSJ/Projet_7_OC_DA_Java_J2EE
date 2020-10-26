@@ -14,9 +14,6 @@ public class Edition {
     private Integer editionId;
     @Column(name = "name_edition")
     private String nameEdition;
-    /*@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_list")
-    private List<Book> bookList;*/
 
     public Edition() {
         super();

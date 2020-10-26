@@ -1,15 +1,12 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import java.util.List;
-
-public class UserDto {
+public class UserAccountDto {
 
     private Integer userId;
     private String firstName;
     private String nameUser;
     private String email;
     private String motDePasse;
-    private List<LoanDto> loanList;
 
     public Integer getUserId() {
         return userId;
@@ -50,13 +47,4 @@ public class UserDto {
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
-
-    public List<LoanDto> getLoanList() {
-        return loanList;
-    }
-
-    public void setLoanList(List<LoanDto> loanList) {
-        this.loanList = loanList;
-    }
-
 }

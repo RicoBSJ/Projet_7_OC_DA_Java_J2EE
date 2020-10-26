@@ -1,9 +1,11 @@
 package com.aubrun.eric.projet7.business.dto;
 
+import com.aubrun.eric.projet7.beans.UserAccount;
+
 public class LoanDto {
 
     private Integer loanId;
-    private BookDto loanBook;
+    private UserAccount userAccount;
 
     public Integer getLoanId() {
         return loanId;
@@ -13,12 +15,11 @@ public class LoanDto {
         this.loanId = loanId;
     }
 
-    public BookDto getLoanBook() {
-        return loanBook;
+    public UserAccount getUserAccount() {
+        return userAccount;
     }
 
-    public void setLoanBook(BookDto loanBook) {
-        this.loanBook = loanBook;
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
-
 }
