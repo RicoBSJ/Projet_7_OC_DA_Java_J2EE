@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.controllers;
 
+import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.beans.SearchBook;
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.SearchBookDto;
@@ -44,8 +45,8 @@ public class BookController {
     }
 
     @PostMapping(value = "/search/")
-    private List<SearchBookDto> search(@RequestBody SearchBook searchBook) {
+    private List<BookDto> search(@RequestBody Book book) {
 
-        return bookService.searchBook(searchBook);
+        return bookService.searchBook(book);
     }
 }

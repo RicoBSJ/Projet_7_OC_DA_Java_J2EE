@@ -1,10 +1,9 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.beans.SearchBook;
 import com.aubrun.eric.projet7.business.dto.BookDto;
-import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.mapper.BookDtoMapper;
-import com.aubrun.eric.projet7.business.mapper.SearchBookDtoBookMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import com.aubrun.eric.projet7.consumer.repository.SearchRepository;
 import org.springframework.stereotype.Service;
@@ -50,8 +49,8 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public List<SearchBookDto> searchBook(SearchBook searchBook) {
+    public List<BookDto> searchBook(Book book) {
 
-        return searchRepository.findAllByTitleAndBookAuthorAndBookEdition(searchBook).stream().map(SearchBookDtoBookMapper::toDto).collect(Collectors.toList());
+        return searchRepository.findAllByTitleAndBookAuthorAndBookEdition(book).stream().map(BookDtoMapper::toDto).collect(Collectors.toList());
     }
 }

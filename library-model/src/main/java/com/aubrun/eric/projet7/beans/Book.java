@@ -103,8 +103,18 @@ public class Book {
         return yearBook;
     }
 
+    public String getBookYear(){
+        Date yearBook = new Date();
+        return yearBook.toString();
+    }
+
     public void setYearBook(Date yearBook) {
         this.yearBook = yearBook;
+    }
+
+    public void setBookYear(String bookYear){
+        Date dateEdition = new Date();
+        bookYear = dateEdition.toString();
     }
 
     public Author getBookAuthor() {
@@ -144,27 +154,5 @@ public class Book {
                 ", bookCategory=" + bookCategory +
                 ", bookEdition=" + bookEdition +
                 '}';
-    }
-
-    public void setBookAuthorFirstName(String searchBookAuthorFirstName) {
-        Author author = new Author();
-        author.getFirstName();
-        searchBookAuthorFirstName = author.toString();
-    }
-
-    public void setBookAuthorLastName(String searchBookAuthorLastName) {
-        Author author = new Author();
-        author.getLastName();
-        searchBookAuthorLastName = author.toString();
-    }
-
-    public void setBookEdition(String searchBookPublishingHouse) {
-        Edition edition = new Edition();
-        searchBookPublishingHouse = edition.toString();
-    }
-
-    public void setBookDate(String searchBookPublishingHouse) {
-        Date bookDate = new Date();
-        searchBookPublishingHouse = bookDate.toString();
     }
 }
