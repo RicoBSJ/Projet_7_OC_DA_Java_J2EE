@@ -1,9 +1,7 @@
 package com.aubrun.eric.projet7.controllers;
 
 import com.aubrun.eric.projet7.beans.Book;
-import com.aubrun.eric.projet7.beans.SearchBook;
 import com.aubrun.eric.projet7.business.dto.BookDto;
-import com.aubrun.eric.projet7.business.dto.SearchBookDto;
 import com.aubrun.eric.projet7.business.service.BookService;
 import org.springframework.web.bind.annotation.*;
 

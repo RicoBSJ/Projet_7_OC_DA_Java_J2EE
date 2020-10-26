@@ -14,12 +14,25 @@ public class SearchRepository {
     private EntityManager entityManager;
 
     public List<Book> findAllByTitleAndBookAuthorAndBookEdition(Book book) {
-        List<Book> query = entityManager.createQuery("SELECT b FROM Book b WHERE 1=1 AND b.title LIKE :title AND b.bookAuthor.firstName LIKE :firstName AND b.bookAuthor.lastName LIKE :lastName AND b.bookEdition.nameEdition LIKE :edition")
-                .setParameter("title", "%" + book.getTitle() + "%")
-                .setParameter("firstName", "%" + book.getBookAuthor().getFirstName() + "%")
-                .setParameter("lastName", "%" + book.getBookAuthor().getLastName() + "%")
-                .setParameter("edition", "%" + book.getBookEdition().getNameEdition() + "%")
-                .getResultList();
-        return query;
+        String query = ("SELECT b FROM Book b WHERE 1=1");
+        if (book.getTitle() != "") {
+            query += (" AND b.title LIKE :title" );
+            entityManager.setProperty("title", "%" + book.getTitle() + "%");
+        }
+        if (book.getBookAuthor().getFirstName() != "") {
+            query += (" AND b.bookAuthor.firstName LIKE :firstName" );
+            entityManager.setProperty("firstName", "%" + book.getBookAuthor().getFirstName() + "%");
+        }
+        if (book.getBookAuthor().getLastName() != "") {
+            query += (" AND b.bookAuthor.lastName LIKE :lastName" );
+            entityManager.setProperty("lastName", "%" + book.getBookAuthor().getLastName() + "%");
+        }
+        if (book.getBookEdition().getNameEdition() != "") {
+            query += (" AND b.bookEdition.nameEdition LIKE :edition" );
+            entityManager.setProperty("edition", "%" + book.getBookEdition().getNameEdition() + "%");
+        }
+        entityManager.getProperties();
+        entityManager.createQuery(query);
+        return (List<Book>) entityManager;
     }
 }
