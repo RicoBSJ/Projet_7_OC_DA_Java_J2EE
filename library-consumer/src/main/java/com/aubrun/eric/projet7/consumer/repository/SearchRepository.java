@@ -2,6 +2,7 @@ package com.aubrun.eric.projet7.consumer.repository;
 
 import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.beans.SearchBook;
+import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +19,7 @@ public class SearchRepository {
     private EntityManager entityManager;
 
     public List<Book> findAllByTitleAndBookAuthorAndBookEdition(SearchBook searchBook) {
+        Session session = entityManager.unwrap(Session.class);
         List<Book> resultat = null;
         Map<String, String> parameters = new HashMap<>();
         String q = "SELECT b FROM Book b WHERE 1=1";
@@ -37,7 +39,7 @@ public class SearchRepository {
             q += " AND b.bookEdition.nameEdition LIKE :edition";
             parameters.put("edition", "%" + searchBook.getSearchBookPublishingHouse() + "%");
         }
-        Query<Book> query = (Query<Book>) entityManager.createQuery(q);
+        Query<Book> query = session.createQuery(q);
         query.setProperties(parameters);
         resultat = query.getResultList();
         return resultat;

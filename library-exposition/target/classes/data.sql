@@ -84,6 +84,38 @@ values
 (nextval('book_id_seq'), 3, 1, false, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
 (nextval('book_id_seq'), 3, 1, false, 'Le temps aboli', '2019-09-18', 3, 3, 3);
 
+/*CREATE SEQUENCE IF NOT EXISTS search_book_id_seq;
+
+insert into searchbook(
+    search_book_id,
+    search_book_author_first_name,
+    search_book_author_last_name,
+    search_book_publishing_house,
+    search_book_release_date,
+    search_book_title
+)
+values
+(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '2017-03-09', 'La grève'),
+(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '2018-03-01', 'La source vive'),
+(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '2008-01-09', 'La Vertu d’Égoïsme'),
+(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '2011-06-07', 'We the Living'),
+(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '1986-07-15', 'Capitalism'),
+(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2013-04-19', 'Le but'),
+(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2019-08-15', 'Critical chain'),
+(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2010-11-09', 'Evident, non ?'),
+(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2017-05-11', 'Réussir n''est pas une question de chance'),
+(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2003-02-04', 'Un an pour sauver l''entreprise'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '2010-10-01', 'Carnets'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1995-01-01', 'La première et dernière liberté'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1994-02-03', 'De la nature et de l''environnement'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1994-11-15', 'De la vie et de la mort'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1997-06-17', 'Dernier journal'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '2016-02-04', 'La Flamme de l''attention'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1989-10-01', 'Plénitude de la vie'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1995-02-23', 'La Relation de l''homme au monde'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1990-01-01', 'La Vérité et l''évènement'),
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '2019-09-18', 'Le temps aboli');*/
+
 CREATE SEQUENCE IF NOT EXISTS loan_id_seq;
 
 insert into loan(
