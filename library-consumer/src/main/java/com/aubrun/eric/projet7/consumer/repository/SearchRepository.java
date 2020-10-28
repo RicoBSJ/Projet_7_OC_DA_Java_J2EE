@@ -1,11 +1,15 @@
 package com.aubrun.eric.projet7.consumer.repository;
 
 import com.aubrun.eric.projet7.beans.Book;
+import com.aubrun.eric.projet7.beans.SearchBook;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class SearchRepository {
@@ -13,26 +17,29 @@ public class SearchRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Book> findAllByTitleAndBookAuthorAndBookEdition(Book book) {
-        String query = ("SELECT b FROM Book b WHERE 1=1");
-        if (book.getTitle() != "") {
-            query += (" AND b.title LIKE :title" );
-            entityManager.setProperty("title", "%" + book.getTitle() + "%");
+    public List<Book> findAllByTitleAndBookAuthorAndBookEdition(SearchBook searchBook) {
+        List<Book> resultat = null;
+        Map<String, String> parameters = new HashMap<>();
+        String q = "SELECT b FROM Book b WHERE 1=1";
+        if (searchBook.getSearchBookTitle() != "") {
+            q += " AND b.title LIKE :title";
+            parameters.put("title", "%" + searchBook.getSearchBookTitle() + "%");
         }
-        if (book.getBookAuthor().getFirstName() != "") {
-            query += (" AND b.bookAuthor.firstName LIKE :firstName" );
-            entityManager.setProperty("firstName", "%" + book.getBookAuthor().getFirstName() + "%");
+        if (searchBook.getSearchBookAuthorFirstName() != "") {
+            q += " AND b.bookAuthor.firstName LIKE :firstName";
+            parameters.put("firstName", "%" + searchBook.getSearchBookAuthorFirstName() + "%");
         }
-        if (book.getBookAuthor().getLastName() != "") {
-            query += (" AND b.bookAuthor.lastName LIKE :lastName" );
-            entityManager.setProperty("lastName", "%" + book.getBookAuthor().getLastName() + "%");
+        if (searchBook.getSearchBookAuthorLastName() != "") {
+            q += " AND b.bookAuthor.lastName LIKE :lastName";
+            parameters.put("lastName", "%" + searchBook.getSearchBookAuthorLastName() + "%");
         }
-        if (book.getBookEdition().getNameEdition() != "") {
-            query += (" AND b.bookEdition.nameEdition LIKE :edition" );
-            entityManager.setProperty("edition", "%" + book.getBookEdition().getNameEdition() + "%");
+        if (searchBook.getSearchBookPublishingHouse() != "") {
+            q += " AND b.bookEdition.nameEdition LIKE :edition";
+            parameters.put("edition", "%" + searchBook.getSearchBookPublishingHouse() + "%");
         }
-        entityManager.getProperties();
-        entityManager.createQuery(query);
-        return (List<Book>) entityManager;
+        Query<Book> query = (Query<Book>) entityManager.createQuery(q);
+        query.setProperties(parameters);
+        resultat = query.getResultList();
+        return resultat;
     }
 }
