@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.controllers;
 
-import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.beans.SearchBook;
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.service.BookService;

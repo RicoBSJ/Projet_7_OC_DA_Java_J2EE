@@ -84,7 +84,7 @@ values
 (nextval('book_id_seq'), 3, 1, false, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
 (nextval('book_id_seq'), 3, 1, false, 'Le temps aboli', '2019-09-18', 3, 3, 3);
 
-/*CREATE SEQUENCE IF NOT EXISTS search_book_id_seq;
+CREATE SEQUENCE IF NOT EXISTS search_book_id_seq;
 
 insert into searchbook(
     search_book_id,
@@ -114,7 +114,7 @@ values
 (nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1989-10-01', 'Plénitude de la vie'),
 (nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1995-02-23', 'La Relation de l''homme au monde'),
 (nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1990-01-01', 'La Vérité et l''évènement'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '2019-09-18', 'Le temps aboli');*/
+(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '2019-09-18', 'Le temps aboli');
 
 CREATE SEQUENCE IF NOT EXISTS loan_id_seq;
 
