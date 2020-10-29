@@ -23,7 +23,7 @@ public class SearchRepository {
         List<Book> resultat = null;
         Map<String, String> parameters = new HashMap<>();
         String q = "SELECT b FROM Book b WHERE 1=1";
-        if (searchBook.getSearchBookTitle() == "") {
+        if (searchBook.getSearchBookTitle() != "") {
             q += " AND b.title LIKE :title";
             parameters.put("title", "%" + searchBook.getSearchBookTitle() + "%");
         }
