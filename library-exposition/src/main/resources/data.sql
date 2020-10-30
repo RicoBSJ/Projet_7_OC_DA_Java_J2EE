@@ -91,9 +91,9 @@ SELECT author_first_name, author_last_name, edition_name, book_title
     INNER JOIN edition
       ON edition.id_edition = book.id_edition;
 
-INSERT INTO author (author_first_name, author_last_name) SELECT NEW.author_first_name, author_last_name FROM author WHERE NOT EXISTS (SELECT * FROM author WHERE author.author_name = NEW.author_name);
+INSERT INTO author (author_first_name, author_last_name) SELECT NEW.author_first_name, author_last_name FROM author WHERE NOT EXISTS (SELECT * FROM author WHERE author.author_first_name = NEW.author_first_name AND author_last_name = NEW.author.author_last_name);
 INSERT INTO edition (edition_name) SELECT NEW.edition_name FROM edition WHERE NOT EXISTS (SELECT * FROM edition WHERE edition.edition_name = SELECT NEW.edition_name);
-INSERT INTO book (id_author, id_edition, book_title) SELECT author.id, edition.id, NEW.book_title FROM author, edition WHERE author_first_name = NEW.author_first_name AND edition_name = NEW edition_name);
+INSERT INTO book (id_author, id_edition, book_title) SELECT author.id_author, edition.id_edition NEW.book_title FROM author, edition WHERE author.author_first_name = NEW.author_first_name AND edition.edition_name = NEW edition_name);
 
 CREATE SEQUENCE IF NOT EXISTS loan_id_seq;
 
