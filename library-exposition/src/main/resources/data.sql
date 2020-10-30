@@ -84,32 +84,16 @@ values
 (nextval('book_id_seq'), 3, 1, false, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
 (nextval('book_id_seq'), 3, 1, false, 'Le temps aboli', '2019-09-18', 3, 3, 3);
 
-INSERT INTO searchBook (id_search_book, search_book_author_first_name, search_book_author_last_name)
-    SELECT id_author, author_first_name, author_last_name FROM author;
+SELECT author_first_name, author_last_name, edition_name, book_title
+  FROM book
+    INNER JOIN author
+      ON author.id_author = book.id_author
+    INNER JOIN edition
+      ON edition.id_edition = book.id_edition;
 
-/*INSERT INTO searchBook (search_book_id, search_book_author_first_name,
-    search_book_author_last_name,
-    search_book_publishing_house, search_book_release_date,
-    search_book_title) SELECT book_id, book_author,
-    book_author,
-    book_edition, year_book,
-    title FROM book;
-
-INSERT INTO searchBook (search_book_id, search_book_author_first_name,
-    search_book_author_last_name,
-    search_book_publishing_house, search_book_release_date,
-    search_book_title) SELECT book_id, book_author,
-    book_author,
-    book_edition, year_book,
-    title FROM book;*/
-
-/*INSERT INTO searchBook (search_book_id, search_book_author_first_name,
-    search_book_author_last_name,
-    search_book_publishing_house, search_book_release_date,
-    search_book_title) SELECT book_id, book_author,
-    book_author,
-    book_edition, year_book,
-    title FROM book;*/
+INSERT INTO author (author_first_name, author_last_name) SELECT NEW.author_first_name, author_last_name FROM author WHERE NOT EXISTS (SELECT * FROM author WHERE author.author_name = NEW.author_name);
+INSERT INTO edition (edition_name) SELECT NEW.edition_name FROM edition WHERE NOT EXISTS (SELECT * FROM edition WHERE edition.edition_name = SELECT NEW.edition_name);
+INSERT INTO book (id_author, id_edition, book_title) SELECT author.id, edition.id, NEW.book_title FROM author, edition WHERE author_first_name = NEW.author_first_name AND edition_name = NEW edition_name);
 
 CREATE SEQUENCE IF NOT EXISTS loan_id_seq;
 
