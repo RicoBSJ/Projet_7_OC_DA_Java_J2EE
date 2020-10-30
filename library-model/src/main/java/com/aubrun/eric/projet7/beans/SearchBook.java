@@ -1,49 +1,13 @@
 package com.aubrun.eric.projet7.beans;
 
-import javax.persistence.*;
-
-@Entity
-@SequenceGenerator(name = "searchBook_id_generator", sequenceName = "searchBook_id_seq", allocationSize = 1)
-@Table(name = "SEARCHBOOK")
 public class SearchBook {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "searchBook_id_generator")
-    @Column(name = "id_search_book")
     private Integer searchBookId;
-    @Column(name = "search_book_title")
     private String searchBookTitle;
-    @Column(name = "search_book_author_first_name")
     private String searchBookAuthorFirstName;
-    @Column(name = "search_book_author_last_name")
     private String searchBookAuthorLastName;
-    @Column(name = "search_book_publishing_house")
     private String searchBookPublishingHouse;
-    @Column(name = "search_book_release_date")
     private String searchBookReleaseDate;
-
-    public SearchBook() {
-        super();
-    }
-
-    public SearchBook(Integer searchBookId, String searchBookTitle, String searchBookAuthorFirstName, String searchBookAuthorLastName, String searchBookPublishingHouse, String searchBookReleaseDate) {
-        super();
-        this.searchBookId = searchBookId;
-        this.searchBookTitle = searchBookTitle;
-        this.searchBookAuthorFirstName = searchBookAuthorFirstName;
-        this.searchBookAuthorLastName = searchBookAuthorLastName;
-        this.searchBookPublishingHouse = searchBookPublishingHouse;
-        this.searchBookReleaseDate = searchBookReleaseDate;
-    }
-
-    public SearchBook(String searchBookTitle, String searchBookAuthorFirstName, String searchBookAuthorLastName, String searchBookPublishingHouse, String searchBookReleaseDate) {
-        super();
-        this.searchBookTitle = searchBookTitle;
-        this.searchBookAuthorFirstName = searchBookAuthorFirstName;
-        this.searchBookAuthorLastName = searchBookAuthorLastName;
-        this.searchBookPublishingHouse = searchBookPublishingHouse;
-        this.searchBookReleaseDate = searchBookReleaseDate;
-    }
 
     public Integer getSearchBookId() {
         return searchBookId;

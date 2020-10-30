@@ -23,19 +23,19 @@ public class SearchRepository {
         List<Book> resultat = null;
         Map<String, String> parameters = new HashMap<>();
         String q = "SELECT b FROM Book b WHERE 1=1";
-        if (searchBook.getSearchBookTitle() != "") {
+        if (searchBook.getSearchBookTitle() != "" && searchBook.getSearchBookTitle() != null) {
             q += " AND b.title LIKE :title";
             parameters.put("title", "%" + searchBook.getSearchBookTitle() + "%");
         }
-        if (searchBook.getSearchBookAuthorFirstName() != "") {
+        if (searchBook.getSearchBookAuthorFirstName() != "" && searchBook.getSearchBookAuthorFirstName() != null) {
             q += " AND b.bookAuthor.firstName LIKE :firstName";
             parameters.put("firstName", "%" + searchBook.getSearchBookAuthorFirstName() + "%");
         }
-        if (searchBook.getSearchBookAuthorLastName() != "") {
+        if (searchBook.getSearchBookAuthorLastName() != "" && searchBook.getSearchBookAuthorLastName() != null) {
             q += " AND b.bookAuthor.lastName LIKE :lastName";
             parameters.put("lastName", "%" + searchBook.getSearchBookAuthorLastName() + "%");
         }
-        if (searchBook.getSearchBookPublishingHouse() != "") {
+        if (searchBook.getSearchBookPublishingHouse() != "" && searchBook.getSearchBookPublishingHouse() != null) {
             q += " AND b.bookEdition.nameEdition LIKE :edition";
             parameters.put("edition", "%" + searchBook.getSearchBookPublishingHouse() + "%");
         }
