@@ -1,9 +1,9 @@
 CREATE SEQUENCE IF NOT EXISTS author_id_seq;
 
 insert into author(
-    author_id,
-    first_name,
-    last_name
+    id_author,
+    author_first_name,
+    author_last_name
 )
 values
 (nextval('author_id_seq'),'Ayn', 'Rand'),
@@ -13,8 +13,8 @@ values
 CREATE SEQUENCE IF NOT EXISTS category_id_seq;
 
 insert into category (
-    category_id,
-    name_category
+    id_category,
+    category_name
 )
 values
 (nextval('category_id_seq'),'roman'),
@@ -24,8 +24,8 @@ values
 CREATE SEQUENCE IF NOT EXISTS edition_id_seq;
 
 insert into edition(
-    edition_id,
-    name_edition
+    id_edition,
+    edition_name
 )
 values
 (nextval('edition_id_seq'), 'Les Belles Lettres'),
@@ -38,11 +38,11 @@ values
 CREATE SEQUENCE IF NOT EXISTS user_account_id_seq;
 
 insert into user_account(
-    user_id,
-    first_name,
-    name_user,
-    email,
-    mot_de_passe
+    id_user_account,
+    user_account_first_name,
+    user_account_last_name,
+    user_account_email,
+    user_account_mot_de_passe
 )
 values
 (nextval('user_account_id_seq'), 'Elon', 'Musk', 'e.musk@gmail.com', 'eM86'),
@@ -52,15 +52,15 @@ values
 CREATE SEQUENCE IF NOT EXISTS book_id_seq;
 
 insert into book(
-    book_id,
-    quantity,
-    quantity_loan,
-    renewal_loan,
-    title,
-    year_book,
-    book_author,
-    book_category,
-    book_edition
+    id_book,
+    book_quantity,
+    book_quantity_loan,
+    book_renewal_loan,
+    book_title,
+    book_year,
+    id_author,
+    id_category,
+    id_edition
 )
 values
 (nextval('book_id_seq'), 3, 1, false, 'La grève', '2017-03-09', 1, 1, 1),
@@ -84,59 +84,38 @@ values
 (nextval('book_id_seq'), 3, 1, false, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
 (nextval('book_id_seq'), 3, 1, false, 'Le temps aboli', '2019-09-18', 3, 3, 3);
 
+INSERT INTO searchBook (id_search_book, search_book_author_first_name, search_book_author_last_name)
+    SELECT id_author, author_first_name, author_last_name FROM author;
+
+/*INSERT INTO searchBook (search_book_id, search_book_author_first_name,
+    search_book_author_last_name,
+    search_book_publishing_house, search_book_release_date,
+    search_book_title) SELECT book_id, book_author,
+    book_author,
+    book_edition, year_book,
+    title FROM book;
+
 INSERT INTO searchBook (search_book_id, search_book_author_first_name,
     search_book_author_last_name,
     search_book_publishing_house, search_book_release_date,
     search_book_title) SELECT book_id, book_author,
     book_author,
-    book_edition, year_book, 
-    title FROM book;
+    book_edition, year_book,
+    title FROM book;*/
 
-/*INSERT INTO searchBook (search_book_author_first_name,
+/*INSERT INTO searchBook (search_book_id, search_book_author_first_name,
     search_book_author_last_name,
-    search_book_publishing_house,
-    search_book_title) SELECT book_author.first_name,
-    book_author.last_name,
-    book_edition.name_edition,
-    book_title FROM book;*/
-
-/*CREATE SEQUENCE IF NOT EXISTS search_book_id_seq;
-
-insert into searchbook(
-    search_book_id,
-    search_book_author_first_name,
-    search_book_author_last_name,
-    search_book_publishing_house,
-    search_book_release_date,
-    search_book_title
-)
-values
-(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '2017-03-09', 'La grève'),
-(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '2018-03-01', 'La source vive'),
-(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '2008-01-09', 'La Vertu d’Égoïsme'),
-(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '2011-06-07', 'We the Living'),
-(nextval('search_book_id_seq'), 'Ayn', 'Rand', 'Les Belles Lettres', '1986-07-15', 'Capitalism'),
-(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2013-04-19', 'Le but'),
-(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2019-08-15', 'Critical chain'),
-(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2010-11-09', 'Evident, non ?'),
-(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2017-05-11', 'Réussir n''est pas une question de chance'),
-(nextval('search_book_id_seq'), 'Eliyahu M.', 'Plon', 'Goldratt', '2003-02-04', 'Un an pour sauver l''entreprise'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '2010-10-01', 'Carnets'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1995-01-01', 'La première et dernière liberté'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1994-02-03', 'De la nature et de l''environnement'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1994-11-15', 'De la vie et de la mort'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1997-06-17', 'Dernier journal'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '2016-02-04', 'La Flamme de l''attention'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1989-10-01', 'Plénitude de la vie'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1995-02-23', 'La Relation de l''homme au monde'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '1990-01-01', 'La Vérité et l''évènement'),
-(nextval('search_book_id_seq'), 'Jiddu', 'Signet', 'Krishnamurti', '2019-09-18', 'Le temps aboli');*/
+    search_book_publishing_house, search_book_release_date,
+    search_book_title) SELECT book_id, book_author,
+    book_author,
+    book_edition, year_book,
+    title FROM book;*/
 
 CREATE SEQUENCE IF NOT EXISTS loan_id_seq;
 
 insert into loan(
-    loan_id,
-    user_account
+    id_loan,
+    id_user_account
 )
 values
 (nextval('loan_id_seq'), 1),

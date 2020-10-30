@@ -10,25 +10,25 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "book_id_generator")
-    @Column(name = "book_id")
+    @Column(name = "id_book")
     private Integer bookId;
-    @Column(name = "title")
+    @Column(name = "book_title")
     private String title;
-    @Column(name = "quantity")
+    @Column(name = "book_quantity")
     private Integer quantity;
-    @Column(name = "renewal_loan")
+    @Column(name = "book_renewal_loan")
     private Boolean renewalLoan;
-    @Column(name = "quantity_loan")
+    @Column(name = "book_quantity_loan")
     private Integer quantityLoan;
-    @Column(name = "year_book")
+    @Column(name = "book_year")
     private Date yearBook;
-    @JoinColumn(name = "book_author")
+    @JoinColumn(name = "id_author")
     @ManyToOne
     private Author bookAuthor;
-    @JoinColumn(name = "book_category")
+    @JoinColumn(name = "id_category")
     @ManyToOne
     private Category bookCategory;
-    @JoinColumn(name = "book_edition")
+    @JoinColumn(name = "id_edition")
     @ManyToOne
     private Edition bookEdition;
 

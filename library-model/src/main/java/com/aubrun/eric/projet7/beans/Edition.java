@@ -10,9 +10,9 @@ public class Edition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "edition_id_generator")
-    @Column(name = "edition_id")
+    @Column(name = "id_edition")
     private Integer editionId;
-    @Column(name = "name_edition")
+    @Column(name = "edition_name")
     private String nameEdition;
 
     public Edition() {

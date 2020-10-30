@@ -9,7 +9,7 @@ public class SearchBook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "searchBook_id_generator")
-    @Column(name = "search_book_id")
+    @Column(name = "id_search_book")
     private Integer searchBookId;
     @Column(name = "search_book_title")
     private String searchBookTitle;

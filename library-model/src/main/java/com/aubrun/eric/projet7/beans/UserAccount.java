@@ -9,15 +9,15 @@ public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_account_id_generator")
-    @Column(name = "user_id")
+    @Column(name = "id_user_account")
     private Integer userId;
-    @Column(name = "first_name")
+    @Column(name = "user_account_first_name")
     private String firstName;
-    @Column(name = "name_user")
+    @Column(name = "user_account_last_name")
     private String nameUser;
-    @Column(name = "email")
+    @Column(name = "user_account_email")
     private String email;
-    @Column(name = "mot_de_passe")
+    @Column(name = "user_account_mot_de_passe")
     private String motDePasse;
 
     public UserAccount() {

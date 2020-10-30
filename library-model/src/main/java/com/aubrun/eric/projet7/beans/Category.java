@@ -9,9 +9,9 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "category_id_generator")
-    @Column(name = "category_id")
+    @Column(name = "id_category")
     private Integer categoryId;
-    @Column(name = "name_category")
+    @Column(name = "category_name")
     private String nameCategory;
 
     public Category() {

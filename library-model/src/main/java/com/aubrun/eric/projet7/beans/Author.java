@@ -9,11 +9,11 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "author_id_generator")
-    @Column(name = "author_id")
+    @Column(name = "id_author")
     private Integer authorId;
-    @Column(name = "first_name")
+    @Column(name = "author_first_name")
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "author_last_name")
     private String lastName;
 
     public Author() {

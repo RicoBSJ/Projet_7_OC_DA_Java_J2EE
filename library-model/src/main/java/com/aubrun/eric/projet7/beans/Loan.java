@@ -9,9 +9,9 @@ public class Loan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "loan_id_generator")
-    @Column(name = "loan_id")
+    @Column(name = "id_loan")
     private Integer loanId;
-    @JoinColumn(name = "user_account")
+    @JoinColumn(name = "id_user_account")
     @ManyToOne
     private UserAccount userAccount;
 
