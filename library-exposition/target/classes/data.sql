@@ -82,17 +82,6 @@ values
 (nextval('book_id_seq'), 3, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
 (nextval('book_id_seq'), 3, 'Le temps aboli', '2019-09-18', 3, 3, 3);
 
-CREATE SEQUENCE IF NOT EXISTS loan_id_seq;
-
-insert into loan(
-    id_loan,
-    id_user_account
-)
-values
-(nextval('loan_id_seq'), 1),
-(nextval('loan_id_seq'), 2),
-(nextval('loan_id_seq'), 3);
-
 CREATE SEQUENCE IF NOT EXISTS borrowing_id_seq;
 
 insert into borrowing(
