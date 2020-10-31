@@ -1,5 +1,7 @@
 package com.aubrun.eric.projet7.business.dto;
 
+import java.util.List;
+
 public class UserAccountDto {
 
     private Integer userId;
@@ -7,6 +9,7 @@ public class UserAccountDto {
     private String nameUser;
     private String email;
     private String motDePasse;
+    private List<BorrowingDto> borrowingDtoList;
 
     public Integer getUserId() {
         return userId;
@@ -46,5 +49,13 @@ public class UserAccountDto {
 
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
+    }
+
+    public List<BorrowingDto> getBorrowingDtoList() {
+        return borrowingDtoList;
+    }
+
+    public void setBorrowingDtoList(List<BorrowingDto> borrowingDtoList) {
+        this.borrowingDtoList = borrowingDtoList;
     }
 }

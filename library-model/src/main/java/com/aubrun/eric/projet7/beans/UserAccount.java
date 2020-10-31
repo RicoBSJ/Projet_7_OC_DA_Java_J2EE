@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet7.beans;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @SequenceGenerator(name="user_account_id_generator", sequenceName = "user_account_id_seq", allocationSize=1)
@@ -19,24 +20,30 @@ public class UserAccount {
     private String email;
     @Column(name = "user_account_mot_de_passe")
     private String motDePasse;
+    @JoinColumn(name = "id_borrowing_list")
+    @OneToMany
+    private List<Borrowing> borrowingList;
+
 
     public UserAccount() {
         super();
     }
 
-    public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse) {
+    public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList) {
         this.userId = userId;
         this.firstName = firstName;
         this.nameUser = nameUser;
         this.email = email;
         this.motDePasse = motDePasse;
+        this.borrowingList = borrowingList;
     }
 
-    public UserAccount(String firstName, String nameUser, String email, String motDePasse) {
+    public UserAccount(String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList) {
         this.firstName = firstName;
         this.nameUser = nameUser;
         this.email = email;
         this.motDePasse = motDePasse;
+        this.borrowingList = borrowingList;
     }
 
     public Integer getUserId() {
@@ -79,6 +86,14 @@ public class UserAccount {
         this.motDePasse = motDePasse;
     }
 
+    public List<Borrowing> getBorrowingList() {
+        return borrowingList;
+    }
+
+    public void setBorrowingList(List<Borrowing> borrowingList) {
+        this.borrowingList = borrowingList;
+    }
+
     @Override
     public String toString() {
         return "UserAccount{" +
@@ -87,6 +102,7 @@ public class UserAccount {
                 ", nameUser='" + nameUser + '\'' +
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
+                ", borrowingList=" + borrowingList +
                 '}';
     }
 }

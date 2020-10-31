@@ -54,8 +54,6 @@ CREATE SEQUENCE IF NOT EXISTS book_id_seq;
 insert into book(
     id_book,
     book_quantity,
-    book_quantity_loan,
-    book_renewal_loan,
     book_title,
     book_year,
     id_author,
@@ -63,26 +61,26 @@ insert into book(
     id_edition
 )
 values
-(nextval('book_id_seq'), 3, 1, false, 'La grève', '2017-03-09', 1, 1, 1),
-(nextval('book_id_seq'), 3, 1, false, 'La source vive', '2018-03-01', 1, 1, 1),
-(nextval('book_id_seq'), 3, 1, false, 'La Vertu d’Égoïsme', '2008-01-09', 1, 1, 1),
-(nextval('book_id_seq'), 3, 1, false, 'We the Living', '2011-06-07', 1, 1, 1),
-(nextval('book_id_seq'), 3, 1, false, 'Capitalism', '1986-07-15', 1, 1, 1),
-(nextval('book_id_seq'), 3, 1, false, 'Le but', '2013-04-19', 2, 2, 2),
-(nextval('book_id_seq'), 3, 1, false, 'Critical chain', '2019-08-15', 2, 2, 2),
-(nextval('book_id_seq'), 3, 1, false, 'Evident, non ?', '2010-11-09', 2, 2, 2),
-(nextval('book_id_seq'), 3, 1, false, 'Réussir n''est pas une question de chance' , '2017-05-11', 2, 2, 2),
-(nextval('book_id_seq'), 3, 1, false, 'Un an pour sauver l''entreprise', '2003-02-04', 2, 2, 2),
-(nextval('book_id_seq'), 3, 1, false, 'Carnets', '2010-10-01', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'La première et dernière liberté', '1995-01-01', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'De la nature et de l''environnement', '1994-02-03', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'De la vie et de la mort', '1994-11-15', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'Dernier journal', '1997-06-17', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'La Flamme de l''attention', '2016-02-04', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'Plénitude de la vie', '1989-10-01', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'La Relation de l''homme au monde', '1995-02-23', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
-(nextval('book_id_seq'), 3, 1, false, 'Le temps aboli', '2019-09-18', 3, 3, 3);
+(nextval('book_id_seq'), 3, 'La grève', '2017-03-09', 1, 1, 1),
+(nextval('book_id_seq'), 3, 'La source vive', '2018-03-01', 1, 1, 1),
+(nextval('book_id_seq'), 3, 'La Vertu d’Égoïsme', '2008-01-09', 1, 1, 1),
+(nextval('book_id_seq'), 3, 'We the Living', '2011-06-07', 1, 1, 1),
+(nextval('book_id_seq'), 3, 'Capitalism', '1986-07-15', 1, 1, 1),
+(nextval('book_id_seq'), 3, 'Le but', '2013-04-19', 2, 2, 2),
+(nextval('book_id_seq'), 3, 'Critical chain', '2019-08-15', 2, 2, 2),
+(nextval('book_id_seq'), 3, 'Evident, non ?', '2010-11-09', 2, 2, 2),
+(nextval('book_id_seq'), 3, 'Réussir n''est pas une question de chance' , '2017-05-11', 2, 2, 2),
+(nextval('book_id_seq'), 3, 'Un an pour sauver l''entreprise', '2003-02-04', 2, 2, 2),
+(nextval('book_id_seq'), 3, 'Carnets', '2010-10-01', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'La première et dernière liberté', '1995-01-01', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'De la nature et de l''environnement', '1994-02-03', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'De la vie et de la mort', '1994-11-15', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'Dernier journal', '1997-06-17', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'La Flamme de l''attention', '2016-02-04', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'Plénitude de la vie', '1989-10-01', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'La Relation de l''homme au monde', '1995-02-23', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
+(nextval('book_id_seq'), 3, 'Le temps aboli', '2019-09-18', 3, 3, 3);
 
 CREATE SEQUENCE IF NOT EXISTS loan_id_seq;
 
@@ -94,3 +92,19 @@ values
 (nextval('loan_id_seq'), 1),
 (nextval('loan_id_seq'), 2),
 (nextval('loan_id_seq'), 3);
+
+CREATE SEQUENCE IF NOT EXISTS borrowing_id_seq;
+
+insert into borrowing(
+    id_borrowing,
+    id_book,
+    id_user_account,
+    borrowing_begin_date,
+    borrowing_end_date,
+    book_renewal,
+    id_borrowing_list
+)
+values
+(nextval('borrowing_id_seq'), 1, 1, '2020-10-04', '2020-10-25', true, 1),
+(nextval('borrowing_id_seq'), 2, 2, '2020-10-11', '2020-11-02', false, 2),
+(nextval('borrowing_id_seq'), 3, 3, '2020-10-18', '2020-11-09', false, 3);

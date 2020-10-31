@@ -7,8 +7,6 @@ public class BookDto {
     private Integer bookId;
     private String title;
     private Integer quantity;
-    private Boolean renewalLoan;
-    private Integer quantityLoan;
     private Date yearBook;
     private AuthorDto bookAuthor;
     private CategoryDto bookCategory;
@@ -36,22 +34,6 @@ public class BookDto {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public Boolean getRenewalLoan() {
-        return renewalLoan;
-    }
-
-    public void setRenewalLoan(Boolean renewalLoan) {
-        this.renewalLoan = renewalLoan;
-    }
-
-    public Integer getQuantityLoan() {
-        return quantityLoan;
-    }
-
-    public void setQuantityLoan(Integer quantityLoan) {
-        this.quantityLoan = quantityLoan;
     }
 
     public Date getYearBook() {

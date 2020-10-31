@@ -16,10 +16,6 @@ public class Book {
     private String title;
     @Column(name = "book_quantity")
     private Integer quantity;
-    @Column(name = "book_renewal_loan")
-    private Boolean renewalLoan;
-    @Column(name = "book_quantity_loan")
-    private Integer quantityLoan;
     @Column(name = "book_year")
     private Date yearBook;
     @JoinColumn(name = "id_author")
@@ -36,23 +32,19 @@ public class Book {
         super();
     }
 
-    public Book(Integer bookId, String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory, Edition bookEdition) {
+    public Book(Integer bookId, String title, Integer quantity, Date yearBook, Author bookAuthor, Category bookCategory, Edition bookEdition) {
         this.bookId = bookId;
         this.title = title;
         this.quantity = quantity;
-        this.renewalLoan = renewalLoan;
-        this.quantityLoan = quantityLoan;
         this.yearBook = yearBook;
         this.bookAuthor = bookAuthor;
         this.bookCategory = bookCategory;
         this.bookEdition = bookEdition;
     }
 
-    public Book(String title, Integer quantity, Boolean renewalLoan, Integer quantityLoan, Date yearBook, Author bookAuthor, Category bookCategory, Edition bookEdition) {
+    public Book(String title, Integer quantity, Date yearBook, Author bookAuthor, Category bookCategory, Edition bookEdition) {
         this.title = title;
         this.quantity = quantity;
-        this.renewalLoan = renewalLoan;
-        this.quantityLoan = quantityLoan;
         this.yearBook = yearBook;
         this.bookAuthor = bookAuthor;
         this.bookCategory = bookCategory;
@@ -83,38 +75,12 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public Boolean getRenewalLoan() {
-        return renewalLoan;
-    }
-
-    public void setRenewalLoan(Boolean renewalLoan) {
-        this.renewalLoan = renewalLoan;
-    }
-
-    public Integer getQuantityLoan() {
-        return quantityLoan;
-    }
-
-    public void setQuantityLoan(Integer quantityLoan) {
-        this.quantityLoan = quantityLoan;
-    }
-
     public Date getYearBook() {
         return yearBook;
     }
 
-    public String getBookYear(){
-        Date yearBook = new Date();
-        return yearBook.toString();
-    }
-
     public void setYearBook(Date yearBook) {
         this.yearBook = yearBook;
-    }
-
-    public void setBookYear(String bookYear){
-        Date dateEdition = new Date();
-        bookYear = dateEdition.toString();
     }
 
     public Author getBookAuthor() {
@@ -147,8 +113,6 @@ public class Book {
                 "bookId=" + bookId +
                 ", title='" + title + '\'' +
                 ", quantity=" + quantity +
-                ", renewalLoan=" + renewalLoan +
-                ", quantityLoan=" + quantityLoan +
                 ", yearBook=" + yearBook +
                 ", bookAuthor=" + bookAuthor +
                 ", bookCategory=" + bookCategory +
