@@ -21,7 +21,7 @@ public class UserAccount {
     @Column(name = "user_account_mot_de_passe")
     private String motDePasse;
     @JoinColumn(name = "id_borrowing_list")
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     private List<Borrowing> borrowingList;
 
 

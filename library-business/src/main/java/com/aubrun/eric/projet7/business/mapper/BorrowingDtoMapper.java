@@ -9,8 +9,8 @@ public class BorrowingDtoMapper {
 
         BorrowingDto dto = new BorrowingDto();
         dto.setBorrowingId(borrowing.getBorrowingId());
-        dto.setBookBorrowing(borrowing.getBookBorrowing());
-        dto.setUserAccountBorrowing(borrowing.getUserAccountBorrowing());
+        dto.setBookBorrowing(BookDtoMapper.toDto(borrowing.getBookBorrowing()));
+        dto.setUserAccountBorrowing(UserAccountDtoMapper.toDto(borrowing.getUserAccountBorrowing()));
         dto.setBeginDate(borrowing.getBeginDate());
         dto.setEndDate(borrowing.getEndDate());
         dto.setRenewal(borrowing.getRenewal());
@@ -21,8 +21,8 @@ public class BorrowingDtoMapper {
 
         Borrowing entity = new Borrowing();
         entity.setBorrowingId(borrowingDto.getBorrowingId());
-        entity.setBookBorrowing(borrowingDto.getBookBorrowing());
-        entity.setUserAccountBorrowing(borrowingDto.getUserAccountBorrowing());
+        entity.setBookBorrowing(BookDtoMapper.toEntity(borrowingDto.getBookBorrowing()));
+        entity.setUserAccountBorrowing(UserAccountDtoMapper.toEntity(borrowingDto.getUserAccountBorrowing()));
         entity.setBeginDate(borrowingDto.getBeginDate());
         entity.setEndDate(borrowingDto.getEndDate());
         entity.setRenewal(borrowingDto.getRenewal());

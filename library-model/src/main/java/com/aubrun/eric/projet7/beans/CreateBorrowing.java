@@ -1,12 +1,12 @@
-package com.aubrun.eric.projet7.business.dto;
+package com.aubrun.eric.projet7.beans;
 
 import java.util.Date;
 
-public class BorrowingDto {
+public class CreateBorrowing {
 
     private Integer borrowingId;
-    private BookDto bookBorrowing;
-    private UserAccountDto userAccountBorrowing;
+    private String bookBorrowing;
+    private String userAccountBorrowing;
     private Date beginDate;
     private Date endDate;
     private Boolean renewal;
@@ -19,19 +19,19 @@ public class BorrowingDto {
         this.borrowingId = borrowingId;
     }
 
-    public BookDto getBookBorrowing() {
+    public String getBookBorrowing() {
         return bookBorrowing;
     }
 
-    public void setBookBorrowing(BookDto bookBorrowing) {
+    public void setBookBorrowing(String bookBorrowing) {
         this.bookBorrowing = bookBorrowing;
     }
 
-    public UserAccountDto getUserAccountBorrowing() {
+    public String getUserAccountBorrowing() {
         return userAccountBorrowing;
     }
 
-    public void setUserAccountBorrowing(UserAccountDto userAccountBorrowing) {
+    public void setUserAccountBorrowing(String userAccountBorrowing) {
         this.userAccountBorrowing = userAccountBorrowing;
     }
 
