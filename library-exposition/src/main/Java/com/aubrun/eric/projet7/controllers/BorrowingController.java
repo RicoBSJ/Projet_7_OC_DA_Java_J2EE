@@ -1,19 +1,34 @@
 package com.aubrun.eric.projet7.controllers;
 
+import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
+import com.aubrun.eric.projet7.business.dto.UserAccountDto;
+import com.aubrun.eric.projet7.business.service.BookService;
 import com.aubrun.eric.projet7.business.service.BorrowingService;
+import com.aubrun.eric.projet7.business.service.UserAccountService;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("/borrowings")
 public class BorrowingController {
 
+    public static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
     private final BorrowingService borrowingService;
+    private final BookService bookService;
+    private final UserAccountService userAccountService;
 
-    public BorrowingController(BorrowingService borrowingService) {
+    public BorrowingController(BorrowingService borrowingService, BookService bookService, UserAccountService userAccountService) {
         this.borrowingService = borrowingService;
+        this.bookService = bookService;
+        this.userAccountService = userAccountService;
     }
 
     @GetMapping("/")
@@ -39,5 +54,18 @@ public class BorrowingController {
     @DeleteMapping("/{id}")
     public void deleteBorrowing(@PathVariable("id") int borrowingId) {
         borrowingService.delete(borrowingId);
+    }
+
+    @PostMapping("/createBorrowing")
+    public void createUserBorrowing(@RequestBody BorrowingDto borrowingDto){
+
+        Integer idBook = Integer.parseInt("bookId");
+        Integer idUser = Integer.parseInt("userId");
+        BookDto bookDto = bookService.findById(idBook);
+        UserAccountDto userAccountDto = userAccountService.findById(idUser);
+        borrowingDto = new BorrowingDto();
+        borrowingDto.setBookBorrowing(bookDto);
+        borrowingDto.setUserAccountBorrowing(userAccountDto);
+        borrowingDto.setRenewal(false);
     }
 }

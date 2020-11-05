@@ -21,12 +21,6 @@ public class CreateBorrowing {
         if (userAccount == null){
 
         }
-        Borrowing borrowing = new Borrowing();
-        borrowing.getBorrowingId();
-        book = borrowing.getBookBorrowing();
-        userAccount = borrowing.getUserAccountBorrowing();
-        borrowing.setBookBorrowing(book);
-        borrowing.setUserAccountBorrowing(userAccount);
         return null;
     }
 }
