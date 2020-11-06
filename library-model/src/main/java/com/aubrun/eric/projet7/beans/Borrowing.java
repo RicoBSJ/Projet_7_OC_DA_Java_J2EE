@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet7.beans;
 
 import javax.persistence.*;
+import java.text.DateFormat;
 import java.util.Date;
 
 @Entity
@@ -19,16 +20,16 @@ public class Borrowing {
     @ManyToOne
     private UserAccount userAccountBorrowing;
     @Column(name = "borrowing_begin_date")
-    private Date beginDate;
+    private DateFormat beginDate;
     @Column(name = "borrowing_end_date")
-    private Date endDate;
+    private DateFormat endDate;
     @Column(name = "book_renewal")
     private Boolean renewal;
 
     public Borrowing() {
     }
 
-    public Borrowing(Integer borrowingId, Book bookBorrowing, UserAccount userAccountBorrowing, Date beginDate, Date endDate, Boolean renewal) {
+    public Borrowing(Integer borrowingId, Book bookBorrowing, UserAccount userAccountBorrowing, DateFormat beginDate, DateFormat endDate, Boolean renewal) {
         this.borrowingId = borrowingId;
         this.bookBorrowing = bookBorrowing;
         this.userAccountBorrowing = userAccountBorrowing;
@@ -37,7 +38,7 @@ public class Borrowing {
         this.renewal = renewal;
     }
 
-    public Borrowing(Book bookBorrowing, UserAccount userAccountBorrowing, Date beginDate, Date endDate, Boolean renewal) {
+    public Borrowing(Book bookBorrowing, UserAccount userAccountBorrowing, DateFormat beginDate, DateFormat endDate, Boolean renewal) {
         this.bookBorrowing = bookBorrowing;
         this.userAccountBorrowing = userAccountBorrowing;
         this.beginDate = beginDate;
@@ -69,19 +70,19 @@ public class Borrowing {
         this.userAccountBorrowing = userAccountBorrowing;
     }
 
-    public Date getBeginDate() {
+    public DateFormat getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(Date beginDate) {
+    public void setBeginDate(DateFormat beginDate) {
         this.beginDate = beginDate;
     }
 
-    public Date getEndDate() {
+    public DateFormat getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(DateFormat endDate) {
         this.endDate = endDate;
     }
 
