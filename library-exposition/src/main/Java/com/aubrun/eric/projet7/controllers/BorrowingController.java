@@ -67,7 +67,7 @@ public class BorrowingController {
         borrowingDto.setBeginDate(stringToDate((now())));
         borrowingDto.setEndDate(addFourWeeksJodaTime(now()));
         borrowingDto.setRenewal(false);
-        borrowingService.save(borrowingDto);
+        borrowingService.createBorrowing(borrowingDto);
     }
 
     public static String now() {

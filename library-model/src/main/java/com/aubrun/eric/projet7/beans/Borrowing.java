@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet7.beans;
 
 import javax.persistence.*;
-import java.text.DateFormat;
 import java.util.Date;
 
 @Entity
