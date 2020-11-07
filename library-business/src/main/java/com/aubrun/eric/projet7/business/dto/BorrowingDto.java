@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 public class BorrowingDto {
@@ -8,8 +7,8 @@ public class BorrowingDto {
     private Integer borrowingId;
     private BookDto bookBorrowing;
     private UserAccountDto userAccountBorrowing;
-    private DateFormat beginDate;
-    private DateFormat endDate;
+    private Date beginDate;
+    private Date endDate;
     private Boolean renewal;
 
     public Integer getBorrowingId() {
@@ -36,19 +35,19 @@ public class BorrowingDto {
         this.userAccountBorrowing = userAccountBorrowing;
     }
 
-    public DateFormat getBeginDate() {
+    public Date getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(DateFormat beginDate) {
+    public void setBeginDate(Date beginDate) {
         this.beginDate = beginDate;
     }
 
-    public DateFormat getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(DateFormat endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

@@ -20,16 +20,16 @@ public class Borrowing {
     @ManyToOne
     private UserAccount userAccountBorrowing;
     @Column(name = "borrowing_begin_date")
-    private DateFormat beginDate;
+    private Date beginDate;
     @Column(name = "borrowing_end_date")
-    private DateFormat endDate;
+    private Date endDate;
     @Column(name = "book_renewal")
     private Boolean renewal;
 
     public Borrowing() {
     }
 
-    public Borrowing(Integer borrowingId, Book bookBorrowing, UserAccount userAccountBorrowing, DateFormat beginDate, DateFormat endDate, Boolean renewal) {
+    public Borrowing(Integer borrowingId, Book bookBorrowing, UserAccount userAccountBorrowing, Date beginDate, Date endDate, Boolean renewal) {
         this.borrowingId = borrowingId;
         this.bookBorrowing = bookBorrowing;
         this.userAccountBorrowing = userAccountBorrowing;
@@ -38,7 +38,7 @@ public class Borrowing {
         this.renewal = renewal;
     }
 
-    public Borrowing(Book bookBorrowing, UserAccount userAccountBorrowing, DateFormat beginDate, DateFormat endDate, Boolean renewal) {
+    public Borrowing(Book bookBorrowing, UserAccount userAccountBorrowing, Date beginDate, Date endDate, Boolean renewal) {
         this.bookBorrowing = bookBorrowing;
         this.userAccountBorrowing = userAccountBorrowing;
         this.beginDate = beginDate;
@@ -70,19 +70,19 @@ public class Borrowing {
         this.userAccountBorrowing = userAccountBorrowing;
     }
 
-    public DateFormat getBeginDate() {
+    public Date getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(DateFormat beginDate) {
+    public void setBeginDate(Date beginDate) {
         this.beginDate = beginDate;
     }
 
-    public DateFormat getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(DateFormat endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

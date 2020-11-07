@@ -9,9 +9,6 @@ import com.aubrun.eric.projet7.business.service.UserAccountService;
 import org.joda.time.DateTime;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,7 +20,7 @@ import java.util.List;
 @RequestMapping("/borrowings")
 public class BorrowingController {
 
-    public static final String ATT_SESSION_USER = "sessionUser";
+    public static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
 
     private final BorrowingService borrowingService;
     private final BookService bookService;
@@ -61,43 +58,28 @@ public class BorrowingController {
     }
 
     @PostMapping("/createBorrowing")
-    public void createUserBorrowing(@RequestBody BorrowingDto borrowingDto, HttpServletRequest request, HttpServletResponse response) throws ParseException {
+    public void createUserBorrowing(@RequestBody BorrowingDto borrowingDto) throws ParseException {
 
-        HttpSession session = request.getSession();
-        UserAccountDto connectedUserAccountDto = (UserAccountDto) session.getAttribute(ATT_SESSION_USER);
-
-        if(connectedUserAccountDto == null){
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            throw new RuntimeException();
-        }
-
-        Integer idBook = Integer.parseInt("bookId");
-        Integer idUser = Integer.parseInt("userId");
-        BookDto bookDto = bookService.findById(idBook);
-        connectedUserAccountDto = userAccountService.findById(idUser);
-        borrowingDto = new BorrowingDto();
-        borrowingDto.setBookBorrowing(bookDto);
-        borrowingDto.setUserAccountBorrowing(connectedUserAccountDto);
-        borrowingDto.setBeginDate(currentDate());
-        /*borrowingDto.setEndDate(stringToDate(addFourWeeksJodaTime(dateToString(currentDate()))));*/
+        BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
+        UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
+        borrowingDto.setBookBorrowing(idBookDto);
+        borrowingDto.setUserAccountBorrowing(idUserAccountDto);
+        borrowingDto.setBeginDate(stringToDate((now())));
+        borrowingDto.setEndDate(addFourWeeksJodaTime(now()));
         borrowingDto.setRenewal(false);
+        borrowingService.save(borrowingDto);
     }
 
-    public static DateFormat currentDate(){
-        Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        return dateFormat;
+    public static String now() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+        return sdf.format(cal.getTime());
     }
 
-    public static String dateToString(DateFormat dateFormat){
-        return dateFormat.format(dateFormat);
-    }
-
-    public static String addFourWeeksJodaTime(String date) {
-        DateTime dateTime = new DateTime(date);
-        return dateTime
-                .plusDays(28)
-                .toString("yyyy-MM-dd");
+    public static Date addFourWeeksJodaTime(String currentDate) {
+        DateTime dateTime = new DateTime(currentDate);
+        dateTime.plusDays(28).toString("yyyy-MM-dd");
+        return dateTime.toDate();
     }
 
     public static Date stringToDate(String stringDate) throws ParseException {

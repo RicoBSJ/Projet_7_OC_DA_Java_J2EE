@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.Borrowing;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
 import com.aubrun.eric.projet7.business.mapper.BorrowingDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BorrowingRepository;
@@ -43,5 +44,10 @@ public class BorrowingService {
     public void delete(Integer borrowingId) {
 
         borrowingRepository.deleteById(borrowingId);
+    }
+
+    public void createBorrowing(BorrowingDto borrowingDto){
+
+        createBorrowing(borrowingDto);
     }
 }
