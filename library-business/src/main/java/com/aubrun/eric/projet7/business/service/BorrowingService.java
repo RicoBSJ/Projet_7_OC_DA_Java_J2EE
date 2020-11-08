@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,8 +51,7 @@ public class BorrowingService {
         Integer quantityBook = borrowingDto.getBookBorrowing().getQuantity();
         String noBorrowingMessage = "L'ouvrage que vous souhaitez emprunter n'est pas disponible";
         Integer idBook = borrowingDto.getBookBorrowing().getBookId();
-        Integer idUserAccount = borrowingDto.getUserAccountBorrowing().getUserId();
-        List<BorrowingDto> userAccountBookList = borrowingDto.getUserAccountBorrowing().getBorrowingDtoList();
+        List<BorrowingDto> userAccountBorrowingList = borrowingDto.getUserAccountBorrowing().getBorrowingDtoList();
 
         if(quantityBook < 1){
             borrowingRepository.deleteById(borrowingDto.getBorrowingId());
@@ -59,8 +59,8 @@ public class BorrowingService {
         }
 
         quantityBook--;
-        /*userAccountBookList.add();*/
+        userAccountBorrowingList.add(idBook, borrowingDto);
 
-        createBorrowing(borrowingDto);
+        borrowingRepository.streamBorrowingsByBeginDateAndEndDateAndRenewalAndUserAccountBorrowingAndBookBorrowing();
     }
 }
