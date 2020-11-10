@@ -9,7 +9,6 @@ import com.aubrun.eric.projet7.business.service.UserAccountService;
 import org.joda.time.DateTime;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,7 +19,7 @@ import java.util.List;
 @RequestMapping("/borrowings")
 public class BorrowingController {
 
-    public static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
+    public static final String DATE_FORMAT_NOW = "yyyy-MM-dd";
 
     private final BorrowingService borrowingService;
     private final BookService bookService;
@@ -43,11 +42,28 @@ public class BorrowingController {
     }
 
     @PostMapping("/")
-    public void createBorrowing(@RequestBody BorrowingDto borrowingDto) {
-        borrowingService.save(borrowingDto);
+    public void createBorrowing(@RequestBody BorrowingDto borrowingDto) throws ParseException {
+
+        BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
+        UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
+        Integer quantityBook = idBookDto.getQuantity();
+        String noBorrowingMessage = "L'ouvrage que vous souhaitez emprunter n'est pas disponible";
+
+        if (quantityBook < 1) {
+            borrowingService.delete(borrowingDto.getBorrowingId());
+            System.out.println(noBorrowingMessage);
+        } else {
+            quantityBook--;
+            borrowingDto.setBookBorrowing(idBookDto);
+            borrowingDto.setUserAccountBorrowing(idUserAccountDto);
+            borrowingDto.setBeginDate(stringToDate((now())));
+            borrowingDto.setEndDate(addFourWeeksJodaTime(now()));
+            borrowingDto.setRenewal(false);
+            borrowingService.save(borrowingDto);
+        }
     }
 
-    @PutMapping("/loan")
+    @PutMapping("/borrowing")
     public void updateBorrowing(@RequestBody BorrowingDto borrowingDto) {
         borrowingService.update(borrowingDto);
     }
@@ -55,28 +71,6 @@ public class BorrowingController {
     @DeleteMapping("/{id}")
     public void deleteBorrowing(@PathVariable("id") int borrowingId) {
         borrowingService.delete(borrowingId);
-    }
-
-    @PostMapping("/createBorrowing")
-    public void createUserBorrowing(@RequestBody BorrowingDto borrowingDto) throws ParseException {
-
-        BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
-        UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
-        Integer quantityBook = borrowingDto.getBookBorrowing().getQuantity();
-        String noBorrowingMessage = "L'ouvrage que vous souhaitez emprunter n'est pas disponible";
-
-        borrowingDto.setBookBorrowing(idBookDto);
-        borrowingDto.setUserAccountBorrowing(idUserAccountDto);
-        borrowingDto.setBeginDate(stringToDate((now())));
-        borrowingDto.setEndDate(addFourWeeksJodaTime(now()));
-        borrowingDto.setRenewal(false);
-        if (quantityBook < 1) {
-            borrowingService.delete(borrowingDto.getBorrowingId());
-            System.out.println(noBorrowingMessage);
-        } else {
-            quantityBook--;
-            borrowingService.save(borrowingDto);
-        }
     }
 
     public static String now() {
@@ -87,12 +81,12 @@ public class BorrowingController {
 
     public static Date addFourWeeksJodaTime(String currentDate) {
         DateTime dateTime = new DateTime(currentDate);
-        dateTime.plusDays(28).toString("yyyy-MM-dd");
+        dateTime.plusDays(28);
         return dateTime.toDate();
     }
 
     public static Date stringToDate(String stringDate) throws ParseException {
-        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(stringDate);
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(stringDate);
         return date;
     }
 }

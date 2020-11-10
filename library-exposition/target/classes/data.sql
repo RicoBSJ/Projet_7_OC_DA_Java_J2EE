@@ -86,10 +86,11 @@ CREATE SEQUENCE IF NOT EXISTS borrowing_id_seq;
 
 insert into borrowing(
     id_borrowing,
+    id_book,
     id_user_account,
+    borrowing_begin_date,
+    borrowing_end_date,
     book_renewal
 )
 values
-(nextval('borrowing_id_seq'), 1, false ),
-(nextval('borrowing_id_seq'), 2, false ),
-(nextval('borrowing_id_seq'), 3, false );
+(nextval('borrowing_id_seq'), 1, 1, '2020-11-10', '2020-12-10' , false );
