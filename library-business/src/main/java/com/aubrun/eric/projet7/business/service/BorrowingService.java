@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.Borrowing;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
 import com.aubrun.eric.projet7.business.mapper.BorrowingDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BorrowingRepository;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,23 +43,5 @@ public class BorrowingService {
     public void delete(Integer borrowingId) {
 
         borrowingRepository.deleteById(borrowingId);
-    }
-
-    public Borrowing createBorrowing(BorrowingDto borrowingDto){
-
-        Integer quantityBook = borrowingDto.getBookBorrowing().getQuantity();
-        String noBorrowingMessage = "L'ouvrage que vous souhaitez emprunter n'est pas disponible";
-        Integer idBook = borrowingDto.getBookBorrowing().getBookId();
-        List<BorrowingDto> userAccountBorrowingList = borrowingDto.getUserAccountBorrowing().getBorrowingDtoList();
-
-        if(quantityBook < 1){
-            borrowingRepository.deleteById(borrowingDto.getBorrowingId());
-            System.out.println(noBorrowingMessage);
-        }
-
-        quantityBook--;
-        userAccountBorrowingList.add(idBook, borrowingDto);
-
-        return borrowingRepository.findBorrowingsByUserAccountBorrowingAndBookBorrowingAndBeginDateAndEndDateAndRenewal();
     }
 }

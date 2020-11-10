@@ -62,12 +62,21 @@ public class BorrowingController {
 
         BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
         UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
+        Integer quantityBook = borrowingDto.getBookBorrowing().getQuantity();
+        String noBorrowingMessage = "L'ouvrage que vous souhaitez emprunter n'est pas disponible";
+
         borrowingDto.setBookBorrowing(idBookDto);
         borrowingDto.setUserAccountBorrowing(idUserAccountDto);
         borrowingDto.setBeginDate(stringToDate((now())));
         borrowingDto.setEndDate(addFourWeeksJodaTime(now()));
         borrowingDto.setRenewal(false);
-        borrowingService.createBorrowing(borrowingDto);
+        if (quantityBook < 1) {
+            borrowingService.delete(borrowingDto.getBorrowingId());
+            System.out.println(noBorrowingMessage);
+        } else {
+            quantityBook--;
+            borrowingService.save(borrowingDto);
+        }
     }
 
     public static String now() {
@@ -83,7 +92,7 @@ public class BorrowingController {
     }
 
     public static Date stringToDate(String stringDate) throws ParseException {
-        Date date=new SimpleDateFormat("dd/MM/yyyy").parse(stringDate);
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(stringDate);
         return date;
     }
 }
