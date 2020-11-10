@@ -57,7 +57,7 @@ public class BorrowingController {
             borrowingDto.setBookBorrowing(idBookDto);
             borrowingDto.setUserAccountBorrowing(idUserAccountDto);
             borrowingDto.setBeginDate(stringToDate((now())));
-            borrowingDto.setEndDate(addFourWeeksJodaTime(now()));
+            borrowingDto.setEndDate(addFourWeeksJodaTime(borrowingDto.getBeginDate().toString()));
             borrowingDto.setRenewal(false);
             borrowingService.save(borrowingDto);
         }
