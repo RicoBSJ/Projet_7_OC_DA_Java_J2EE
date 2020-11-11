@@ -6,22 +6,18 @@ import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.service.BookService;
 import com.aubrun.eric.projet7.business.service.BorrowingService;
 import com.aubrun.eric.projet7.business.service.UserAccountService;
-import org.joda.time.DateTime;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("/borrowings")
 public class BorrowingController {
-
-    public static final String DATE_FORMAT_NOW = "yyyy-MM-dd";
 
     private final BorrowingService borrowingService;
     private final BookService bookService;
@@ -48,15 +44,14 @@ public class BorrowingController {
 
         BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
         UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
-        Integer quantityBook = borrowingDto.getBookBorrowing().getQuantity();
         String noBorrowingMessage = "L'ouvrage que vous souhaitez emprunter n'est pas disponible";
 
-        if (quantityBook < 1) {
+        if (borrowingDto.getBookBorrowing().getQuantity() < 1) {
             borrowingService.delete(borrowingDto.getBorrowingId());
             System.out.println(noBorrowingMessage);
         } else {
-            quantityBook--;
             borrowingDto.setBookBorrowing(idBookDto);
+            borrowingDto.getBookBorrowing().setQuantity(borrowingDto.getBookBorrowing().getQuantity() - 1);
             borrowingDto.setUserAccountBorrowing(idUserAccountDto);
             borrowingDto.setBeginDate(stringToDate((now())));
             borrowingDto.setEndDate(addFourWeeks());
@@ -65,8 +60,16 @@ public class BorrowingController {
         }
     }
 
-    @PutMapping("/borrowing")
+    @PutMapping("/")
     public void updateBorrowing(@RequestBody BorrowingDto borrowingDto) {
+
+        BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
+        UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
+        borrowingDto.setBookBorrowing(idBookDto);
+        borrowingDto.setUserAccountBorrowing(idUserAccountDto);
+        borrowingDto.setEndDate(addFourWeeks());
+        borrowingDto.setRenewal(true);
+        System.out.println("Votre période de prêt est prolongée de 4 semaines");
         borrowingService.update(borrowingDto);
     }
 
@@ -81,6 +84,13 @@ public class BorrowingController {
     }
 
     public static Date addFourWeeks() {
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        LocalDate fourWeeksLater = LocalDate.now().plusDays(28);
+        Date date = Date.from(fourWeeksLater.atStartOfDay(defaultZoneId).toInstant());
+        return date;
+    }
+
+    public static Date addFourWeeksMore() {
         ZoneId defaultZoneId = ZoneId.systemDefault();
         LocalDate fourWeeksLater = LocalDate.now().plusDays(28);
         Date date = Date.from(fourWeeksLater.atStartOfDay(defaultZoneId).toInstant());

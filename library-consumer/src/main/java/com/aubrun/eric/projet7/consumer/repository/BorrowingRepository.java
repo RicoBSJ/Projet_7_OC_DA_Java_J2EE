@@ -7,8 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BorrowingRepository extends JpaRepository<Borrowing, Integer> {
 
-    default Borrowing findBorrowingsByUserAccountBorrowingAndBookBorrowingAndBeginDateAndEndDateAndRenewal() {
-
-        return null;
     }
-}
