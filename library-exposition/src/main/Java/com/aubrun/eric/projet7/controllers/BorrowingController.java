@@ -48,7 +48,7 @@ public class BorrowingController {
 
         BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
         UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
-        Integer quantityBook = idBookDto.getQuantity();
+        Integer quantityBook = borrowingDto.getBookBorrowing().getQuantity();
         String noBorrowingMessage = "L'ouvrage que vous souhaitez emprunter n'est pas disponible";
 
         if (quantityBook < 1) {
