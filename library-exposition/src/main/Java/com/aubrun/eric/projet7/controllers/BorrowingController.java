@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -57,7 +59,7 @@ public class BorrowingController {
             borrowingDto.setBookBorrowing(idBookDto);
             borrowingDto.setUserAccountBorrowing(idUserAccountDto);
             borrowingDto.setBeginDate(stringToDate((now())));
-            borrowingDto.setEndDate(addFourWeeksJodaTime(borrowingDto.getBeginDate().toString()));
+            borrowingDto.setEndDate(addFourWeeks());
             borrowingDto.setRenewal(false);
             borrowingService.save(borrowingDto);
         }
@@ -74,15 +76,15 @@ public class BorrowingController {
     }
 
     public static String now() {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
-        return sdf.format(cal.getTime());
+        LocalDate today = LocalDate.now();
+        return today.toString();
     }
 
-    public static Date addFourWeeksJodaTime(String currentDate) {
-        DateTime dateTime = new DateTime(currentDate);
-        dateTime.plusDays(28);
-        return dateTime.toDate();
+    public static Date addFourWeeks() {
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        LocalDate fourWeeksLater = LocalDate.now().plusDays(28);
+        Date date = Date.from(fourWeeksLater.atStartOfDay(defaultZoneId).toInstant());
+        return date;
     }
 
     public static Date stringToDate(String stringDate) throws ParseException {
