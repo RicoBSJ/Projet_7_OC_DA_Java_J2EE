@@ -51,7 +51,6 @@ public class BorrowingController {
             System.out.println(noBorrowingMessage);
         } else {
             borrowingDto.setBookBorrowing(idBookDto);
-            borrowingDto.getBookBorrowing().setQuantity(borrowingDto.getBookBorrowing().getQuantity() - 1);
             borrowingDto.setUserAccountBorrowing(idUserAccountDto);
             borrowingDto.setBeginDate(stringToDate((now())));
             borrowingDto.setEndDate(addFourWeeks());

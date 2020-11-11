@@ -34,6 +34,7 @@ public class BorrowingService {
 
     public int save(BorrowingDto newBorrowing) {
 
+        newBorrowing.getBookBorrowing().setQuantity(-1);
         return borrowingRepository.save(BorrowingDtoMapper.toEntity(newBorrowing)).getBorrowingId();
     }
 
