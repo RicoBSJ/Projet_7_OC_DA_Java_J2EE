@@ -44,11 +44,9 @@ public class BorrowingController {
 
         BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
         UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
-        String noBorrowingMessage = "L'ouvrage que vous souhaitez emprunter n'est pas disponible";
 
         if (borrowingDto.getBookBorrowing().getQuantity() < 1) {
-            borrowingService.delete(borrowingDto.getBorrowingId());
-            System.out.println(noBorrowingMessage);
+            System.out.println("L'ouvrage que vous souhaitez emprunter n'est pas disponible");
         } else {
             borrowingDto.setBookBorrowing(idBookDto);
             borrowingDto.setUserAccountBorrowing(idUserAccountDto);
@@ -59,14 +57,14 @@ public class BorrowingController {
         }
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public void updateBorrowing(@RequestBody BorrowingDto borrowingDto) {
 
         BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
         UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
         borrowingDto.setBookBorrowing(idBookDto);
         borrowingDto.setUserAccountBorrowing(idUserAccountDto);
-        borrowingDto.setEndDate(addFourWeeks());
+        borrowingDto.getEndDate().setTime(+28);
         borrowingDto.setRenewal(true);
         System.out.println("Votre période de prêt est prolongée de 4 semaines");
         borrowingService.update(borrowingDto);
@@ -83,13 +81,6 @@ public class BorrowingController {
     }
 
     public static Date addFourWeeks() {
-        ZoneId defaultZoneId = ZoneId.systemDefault();
-        LocalDate fourWeeksLater = LocalDate.now().plusDays(28);
-        Date date = Date.from(fourWeeksLater.atStartOfDay(defaultZoneId).toInstant());
-        return date;
-    }
-
-    public static Date addFourWeeksMore() {
         ZoneId defaultZoneId = ZoneId.systemDefault();
         LocalDate fourWeeksLater = LocalDate.now().plusDays(28);
         Date date = Date.from(fourWeeksLater.atStartOfDay(defaultZoneId).toInstant());
