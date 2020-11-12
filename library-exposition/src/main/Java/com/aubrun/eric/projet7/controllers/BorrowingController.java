@@ -57,7 +57,7 @@ public class BorrowingController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/")
     public void updateBorrowing(@RequestBody BorrowingDto borrowingDto) {
 
         BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
