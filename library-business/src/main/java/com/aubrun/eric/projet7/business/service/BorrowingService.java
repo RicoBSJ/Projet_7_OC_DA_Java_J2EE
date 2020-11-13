@@ -1,11 +1,15 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.Book;
+import com.aubrun.eric.projet7.beans.Borrowing;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
 import com.aubrun.eric.projet7.business.mapper.BorrowingDtoMapper;
+import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import com.aubrun.eric.projet7.consumer.repository.BorrowingRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +18,11 @@ import java.util.stream.Collectors;
 public class BorrowingService {
 
     private final BorrowingRepository borrowingRepository;
+    private final BookRepository bookRepository;
 
-    public BorrowingService(BorrowingRepository borrowingRepository) {
+    public BorrowingService(BorrowingRepository borrowingRepository, BookRepository bookRepository) {
         this.borrowingRepository = borrowingRepository;
+        this.bookRepository = bookRepository;
     }
 
 
@@ -31,14 +37,20 @@ public class BorrowingService {
     }
 
     public int save(BorrowingDto newBorrowing) {
-
-        newBorrowing.getBookBorrowing().setQuantity(-1);
-        return borrowingRepository.save(BorrowingDtoMapper.toEntity(newBorrowing)).getBorrowingId();
+        Borrowing borrowing = BorrowingDtoMapper.toEntity(newBorrowing);
+        Book book = bookRepository.findById(newBorrowing.getBookBorrowing().getBookId()).orElseThrow(() -> new RuntimeException("L'ouvrage que vous souhaitez emprunter n'est pas disponible"));
+        borrowing.setBookBorrowing(book);
+        borrowing.setBeginDate(LocalDate.now());
+        borrowing.setEndDate(LocalDate.now().plusWeeks(4));
+        borrowing.setRenewal(false);
+        book.setQuantity(book.getQuantity() - 1);
+        return borrowingRepository.save(borrowing).getBorrowingId();
     }
 
-    public BorrowingDto update(BorrowingDto borrowingDto) {
-
-        return BorrowingDtoMapper.toDto(borrowingRepository.save(BorrowingDtoMapper.toEntity(borrowingDto)));
+    public void update(Integer borrowingId) {
+        Borrowing borrowing = borrowingRepository.findById(borrowingId).orElseThrow(()->new RuntimeException());
+        borrowing.setEndDate(borrowing.getEndDate().plusWeeks(4));
+        borrowingRepository.save(borrowing);
     }
 
     public void delete(Integer borrowingId) {

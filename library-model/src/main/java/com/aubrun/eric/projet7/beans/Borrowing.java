@@ -1,6 +1,9 @@
 package com.aubrun.eric.projet7.beans;
 
+import net.bytebuddy.asm.Advice;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -19,31 +22,11 @@ public class Borrowing {
     @ManyToOne
     private UserAccount userAccountBorrowing;
     @Column(name = "borrowing_begin_date")
-    private Date beginDate;
+    private LocalDate beginDate;
     @Column(name = "borrowing_end_date")
-    private Date endDate;
+    private LocalDate endDate;
     @Column(name = "book_renewal")
     private Boolean renewal;
-
-    public Borrowing() {
-    }
-
-    public Borrowing(Integer borrowingId, Book bookBorrowing, UserAccount userAccountBorrowing, Date beginDate, Date endDate, Boolean renewal) {
-        this.borrowingId = borrowingId;
-        this.bookBorrowing = bookBorrowing;
-        this.userAccountBorrowing = userAccountBorrowing;
-        this.beginDate = beginDate;
-        this.endDate = endDate;
-        this.renewal = renewal;
-    }
-
-    public Borrowing(Book bookBorrowing, UserAccount userAccountBorrowing, Date beginDate, Date endDate, Boolean renewal) {
-        this.bookBorrowing = bookBorrowing;
-        this.userAccountBorrowing = userAccountBorrowing;
-        this.beginDate = beginDate;
-        this.endDate = endDate;
-        this.renewal = renewal;
-    }
 
     public Integer getBorrowingId() {
         return borrowingId;
@@ -69,19 +52,19 @@ public class Borrowing {
         this.userAccountBorrowing = userAccountBorrowing;
     }
 
-    public Date getBeginDate() {
+    public LocalDate getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(Date beginDate) {
+    public void setBeginDate(LocalDate beginDate) {
         this.beginDate = beginDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

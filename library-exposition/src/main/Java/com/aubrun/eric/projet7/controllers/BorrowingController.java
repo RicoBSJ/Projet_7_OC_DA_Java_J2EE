@@ -40,55 +40,19 @@ public class BorrowingController {
     }
 
     @PostMapping("/")
-    public void createBorrowing(@RequestBody BorrowingDto borrowingDto) throws ParseException {
+    public void createBorrowing(@RequestBody BorrowingDto borrowingDto) {
 
-        BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
-        UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
-
-        if (borrowingDto.getBookBorrowing().getQuantity() < 1) {
-            System.out.println("L'ouvrage que vous souhaitez emprunter n'est pas disponible");
-        } else {
-            borrowingDto.setBookBorrowing(idBookDto);
-            borrowingDto.setUserAccountBorrowing(idUserAccountDto);
-            borrowingDto.setBeginDate(stringToDate((now())));
-            borrowingDto.setEndDate(addFourWeeks());
-            borrowingDto.setRenewal(false);
-            borrowingService.save(borrowingDto);
-        }
+        borrowingService.save(borrowingDto);
     }
 
-    @PutMapping("/")
-    public void updateBorrowing(@RequestBody BorrowingDto borrowingDto) {
+    @PutMapping("/{id}")
+    public void updateBorrowing(@PathVariable(value = "id") int borrowingId) {
 
-        BookDto idBookDto = bookService.findById(borrowingDto.getBookBorrowing().getBookId());
-        UserAccountDto idUserAccountDto = userAccountService.findById(borrowingDto.getUserAccountBorrowing().getUserId());
-        borrowingDto.setBookBorrowing(idBookDto);
-        borrowingDto.setUserAccountBorrowing(idUserAccountDto);
-        borrowingDto.getEndDate().setTime(+28);
-        borrowingDto.setRenewal(true);
-        System.out.println("Votre période de prêt est prolongée de 4 semaines");
-        borrowingService.update(borrowingDto);
+        borrowingService.update(borrowingId);
     }
 
     @DeleteMapping("/{id}")
     public void deleteBorrowing(@PathVariable("id") int borrowingId) {
         borrowingService.delete(borrowingId);
-    }
-
-    public static String now() {
-        LocalDate today = LocalDate.now();
-        return today.toString();
-    }
-
-    public static Date addFourWeeks() {
-        ZoneId defaultZoneId = ZoneId.systemDefault();
-        LocalDate fourWeeksLater = LocalDate.now().plusDays(28);
-        Date date = Date.from(fourWeeksLater.atStartOfDay(defaultZoneId).toInstant());
-        return date;
-    }
-
-    public static Date stringToDate(String stringDate) throws ParseException {
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(stringDate);
-        return date;
     }
 }
