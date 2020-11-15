@@ -1,10 +1,7 @@
 package com.aubrun.eric.projet7.beans;
 
-import net.bytebuddy.asm.Advice;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @SequenceGenerator(name="borrowing_id_generator", sequenceName = "borrowing_id_seq", allocationSize=1)
