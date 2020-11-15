@@ -10,6 +10,7 @@ public class UserAccountDto {
     private String email;
     private String motDePasse;
     private List<BorrowingDto> borrowingDtoList;
+    private List<RoleDto> roleDtoList;
 
     public Integer getUserId() {
         return userId;
@@ -57,5 +58,13 @@ public class UserAccountDto {
 
     public void setBorrowingDtoList(List<BorrowingDto> borrowingDtoList) {
         this.borrowingDtoList = borrowingDtoList;
+    }
+
+    public List<RoleDto> getRoleDtoList() {
+        return roleDtoList;
+    }
+
+    public void setRoleDtoList(List<RoleDto> roleDtoList) {
+        this.roleDtoList = roleDtoList;
     }
 }

@@ -23,6 +23,9 @@ public class UserAccount {
     @JoinColumn(name = "id_borrowing_list")
     @OneToMany(fetch=FetchType.EAGER)
     private List<Borrowing> borrowingList;
+    @JoinColumn(name = "id_role_list")
+    @OneToMany(fetch=FetchType.LAZY)
+    private List<Role> roleList;
 
 
     public UserAccount() {
@@ -36,6 +39,7 @@ public class UserAccount {
         this.email = email;
         this.motDePasse = motDePasse;
         this.borrowingList = borrowingList;
+        this.roleList = roleList;
     }
 
     public UserAccount(String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList) {
@@ -44,6 +48,7 @@ public class UserAccount {
         this.email = email;
         this.motDePasse = motDePasse;
         this.borrowingList = borrowingList;
+        this.roleList = roleList;
     }
 
     public Integer getUserId() {
@@ -94,6 +99,14 @@ public class UserAccount {
         this.borrowingList = borrowingList;
     }
 
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
     @Override
     public String toString() {
         return "UserAccount{" +
@@ -103,6 +116,7 @@ public class UserAccount {
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", borrowingList=" + borrowingList +
+                ", roleList=" + roleList +
                 '}';
     }
 }
