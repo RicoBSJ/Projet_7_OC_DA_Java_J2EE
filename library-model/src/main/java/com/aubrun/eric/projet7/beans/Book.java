@@ -29,26 +29,6 @@ public class Book {
     private Edition bookEdition;
 
     public Book() {
-        super();
-    }
-
-    public Book(Integer bookId, String title, Integer quantity, Date yearBook, Author bookAuthor, Category bookCategory, Edition bookEdition) {
-        this.bookId = bookId;
-        this.title = title;
-        this.quantity = quantity;
-        this.yearBook = yearBook;
-        this.bookAuthor = bookAuthor;
-        this.bookCategory = bookCategory;
-        this.bookEdition = bookEdition;
-    }
-
-    public Book(String title, Integer quantity, Date yearBook, Author bookAuthor, Category bookCategory, Edition bookEdition) {
-        this.title = title;
-        this.quantity = quantity;
-        this.yearBook = yearBook;
-        this.bookAuthor = bookAuthor;
-        this.bookCategory = bookCategory;
-        this.bookEdition = bookEdition;
     }
 
     public Integer getBookId() {

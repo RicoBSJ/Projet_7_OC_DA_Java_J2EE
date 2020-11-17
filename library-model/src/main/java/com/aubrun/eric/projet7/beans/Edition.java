@@ -16,18 +16,6 @@ public class Edition {
     private String nameEdition;
 
     public Edition() {
-        super();
-    }
-
-    public Edition(Integer editionId, String nameEdition, List<Book> bookList) {
-        super();
-        this.editionId = editionId;
-        this.nameEdition = nameEdition;
-    }
-
-    public Edition(String nameEdition, List<Book> bookList) {
-        super();
-        this.nameEdition = nameEdition;
     }
 
     public Integer getEditionId() {

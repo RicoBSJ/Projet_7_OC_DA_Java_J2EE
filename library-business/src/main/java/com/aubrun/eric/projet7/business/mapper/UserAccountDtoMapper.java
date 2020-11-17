@@ -16,7 +16,7 @@ public class UserAccountDtoMapper {
         dto.setEmail(userAccount.getEmail());
         dto.setMotDePasse(userAccount.getMotDePasse());
         dto.setBorrowingDtoList(userAccount.getBorrowingList().stream().map(BorrowingDtoMapper::toDto).collect(Collectors.toList()));
-        dto.setUserRoleDtoList(userAccount.getUserRoles().stream().map(UserRoleDtoMapper::toDto).collect(Collectors.toList()));
+        dto.setUserRoleDtoList(userAccount.getUserRoleList().stream().map(UserRoleDtoMapper::toDto).collect(Collectors.toList()));
         return dto;
     }
 
@@ -29,7 +29,7 @@ public class UserAccountDtoMapper {
         entity.setEmail(userAccountDto.getEmail());
         entity.setMotDePasse(userAccountDto.getMotDePasse());
         entity.setBorrowingList(userAccountDto.getBorrowingDtoList().stream().map(BorrowingDtoMapper::toEntity).collect(Collectors.toList()));
-        entity.setUserRoles(userAccountDto.getUserRoleDtoList().stream().map(UserRoleDtoMapper::toEntity).collect(Collectors.toList()));
+        entity.setUserRoleList(userAccountDto.getUserRoleDtoList().stream().map(UserRoleDtoMapper::toEntity).collect(Collectors.toList()));
         return entity;
     }
 }

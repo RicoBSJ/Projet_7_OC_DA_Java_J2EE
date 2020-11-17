@@ -23,32 +23,12 @@ public class UserAccount {
     @JoinColumn(name = "user_account_borrowings")
     @OneToMany
     private List<Borrowing> borrowingList;
-    @JoinColumn(name = "user_account_roles")
+    @JoinColumn(name = "user_role_user_account")
     @OneToMany
-    private List<UserRole> userRoles;
+    private List<UserRole> userRoleList;
 
 
     public UserAccount() {
-        super();
-    }
-
-    public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList, List<UserRole> userRoles) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.nameUser = nameUser;
-        this.email = email;
-        this.motDePasse = motDePasse;
-        this.borrowingList = borrowingList;
-        this.userRoles = userRoles;
-    }
-
-    public UserAccount(String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList, List<UserRole> userRoles) {
-        this.firstName = firstName;
-        this.nameUser = nameUser;
-        this.email = email;
-        this.motDePasse = motDePasse;
-        this.borrowingList = borrowingList;
-        this.userRoles = userRoles;
     }
 
     public Integer getUserId() {
@@ -99,12 +79,12 @@ public class UserAccount {
         this.borrowingList = borrowingList;
     }
 
-    public List<UserRole> getUserRoles() {
-        return userRoles;
+    public List<UserRole> getUserRoleList() {
+        return userRoleList;
     }
 
-    public void setUserRoles(List<UserRole> userRoles) {
-        this.userRoles = userRoles;
+    public void setUserRoleList(List<UserRole> userRoleList) {
+        this.userRoleList = userRoleList;
     }
 
     @Override
@@ -116,7 +96,7 @@ public class UserAccount {
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", borrowingList=" + borrowingList +
-                ", userRoles=" + userRoles +
+                ", userRoleList=" + userRoleList +
                 '}';
     }
 }

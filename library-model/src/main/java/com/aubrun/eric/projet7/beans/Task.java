@@ -22,10 +22,6 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public Task(String taskName) {
-        this.taskName = taskName;
-    }
-
     public Integer getTaskId() {
         return taskId;
     }

@@ -17,18 +17,6 @@ public class Author {
     private String lastName;
 
     public Author() {
-        super();
-    }
-
-    public Author(Integer authorId, String firstName, String lastName) {
-        this.authorId = authorId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Author(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
 
     public Integer getAuthorId() {

@@ -1,5 +1,9 @@
 package com.aubrun.eric.projet7.business.dto;
 
+import com.aubrun.eric.projet7.beans.UserAccount;
+
+import java.util.List;
+
 public class UserRoleDto {
 
     private Integer userRoleId;
