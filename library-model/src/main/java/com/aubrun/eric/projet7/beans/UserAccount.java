@@ -20,10 +20,10 @@ public class UserAccount {
     private String email;
     @Column(name = "user_account_mot_de_passe")
     private String motDePasse;
-    @JoinColumn(name = "id_borrowing_list")
+    @JoinColumn(name = "id_borrowing")
     @OneToMany(fetch=FetchType.EAGER)
     private List<Borrowing> borrowingList;
-    @JoinColumn(name = "id_role_list")
+    @JoinColumn(name = "id_role")
     @OneToMany(fetch=FetchType.LAZY)
     private List<Role> roleList;
 
