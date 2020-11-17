@@ -1,5 +1,7 @@
 package com.aubrun.eric.projet7.business.dto;
 
+import com.aubrun.eric.projet7.beans.UserRole;
+
 import java.util.List;
 
 public class UserAccountDto {
@@ -10,7 +12,7 @@ public class UserAccountDto {
     private String email;
     private String motDePasse;
     private List<BorrowingDto> borrowingDtoList;
-    private List<RoleDto> roleDtoList;
+    private List<UserRoleDto> userRoleDtoList;
 
     public Integer getUserId() {
         return userId;
@@ -60,11 +62,11 @@ public class UserAccountDto {
         this.borrowingDtoList = borrowingDtoList;
     }
 
-    public List<RoleDto> getRoleDtoList() {
-        return roleDtoList;
+    public List<UserRoleDto> getUserRoleDtoList() {
+        return userRoleDtoList;
     }
 
-    public void setRoleDtoList(List<RoleDto> roleDtoList) {
-        this.roleDtoList = roleDtoList;
+    public void setUserRoleDtoList(List<UserRoleDto> userRoleDtoList) {
+        this.userRoleDtoList = userRoleDtoList;
     }
 }

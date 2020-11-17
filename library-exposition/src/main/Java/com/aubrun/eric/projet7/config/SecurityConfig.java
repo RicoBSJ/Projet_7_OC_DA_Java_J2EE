@@ -1,4 +1,3 @@
-/*
 package com.aubrun.eric.projet7.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -13,16 +12,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN", "USER");
-        auth.inMemoryAuthentication().withUser("Musk").password("eM86").roles("USER");
-        auth.inMemoryAuthentication().withUser("Jobs").password("sJ53").roles("USER");
-        auth.inMemoryAuthentication().withUser("Ma").password("jM68").roles("USER");
+        auth.inMemoryAuthentication().withUser("admin").password("{noop}admin").roles("ADMIN", "USER");
+        auth.inMemoryAuthentication().withUser("Musk").password("{noop}eM86").roles("USER");
+        auth.inMemoryAuthentication().withUser("Jobs").password("{noop}sJ53").roles("USER");
+        auth.inMemoryAuthentication().withUser("Ma").password("{noop}jM68").roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin();
-        http.authorizeRequests().anyRequest();
+        http.authorizeRequests().anyRequest().authenticated();
     }
 }
-*/

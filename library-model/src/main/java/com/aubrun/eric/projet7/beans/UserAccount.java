@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@SequenceGenerator(name="user_account_id_generator", sequenceName = "user_account_id_seq", allocationSize=1)
+@SequenceGenerator(name = "user_account_id_generator", sequenceName = "user_account_id_seq", allocationSize = 1)
 @Table(name = "USER_ACCOUNT")
 public class UserAccount {
 
@@ -20,35 +20,35 @@ public class UserAccount {
     private String email;
     @Column(name = "user_account_mot_de_passe")
     private String motDePasse;
-    @JoinColumn(name = "id_borrowing")
-    @OneToMany(fetch=FetchType.EAGER)
+    @JoinColumn(name = "user_account_borrowings")
+    @OneToMany
     private List<Borrowing> borrowingList;
-    @JoinColumn(name = "id_role")
-    @OneToMany(fetch=FetchType.LAZY)
-    private List<Role> roleList;
+    @JoinColumn(name = "user_account_roles")
+    @OneToMany
+    private List<UserRole> userRoles;
 
 
     public UserAccount() {
         super();
     }
 
-    public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList) {
+    public UserAccount(Integer userId, String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList, List<UserRole> userRoles) {
         this.userId = userId;
         this.firstName = firstName;
         this.nameUser = nameUser;
         this.email = email;
         this.motDePasse = motDePasse;
         this.borrowingList = borrowingList;
-        this.roleList = roleList;
+        this.userRoles = userRoles;
     }
 
-    public UserAccount(String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList) {
+    public UserAccount(String firstName, String nameUser, String email, String motDePasse, List<Borrowing> borrowingList, List<UserRole> userRoles) {
         this.firstName = firstName;
         this.nameUser = nameUser;
         this.email = email;
         this.motDePasse = motDePasse;
         this.borrowingList = borrowingList;
-        this.roleList = roleList;
+        this.userRoles = userRoles;
     }
 
     public Integer getUserId() {
@@ -99,12 +99,12 @@ public class UserAccount {
         this.borrowingList = borrowingList;
     }
 
-    public List<Role> getRoleList() {
-        return roleList;
+    public List<UserRole> getUserRoles() {
+        return userRoles;
     }
 
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
     @Override
@@ -116,7 +116,7 @@ public class UserAccount {
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", borrowingList=" + borrowingList +
-                ", roleList=" + roleList +
+                ", userRoles=" + userRoles +
                 '}';
     }
 }

@@ -45,6 +45,7 @@ insert into user_account(
     user_account_mot_de_passe
 )
 values
+(nextval('user_account_id_seq'), 'admin', 'admin', 'admin@gmail.com', 'admin'),
 (nextval('user_account_id_seq'), 'Elon', 'Musk', 'e.musk@gmail.com', 'eM86'),
 (nextval('user_account_id_seq'), 'Steve', 'Jobs', 's_jobs@gmail.com','sJ53'),
 (nextval('user_account_id_seq'), 'Jack', 'Ma', 'j-ma@gmail.com', 'jM68');
@@ -90,7 +91,21 @@ insert into borrowing(
     id_user_account,
     borrowing_begin_date,
     borrowing_end_date,
-    book_renewal
+    book_renewal,
+    user_account_borrowings
 )
 values
-(nextval('borrowing_id_seq'), 1, 1, '2020-11-10', '2020-12-10' , false );
+(nextval('borrowing_id_seq'), 1, 1, '2020-11-10', '2020-12-10' , false, 1 );
+
+CREATE SEQUENCE IF NOT EXISTS user_role_id_seq;
+
+insert into user_role(
+    id_user_role,
+    user_role_name,
+    user_account_roles
+)
+values
+(nextval('role_id_seq'), 'ADMIN', 1),
+(nextval('role_id_seq'), 'USER', 2),
+(nextval('role_id_seq'), 'USER', 3),
+(nextval('role_id_seq'), 'USER', 4);
