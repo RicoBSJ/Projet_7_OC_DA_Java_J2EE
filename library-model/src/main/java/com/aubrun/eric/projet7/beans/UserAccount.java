@@ -27,8 +27,14 @@ public class UserAccount {
     @ManyToMany
     private List<UserRole> userRoleList;
 
-
     public UserAccount() {
+    }
+
+    public UserAccount(Integer userId, String nameUser, String motDePasse, List<UserRole> userRoleList) {
+        this.userId = userId;
+        this.nameUser = nameUser;
+        this.motDePasse = motDePasse;
+        this.userRoleList = userRoleList;
     }
 
     public Integer getUserId() {

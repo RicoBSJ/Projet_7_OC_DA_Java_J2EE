@@ -31,11 +31,6 @@ public class UserAccountController {
         userAccountService.save(userAccountDto);
     }
 
-    @PostMapping("/roleUser")
-    public void addUserWithRole(@RequestBody String username, String roleName){
-        userAccountService.addRoleToUser(username, roleName);
-    }
-
     @PutMapping("/user")
     public void updateUser(@RequestBody UserAccountDto userAccountDto) {
         userAccountService.update(userAccountDto);
