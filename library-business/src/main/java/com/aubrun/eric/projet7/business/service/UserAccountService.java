@@ -4,6 +4,7 @@ import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.dto.UserRoleDto;
 import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserRepository;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class UserAccountService {
     private final UserRoleService userRoleService;
     private final UserAccountService userAccountService;
 
-    public UserAccountService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder, UserRoleService userRoleService, UserAccountService userAccountService) {
+    public UserAccountService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder, UserRoleService userRoleService, @Lazy UserAccountService userAccountService) {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userRoleService = userRoleService;

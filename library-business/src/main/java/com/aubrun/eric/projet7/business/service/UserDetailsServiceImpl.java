@@ -1,3 +1,4 @@
+/*
 package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.business.dto.UserAccountDto;
@@ -31,4 +32,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userAccountDto.getUserRoleDtoList().forEach(r-> authorities.add(new SimpleGrantedAuthority(r.getUserRoleName())));
         return new User(userAccountDto.getNameUser(), userAccountDto.getMotDePasse(), authorities);
     }
-}
+}*/
