@@ -1,8 +1,5 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import com.aubrun.eric.projet7.beans.UserAccount;
-import com.aubrun.eric.projet7.beans.UserRole;
-
 import java.util.List;
 
 public class UserAccountDto {

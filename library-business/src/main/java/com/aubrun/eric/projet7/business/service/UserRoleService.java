@@ -1,6 +1,8 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.dto.UserRoleDto;
+import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
 import com.aubrun.eric.projet7.business.mapper.UserRoleDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserRoleRepository;
 import org.springframework.stereotype.Service;
@@ -42,5 +44,10 @@ public class UserRoleService {
     public void delete(Integer id) {
 
         userRoleRepository.deleteById(id);
+    }
+
+    public UserRoleDto obtainByNameRole(String username){
+
+        return UserRoleDtoMapper.toDto(userRoleRepository.findByUserRoleName(username));
     }
 }

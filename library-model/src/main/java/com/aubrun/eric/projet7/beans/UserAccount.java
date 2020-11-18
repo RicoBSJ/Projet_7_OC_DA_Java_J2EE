@@ -24,7 +24,7 @@ public class UserAccount {
     @OneToMany
     private List<Borrowing> borrowingList;
     @JoinColumn(name = "user_role_user_account")
-    @OneToMany
+    @ManyToMany
     private List<UserRole> userRoleList;
 
 

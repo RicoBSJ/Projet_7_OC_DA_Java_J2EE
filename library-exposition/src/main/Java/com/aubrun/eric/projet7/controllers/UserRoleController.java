@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.controllers;
 
+import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.dto.UserRoleDto;
 import com.aubrun.eric.projet7.business.service.UserRoleService;
 import org.springframework.web.bind.annotation.*;
@@ -39,5 +40,10 @@ public class UserRoleController {
     @DeleteMapping("/{id}")
     public void deleteUserRole(@PathVariable("id") int userId) {
         userRoleService.delete(userId);
+    }
+
+    @GetMapping("/roleName")
+    public UserRoleDto getByNameRole(String username){
+        return userRoleService.obtainByNameRole(username);
     }
 }

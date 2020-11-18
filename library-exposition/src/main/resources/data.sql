@@ -101,11 +101,20 @@ CREATE SEQUENCE IF NOT EXISTS user_role_id_seq;
 
 insert into user_role(
     id_user_role,
-    user_role_name,
-    user_role_user_account
+    user_role_name
 )
 values
-(nextval('user_role_id_seq'), 'ADMIN', 1),
-(nextval('user_role_id_seq'), 'USER', 2),
-(nextval('user_role_id_seq'), 'USER', 3),
-(nextval('user_role_id_seq'), 'USER', 4);
+(nextval('user_role_id_seq'), 'ADMIN'),
+(nextval('user_role_id_seq'), 'USER');
+
+CREATE SEQUENCE IF NOT EXISTS user_account_user_role_list_id_seq;
+
+insert into user_account_user_role_list(
+    user_account_id_user_account,
+    user_role_list_id_user_role
+)
+values
+( 1, 1),
+( 2, 2),
+( 3, 2),
+( 4, 2);
