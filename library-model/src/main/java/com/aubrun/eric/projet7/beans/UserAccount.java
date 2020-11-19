@@ -24,7 +24,7 @@ public class UserAccount {
     @OneToMany
     private List<Borrowing> borrowingList;
     @JoinColumn(name = "user_role_user_account")
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRole> userRoleList;
 
     public UserAccount() {

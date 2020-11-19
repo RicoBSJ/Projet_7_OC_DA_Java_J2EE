@@ -45,7 +45,7 @@ insert into user_account(
     user_account_mot_de_passe
 )
 values
-(nextval('user_account_id_seq'), 'admin', 'admin', 'admin@gmail.com', 'admin'),
+/*(nextval('user_account_id_seq'), 'admin', 'admin', 'admin@gmail.com', 'admin'),*/
 (nextval('user_account_id_seq'), 'Elon', 'Musk', 'e.musk@gmail.com', 'eM86'),
 (nextval('user_account_id_seq'), 'Steve', 'Jobs', 's_jobs@gmail.com','sJ53'),
 (nextval('user_account_id_seq'), 'Jack', 'Ma', 'j-ma@gmail.com', 'jM68');
@@ -97,7 +97,7 @@ insert into borrowing(
 values
 (nextval('borrowing_id_seq'), 1, 1, '2020-11-10', '2020-12-10' , false, 1 );
 
-CREATE SEQUENCE IF NOT EXISTS user_role_id_seq;
+/*CREATE SEQUENCE IF NOT EXISTS user_role_id_seq;
 
 insert into user_role(
     id_user_role,
@@ -105,9 +105,9 @@ insert into user_role(
 )
 values
 (nextval('user_role_id_seq'), 'ADMIN'),
-(nextval('user_role_id_seq'), 'USER');
+(nextval('user_role_id_seq'), 'USER');*/
 
-CREATE SEQUENCE IF NOT EXISTS user_account_user_role_list_id_seq;
+/*CREATE SEQUENCE IF NOT EXISTS user_account_user_role_list_id_seq;
 
 insert into user_account_user_role_list(
     user_account_id_user_account,
@@ -117,4 +117,4 @@ values
 ( 1, 1),
 ( 2, 2),
 ( 3, 2),
-( 4, 2);
+( 4, 2);*/

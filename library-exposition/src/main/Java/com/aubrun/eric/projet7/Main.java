@@ -31,7 +31,7 @@ public class Main implements CommandLineRunner {
     }
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    public BCryptPasswordEncoder getBCPE() {
         return new BCryptPasswordEncoder();
     }
 

@@ -3,7 +3,7 @@ package com.aubrun.eric.projet7.business.service;
 import com.aubrun.eric.projet7.beans.UserAccount;
 import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
-import com.aubrun.eric.projet7.consumer.repository.UserRepository;
+import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,39 +14,39 @@ import java.util.stream.Collectors;
 @Transactional
 public class UserAccountService {
 
-    private final UserRepository userRepository;
+    private final UserAccountRepository userAccountRepository;
 
-    public UserAccountService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserAccountService(UserAccountRepository userAccountRepository) {
+        this.userAccountRepository = userAccountRepository;
     }
 
     public List<UserAccountDto> findAll() {
 
-        return userRepository.findAll().stream().map(UserAccountDtoMapper::toDto).collect(Collectors.toList());
+        return userAccountRepository.findAll().stream().map(UserAccountDtoMapper::toDto).collect(Collectors.toList());
     }
 
     public int save(UserAccountDto newUser) {
 
-        return userRepository.save(UserAccountDtoMapper.toEntity(newUser)).getUserId();
+        return userAccountRepository.save(UserAccountDtoMapper.toEntity(newUser)).getUserId();
     }
 
     public UserAccountDto update(UserAccountDto newUser) {
 
-        return UserAccountDtoMapper.toDto(userRepository.save(UserAccountDtoMapper.toEntity(newUser)));
+        return UserAccountDtoMapper.toDto(userAccountRepository.save(UserAccountDtoMapper.toEntity(newUser)));
     }
 
     public UserAccountDto findById(Integer id) {
 
-        return UserAccountDtoMapper.toDto(userRepository.findById(id).get());
+        return UserAccountDtoMapper.toDto(userAccountRepository.findById(id).get());
     }
 
     public void delete(Integer id) {
 
-        userRepository.deleteById(id);
+        userAccountRepository.deleteById(id);
     }
 
     public UserAccount findByUserName(String username){
 
-        return userRepository.findByNameUser(username);
+        return userAccountRepository.findByNameUser(username);
     }
 }
