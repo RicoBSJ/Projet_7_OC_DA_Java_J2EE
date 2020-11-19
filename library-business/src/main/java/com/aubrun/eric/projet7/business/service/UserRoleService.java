@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.UserRole;
 import com.aubrun.eric.projet7.business.dto.UserRoleDto;
 import com.aubrun.eric.projet7.business.mapper.UserRoleDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserRoleRepository;
@@ -44,8 +45,8 @@ public class UserRoleService {
         userRoleRepository.deleteById(id);
     }
 
-    public UserRoleDto findByRoleName(String username){
+    public UserRole findByRoleName(String username){
 
-        return UserRoleDtoMapper.toDto(userRoleRepository.findByUserRoleName(username));
+        return userRoleRepository.findByUserRoleName(username);
     }
 }

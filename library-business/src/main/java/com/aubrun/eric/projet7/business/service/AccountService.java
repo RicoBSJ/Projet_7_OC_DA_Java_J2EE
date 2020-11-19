@@ -1,5 +1,7 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.UserAccount;
+import com.aubrun.eric.projet7.beans.UserRole;
 import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.dto.UserRoleDto;
 import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
@@ -7,7 +9,12 @@ import com.aubrun.eric.projet7.business.mapper.UserRoleDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserRepository;
 import com.aubrun.eric.projet7.consumer.repository.UserRoleRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class AccountService {
 
     private final UserRoleService userRoleService;
@@ -24,23 +31,23 @@ public class AccountService {
         this.userRoleRepository = userRoleRepository;
     }
 
-    public UserRoleDto saveRole(UserRoleDto newUser) {
-        return UserRoleDtoMapper.toDto(userRoleRepository.save(UserRoleDtoMapper.toEntity(newUser)));
+    public UserRole saveRole(UserRole newUser) {
+        return userRoleRepository.save(newUser);
     }
 
-    public UserAccountDto saveUser(UserAccountDto newUser) {
+    public UserAccount saveUser(UserAccount newUser) {
         String hashPW = bCryptPasswordEncoder.encode(newUser.getMotDePasse());
         newUser.setMotDePasse(hashPW);
-        return UserAccountDtoMapper.toDto(userRepository.save(UserAccountDtoMapper.toEntity(newUser)));
+        return userRepository.save(newUser);
     }
 
     public void addRoleToUser(String username, String roleName){
-        UserRoleDto userRoleDto = userRoleService.findByRoleName(roleName);
-        UserAccountDto userAccountDto = userAccountService.findByUserName(username);
-        userAccountDto.getUserRoleDtoList().add(userRoleDto);
+        UserRole userRole = userRoleService.findByRoleName(roleName);
+        UserAccount userAccount = userAccountService.findByUserName(username);
+        userAccount.getUserRoleList().add(userRole);
     }
 
-    public UserAccountDto findUserByUserName(String username){
+    public UserAccount findUserByUserName(String username){
         return userAccountService.findByUserName(username);
     }
 }
