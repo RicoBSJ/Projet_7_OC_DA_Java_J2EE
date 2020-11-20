@@ -1,5 +1,8 @@
 package com.aubrun.eric.projet7.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,7 +17,7 @@ public class UserAccount {
     private Integer userId;
     @Column(name = "user_account_first_name")
     private String firstName;
-    @Column(name = "user_account_last_name")
+    @Column(name = "user_account_last_name", unique = true)
     private String nameUser;
     @Column(name = "user_account_email")
     private String email;
@@ -68,11 +71,11 @@ public class UserAccount {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @JsonIgnore
     public String getMotDePasse() {
         return motDePasse;
     }
-
+    @JsonSetter
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }

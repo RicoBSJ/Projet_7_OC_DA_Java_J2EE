@@ -35,7 +35,7 @@ values
 (nextval('edition_id_seq'), 'Editions du Rocher'),
 (nextval('edition_id_seq'), 'Signet');
 
-CREATE SEQUENCE IF NOT EXISTS user_account_id_seq;
+/*CREATE SEQUENCE IF NOT EXISTS user_account_id_seq;
 
 insert into user_account(
     id_user_account,
@@ -48,7 +48,7 @@ values
 (nextval('user_account_id_seq'), 'admin', 'admin', 'admin@gmail.com', 'admin'),
 (nextval('user_account_id_seq'), 'Elon', 'Musk', 'e.musk@gmail.com', 'eM86'),
 (nextval('user_account_id_seq'), 'Steve', 'Jobs', 's_jobs@gmail.com','sJ53'),
-(nextval('user_account_id_seq'), 'Jack', 'Ma', 'j-ma@gmail.com', 'jM68');
+(nextval('user_account_id_seq'), 'Jack', 'Ma', 'j-ma@gmail.com', 'jM68');*/
 
 CREATE SEQUENCE IF NOT EXISTS book_id_seq;
 
@@ -83,7 +83,7 @@ values
 (nextval('book_id_seq'), 3, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
 (nextval('book_id_seq'), 3, 'Le temps aboli', '2019-09-18', 3, 3, 3);
 
-CREATE SEQUENCE IF NOT EXISTS borrowing_id_seq;
+/*CREATE SEQUENCE IF NOT EXISTS borrowing_id_seq;
 
 insert into borrowing(
     id_borrowing,
@@ -95,9 +95,9 @@ insert into borrowing(
     user_account_borrowings
 )
 values
-(nextval('borrowing_id_seq'), 1, 1, '2020-11-10', '2020-12-10' , false, 1 );
+(nextval('borrowing_id_seq'), 1, 1, '2020-11-10', '2020-12-10' , false, 1 );*/
 
-CREATE SEQUENCE IF NOT EXISTS user_role_id_seq;
+/*CREATE SEQUENCE IF NOT EXISTS user_role_id_seq;
 
 insert into user_role(
     id_user_role,
@@ -105,16 +105,15 @@ insert into user_role(
 )
 values
 (nextval('user_role_id_seq'), 'ADMIN'),
-(nextval('user_role_id_seq'), 'USER');
+(nextval('user_role_id_seq'), 'USER');*/
 
-CREATE SEQUENCE IF NOT EXISTS user_account_user_role_list_id_seq;
+/*CREATE SEQUENCE IF NOT EXISTS user_account_user_role_list_id_seq;
 
 insert into user_account_user_role_list(
     user_account_id_user_account,
     user_role_list_id_user_role
 )
 values
-( 1, 1),
+( 1, 2),
 ( 2, 2),
-( 3, 2),
-( 4, 2);
+( 3, 2);*/
