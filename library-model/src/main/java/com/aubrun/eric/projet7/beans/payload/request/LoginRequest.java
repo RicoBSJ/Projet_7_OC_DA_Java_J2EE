@@ -1,10 +1,13 @@
-package com.aubrun.eric.projet7.templates;
+package com.aubrun.eric.projet7.beans.payload.request;
 
-public class RegisterForm {
+import javax.validation.constraints.NotBlank;
 
+public class LoginRequest {
+    @NotBlank
     private String username;
+
+    @NotBlank
     private String password;
-    private String repassword;
 
     public String getUsername() {
         return username;
@@ -20,13 +23,5 @@ public class RegisterForm {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRepassword() {
-        return repassword;
-    }
-
-    public void setRepassword(String repassword) {
-        this.repassword = repassword;
     }
 }

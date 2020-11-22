@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.UserAccount;
 import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
@@ -45,8 +44,8 @@ public class UserAccountService {
         userAccountRepository.deleteById(id);
     }
 
-    public UserAccount findByUserName(String username){
+    /*public UserAccount findByUserName(String username){
 
         return userAccountRepository.findByNameUser(username);
-    }
+    }*/
 }

@@ -4,19 +4,19 @@ import java.util.List;
 
 public class UserAccountDto {
 
-    private Integer userId;
+    private Long userId;
     private String firstName;
     private String nameUser;
     private String email;
     private String motDePasse;
     private List<BorrowingDto> borrowingDtoList;
-    private List<UserRoleDto> userRoleDtoList;
+    private List<RoleDto> roles;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -60,11 +60,11 @@ public class UserAccountDto {
         this.borrowingDtoList = borrowingDtoList;
     }
 
-    public List<UserRoleDto> getUserRoleDtoList() {
-        return userRoleDtoList;
+    public List<RoleDto> getRoles() {
+        return roles;
     }
 
-    public void setUserRoleDtoList(List<UserRoleDto> userRoleDtoList) {
-        this.userRoleDtoList = userRoleDtoList;
+    public void setRoles(List<RoleDto> roles) {
+        this.roles = roles;
     }
 }

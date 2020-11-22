@@ -14,7 +14,7 @@ public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_account_id_generator")
     @Column(name = "id_user_account")
-    private Integer userId;
+    private Long userId;
     @Column(name = "user_account_first_name")
     private String firstName;
     @Column(name = "user_account_last_name", unique = true)
@@ -26,25 +26,26 @@ public class UserAccount {
     @JoinColumn(name = "user_account_borrowings")
     @OneToMany
     private List<Borrowing> borrowingList;
-    @JoinColumn(name = "user_role_user_account")
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<UserRole> userRoleList;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
 
     public UserAccount() {
     }
 
-    public UserAccount(Integer userId, String nameUser, String motDePasse, List<UserRole> userRoleList) {
-        this.userId = userId;
+    public UserAccount(String nameUser, String email, String motDePasse) {
         this.nameUser = nameUser;
+        this.email = email;
         this.motDePasse = motDePasse;
-        this.userRoleList = userRoleList;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -71,10 +72,12 @@ public class UserAccount {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @JsonIgnore
     public String getMotDePasse() {
         return motDePasse;
     }
+
     @JsonSetter
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
@@ -88,12 +91,12 @@ public class UserAccount {
         this.borrowingList = borrowingList;
     }
 
-    public List<UserRole> getUserRoleList() {
-        return userRoleList;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setUserRoleList(List<UserRole> userRoleList) {
-        this.userRoleList = userRoleList;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -105,7 +108,6 @@ public class UserAccount {
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", borrowingList=" + borrowingList +
-                ", userRoleList=" + userRoleList +
                 '}';
     }
 }

@@ -1,34 +1,29 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.UserAccount;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import com.aubrun.eric.projet7.beans.UserAccount;
+import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final AccountService accountService;
+    private final UserAccountRepository userRepository;
 
-    public UserDetailsServiceImpl(AccountService accountService) {
-        this.accountService = accountService;
+    public UserDetailsServiceImpl(UserAccountRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserAccount userAccount = accountService.findUserByUserName(username);
-        if (userAccount == null) throw new UsernameNotFoundException(username);
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        userAccount.getUserRoleList().forEach(r->{
-            authorities.add(new SimpleGrantedAuthority(r.getUserRoleName()));
-        });
-        return new User(userAccount.getNameUser(), userAccount.getMotDePasse(), authorities);
+        UserAccount user = userRepository.findByNameUser(username);
+                /*.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));*/
+
+        return UserDetailsImpl.build(user);
     }
 }
