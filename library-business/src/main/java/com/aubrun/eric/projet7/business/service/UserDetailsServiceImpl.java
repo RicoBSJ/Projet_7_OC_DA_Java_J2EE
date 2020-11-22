@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.business.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,18 +12,14 @@ import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
-    private final UserAccountRepository userRepository;
-
-    public UserDetailsServiceImpl(UserAccountRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    UserAccountRepository userRepository;
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserAccount user = userRepository.findByNameUser(username);
-                /*.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));*/
+        UserAccount user = userRepository.findByNameUser(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
         return UserDetailsImpl.build(user);
     }

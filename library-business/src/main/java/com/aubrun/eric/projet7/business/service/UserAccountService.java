@@ -24,9 +24,9 @@ public class UserAccountService {
         return userAccountRepository.findAll().stream().map(UserAccountDtoMapper::toDto).collect(Collectors.toList());
     }
 
-    public int save(UserAccountDto newUser) {
+    public void save(UserAccountDto newUser) {
 
-        return userAccountRepository.save(UserAccountDtoMapper.toEntity(newUser)).getUserId();
+        userAccountRepository.save(UserAccountDtoMapper.toEntity(newUser)).getUserId();
     }
 
     public UserAccountDto update(UserAccountDto newUser) {

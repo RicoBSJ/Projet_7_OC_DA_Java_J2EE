@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet7.business.dto;
 
 import java.util.List;
+import java.util.Set;
 
 public class UserAccountDto {
 
@@ -10,7 +11,7 @@ public class UserAccountDto {
     private String email;
     private String motDePasse;
     private List<BorrowingDto> borrowingDtoList;
-    private List<RoleDto> roles;
+    private Set<RoleDto> roleDtos;
 
     public Long getUserId() {
         return userId;
@@ -60,11 +61,11 @@ public class UserAccountDto {
         this.borrowingDtoList = borrowingDtoList;
     }
 
-    public List<RoleDto> getRoles() {
-        return roles;
+    public Set<RoleDto> getRoleDtos() {
+        return roleDtos;
     }
 
-    public void setRoles(List<RoleDto> roles) {
-        this.roles = roles;
+    public void setRoleDtos(Set<RoleDto> roleDtos) {
+        this.roleDtos = roleDtos;
     }
 }

@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @SequenceGenerator(name = "user_account_id_generator", sequenceName = "user_account_id_seq", allocationSize = 1)
@@ -26,11 +28,12 @@ public class UserAccount {
     @JoinColumn(name = "user_account_borrowings")
     @OneToMany
     private List<Borrowing> borrowingList;
+    @JoinColumn(name = "user_roles")
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles",
+    /*@JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
+            inverseJoinColumns = @JoinColumn(name = "role_id"))*/
+    private Set<Role> roles = new HashSet<>();
 
     public UserAccount() {
     }
@@ -91,11 +94,11 @@ public class UserAccount {
         this.borrowingList = borrowingList;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -108,6 +111,7 @@ public class UserAccount {
                 ", email='" + email + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 ", borrowingList=" + borrowingList +
+                ", roles=" + roles +
                 '}';
     }
 }
