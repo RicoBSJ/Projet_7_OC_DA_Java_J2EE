@@ -1,19 +1,21 @@
 package com.aubrun.eric.projet7.business.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.aubrun.eric.projet7.beans.UserAccount;
+import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aubrun.eric.projet7.beans.UserAccount;
-import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    UserAccountRepository userRepository;
+
+    private final UserAccountRepository userRepository;
+
+    public UserDetailsServiceImpl(UserAccountRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     @Transactional

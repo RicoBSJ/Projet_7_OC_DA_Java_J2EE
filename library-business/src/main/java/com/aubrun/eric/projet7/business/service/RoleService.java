@@ -1,7 +1,5 @@
 package com.aubrun.eric.projet7.business.service;
 
-import com.aubrun.eric.projet7.beans.ERole;
-import com.aubrun.eric.projet7.beans.Role;
 import com.aubrun.eric.projet7.business.dto.RoleDto;
 import com.aubrun.eric.projet7.business.mapper.RoleDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.RoleRepository;
@@ -45,9 +43,4 @@ public class RoleService {
 
         roleRepository.deleteById(id);
     }
-
-    /*public Role findByRoleName(ERole username){
-
-        return roleRepository.findByRoleName(username);
-    }*/
 }
