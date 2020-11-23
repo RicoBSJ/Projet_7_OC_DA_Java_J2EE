@@ -11,10 +11,9 @@ public class UserAccountDtoMapper {
 
         UserAccountDto dto = new UserAccountDto();
         dto.setUserId(userAccount.getUserId());
-        dto.setFirstName(userAccount.getFirstName());
-        dto.setNameUser(userAccount.getNameUser());
+        dto.setUsername(userAccount.getUsername());
         dto.setEmail(userAccount.getEmail());
-        dto.setMotDePasse(userAccount.getMotDePasse());
+        dto.setPassword(userAccount.getPassword());
         dto.setBorrowingDtoList(userAccount.getBorrowingList().stream().map(BorrowingDtoMapper::toDto).collect(Collectors.toList()));
         dto.setRoleDtos(userAccount.getRoles().stream().map(RoleDtoMapper::toDto).collect(Collectors.toSet()));
         return dto;
@@ -24,10 +23,9 @@ public class UserAccountDtoMapper {
 
         UserAccount entity = new UserAccount();
         entity.setUserId(userAccountDto.getUserId());
-        entity.setFirstName(userAccountDto.getFirstName());
-        entity.setNameUser(userAccountDto.getNameUser());
+        entity.setUsername(userAccountDto.getUsername());
         entity.setEmail(userAccountDto.getEmail());
-        entity.setMotDePasse(userAccountDto.getMotDePasse());
+        entity.setPassword(userAccountDto.getPassword());
         entity.setBorrowingList(userAccountDto.getBorrowingDtoList().stream().map(BorrowingDtoMapper::toEntity).collect(Collectors.toList()));
         entity.setRoles(userAccountDto.getRoleDtos().stream().map(RoleDtoMapper::toEntity).collect(Collectors.toSet()));
         return entity;

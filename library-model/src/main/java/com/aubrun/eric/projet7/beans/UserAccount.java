@@ -1,8 +1,5 @@
 package com.aubrun.eric.projet7.beans;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
@@ -17,31 +14,28 @@ public class UserAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_account_id_generator")
     @Column(name = "id_user_account")
     private Long userId;
-    @Column(name = "user_account_first_name")
-    private String firstName;
     @Column(name = "user_account_last_name", unique = true)
-    private String nameUser;
+    private String username;
     @Column(name = "user_account_email")
     private String email;
     @Column(name = "user_account_mot_de_passe")
-    private String motDePasse;
+    private String password;
     @JoinColumn(name = "user_account_borrowings")
     @OneToMany
     private List<Borrowing> borrowingList;
-    @JoinColumn(name = "user_roles")
     @ManyToMany(fetch = FetchType.LAZY)
-    /*@JoinTable(name = "user_roles",
+    @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))*/
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
     public UserAccount() {
     }
 
-    public UserAccount(String nameUser, String email, String motDePasse) {
-        this.nameUser = nameUser;
+    public UserAccount(String username, String email, String password) {
+        this.username = username;
         this.email = email;
-        this.motDePasse = motDePasse;
+        this.password = password;
     }
 
     public Long getUserId() {
@@ -52,20 +46,12 @@ public class UserAccount {
         this.userId = userId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getNameUser() {
-        return nameUser;
-    }
-
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -76,14 +62,12 @@ public class UserAccount {
         this.email = email;
     }
 
-    @JsonIgnore
-    public String getMotDePasse() {
-        return motDePasse;
+    public String getPassword() {
+        return password;
     }
 
-    @JsonSetter
-    public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Borrowing> getBorrowingList() {
@@ -106,10 +90,9 @@ public class UserAccount {
     public String toString() {
         return "UserAccount{" +
                 "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", nameUser='" + nameUser + '\'' +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", motDePasse='" + motDePasse + '\'' +
+                ", password='" + password + '\'' +
                 ", borrowingList=" + borrowingList +
                 ", roles=" + roles +
                 '}';

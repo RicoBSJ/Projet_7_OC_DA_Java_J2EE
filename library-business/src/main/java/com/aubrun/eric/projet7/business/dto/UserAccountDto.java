@@ -6,10 +6,9 @@ import java.util.Set;
 public class UserAccountDto {
 
     private Long userId;
-    private String firstName;
-    private String nameUser;
+    private String username;
     private String email;
-    private String motDePasse;
+    private String password;
     private List<BorrowingDto> borrowingDtoList;
     private Set<RoleDto> roleDtos;
 
@@ -21,20 +20,12 @@ public class UserAccountDto {
         this.userId = userId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getNameUser() {
-        return nameUser;
-    }
-
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -45,12 +36,12 @@ public class UserAccountDto {
         this.email = email;
     }
 
-    public String getMotDePasse() {
-        return motDePasse;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<BorrowingDto> getBorrowingDtoList() {

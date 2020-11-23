@@ -1,12 +1,12 @@
 package com.aubrun.eric.projet7.beans.payload.request;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class LoginRequest {
-    @NotBlank
+    @NotNull
     private String username;
 
-    @NotBlank
+    @NotNull
     private String password;
 
     public String getUsername() {
