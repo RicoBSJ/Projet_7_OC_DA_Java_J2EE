@@ -42,7 +42,7 @@ public class BorrowingService {
         borrowing.setBookBorrowing(book);
         borrowing.setBeginDate(LocalDate.now());
         borrowing.setEndDate(LocalDate.now().plusWeeks(4));
-        borrowing.setRenewal(false);
+        borrowing.setRenewal(true);
         book.setQuantity(book.getQuantity() - 1);
         return borrowingRepository.save(borrowing).getBorrowingId();
     }
