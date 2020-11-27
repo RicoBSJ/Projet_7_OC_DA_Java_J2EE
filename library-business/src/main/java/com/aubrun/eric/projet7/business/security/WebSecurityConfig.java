@@ -2,7 +2,6 @@ package com.aubrun.eric.projet7.business.security;
 
 import com.aubrun.eric.projet7.business.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -22,8 +21,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
-@Configuration
 /*@ComponentScan(basePackages = { "com.aubrun.eric.projet7.controllers" })*/
+@Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
         // securedEnabled = true,
