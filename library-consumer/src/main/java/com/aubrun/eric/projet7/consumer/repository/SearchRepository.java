@@ -27,17 +27,17 @@ public class SearchRepository {
             q += " AND b.title LIKE :title";
             parameters.put("title", "%" + searchBook.getSearchBookTitle() + "%");
         }
-        if (searchBook.getSearchBookAuthorFirstName() != "" && searchBook.getSearchBookAuthorFirstName() != null) {
-            q += " AND b.bookAuthor.firstName LIKE :firstName";
-            parameters.put("firstName", "%" + searchBook.getSearchBookAuthorFirstName() + "%");
-        }
-        if (searchBook.getSearchBookAuthorLastName() != "" && searchBook.getSearchBookAuthorLastName() != null) {
-            q += " AND b.bookAuthor.lastName LIKE :lastName";
-            parameters.put("lastName", "%" + searchBook.getSearchBookAuthorLastName() + "%");
+        if (searchBook.getSearchBookAuthorName() != "" && searchBook.getSearchBookAuthorName() != null) {
+            q += " AND (b.bookAuthor.lastName LIKE :name or b.bookAuthor.firstName LIKE :name)";
+            parameters.put("name", "%" + searchBook.getSearchBookAuthorName() + "%");
         }
         if (searchBook.getSearchBookPublishingHouse() != "" && searchBook.getSearchBookPublishingHouse() != null) {
             q += " AND b.bookEdition.nameEdition LIKE :edition";
             parameters.put("edition", "%" + searchBook.getSearchBookPublishingHouse() + "%");
+        }
+        if (searchBook.getSearchBookReleaseDate() != "" && searchBook.getSearchBookReleaseDate() != null) {
+            q += " AND b.yearBook LIKE :year";
+            parameters.put("year", "%" + searchBook.getSearchBookReleaseDate() + "%");
         }
         Query<Book> query = session.createQuery(q);
         query.setProperties(parameters);

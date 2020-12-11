@@ -10,8 +10,7 @@ public class SearchBookDtoMapper {
         SearchBookDto dto = new SearchBookDto();
         dto.setSearchBookId(searchBook.getSearchBookId());
         dto.setSearchBookTitle(searchBook.getSearchBookTitle());
-        dto.setSearchBookAuthorFirstName(searchBook.getSearchBookAuthorFirstName());
-        dto.setSearchBookAuthorLastName(searchBook.getSearchBookAuthorLastName());
+        dto.setSearchBookAuthorName(searchBook.getSearchBookAuthorName());
         dto.setSearchBookPublishingHouse(searchBook.getSearchBookPublishingHouse());
         dto.setSearchBookReleaseDate(searchBook.getSearchBookReleaseDate());
         return dto;
@@ -22,8 +21,7 @@ public class SearchBookDtoMapper {
         SearchBook entity = new SearchBook();
         entity.setSearchBookId(searchBookDto.getSearchBookId());
         entity.setSearchBookTitle(searchBookDto.getSearchBookTitle());
-        entity.setSearchBookAuthorFirstName(searchBookDto.getSearchBookAuthorFirstName());
-        entity.setSearchBookAuthorLastName(searchBookDto.getSearchBookAuthorLastName());
+        entity.setSearchBookAuthorName(searchBookDto.getSearchBookAuthorName());
         entity.setSearchBookPublishingHouse(searchBookDto.getSearchBookPublishingHouse());
         entity.setSearchBookReleaseDate(searchBookDto.getSearchBookReleaseDate());
         return entity;
