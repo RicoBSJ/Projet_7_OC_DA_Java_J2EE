@@ -35,7 +35,7 @@ public class SearchRepository {
             q += " AND b.bookEdition.nameEdition LIKE :edition";
             parameters.put("edition", "%" + searchBook.getSearchBookPublishingHouse() + "%");
         }
-        if (searchBook.getSearchBookReleaseDate() != "" && searchBook.getSearchBookReleaseDate() != null) {
+        if (searchBook.getSearchBookReleaseDate() != null) {
             q += " AND b.yearBook LIKE :year";
             parameters.put("year", "%" + searchBook.getSearchBookReleaseDate() + "%");
         }

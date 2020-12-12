@@ -7,7 +7,7 @@ public class BookDto {
     private Integer bookId;
     private String title;
     private Integer quantity;
-    private Date yearBook;
+    private String yearBook;
     private AuthorDto bookAuthor;
     private CategoryDto bookCategory;
     private EditionDto bookEdition;
@@ -36,11 +36,11 @@ public class BookDto {
         this.quantity = quantity;
     }
 
-    public Date getYearBook() {
+    public String getYearBook() {
         return yearBook;
     }
 
-    public void setYearBook(Date yearBook) {
+    public void setYearBook(String yearBook) {
         this.yearBook = yearBook;
     }
 

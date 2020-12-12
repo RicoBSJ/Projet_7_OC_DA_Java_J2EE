@@ -17,7 +17,7 @@ public class Book {
     @Column(name = "book_quantity")
     private Integer quantity;
     @Column(name = "book_year")
-    private Date yearBook;
+    private String yearBook;
     @JoinColumn(name = "id_author")
     @ManyToOne
     private Author bookAuthor;
@@ -55,11 +55,11 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public Date getYearBook() {
+    public String getYearBook() {
         return yearBook;
     }
 
-    public void setYearBook(Date yearBook) {
+    public void setYearBook(String yearBook) {
         this.yearBook = yearBook;
     }
 
