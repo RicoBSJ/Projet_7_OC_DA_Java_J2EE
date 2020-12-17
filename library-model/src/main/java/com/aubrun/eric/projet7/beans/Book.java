@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet7.beans;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @SequenceGenerator(name = "book_id_generator", sequenceName = "book_id_seq", allocationSize = 1)
