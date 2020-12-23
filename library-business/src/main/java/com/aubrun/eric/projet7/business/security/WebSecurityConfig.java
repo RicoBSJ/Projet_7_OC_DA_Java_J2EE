@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .antMatchers(HttpMethod.GET, "/authors/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/users/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/books/search/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/borrowings/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/borrowings/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();
