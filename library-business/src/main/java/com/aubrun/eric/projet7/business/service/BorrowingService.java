@@ -45,8 +45,10 @@ public class BorrowingService {
 
     public int save(BorrowingDto newBorrowing) {
         Borrowing borrowing = BorrowingDtoMapper.toEntity(newBorrowing);
+        UserAccount userAccount = userAccountRepository.findById(newBorrowing.getUserAccountBorrowing().getUserId()).orElseThrow(()-> new RuntimeException("Vous avez déjà emprunté cet ouvrage"));
         Book book = bookRepository.findById(newBorrowing.getBookBorrowing().getBookId()).orElseThrow(() -> new RuntimeException("L'ouvrage que vous souhaitez emprunter n'est pas disponible"));
         borrowing.setBookBorrowing(book);
+        borrowing.setUserAccountBorrowing(userAccount);
         borrowing.setBeginDate(LocalDate.now());
         borrowing.setEndDate(LocalDate.now().plusWeeks(4));
         borrowing.setRenewal(true);
