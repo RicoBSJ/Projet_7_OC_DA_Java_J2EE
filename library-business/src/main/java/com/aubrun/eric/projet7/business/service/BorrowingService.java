@@ -2,15 +2,20 @@ package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.beans.Borrowing;
+import com.aubrun.eric.projet7.beans.UserAccount;
+import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
+import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.mapper.BorrowingDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import com.aubrun.eric.projet7.consumer.repository.BorrowingRepository;
+import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,10 +24,12 @@ public class BorrowingService {
 
     private final BorrowingRepository borrowingRepository;
     private final BookRepository bookRepository;
+    private final UserAccountRepository userAccountRepository;
 
-    public BorrowingService(BorrowingRepository borrowingRepository, BookRepository bookRepository) {
+    public BorrowingService(BorrowingRepository borrowingRepository, BookRepository bookRepository, UserAccountRepository userAccountRepository) {
         this.borrowingRepository = borrowingRepository;
         this.bookRepository = bookRepository;
+        this.userAccountRepository = userAccountRepository;
     }
 
 

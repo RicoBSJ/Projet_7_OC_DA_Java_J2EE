@@ -5,18 +5,18 @@ import java.util.Set;
 
 public class UserAccountDto {
 
-    private Long userId;
+    private Integer userId;
     private String username;
     private String email;
     private String password;
     private List<BorrowingDto> borrowingDtoList;
     private Set<RoleDto> roleDtos;
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

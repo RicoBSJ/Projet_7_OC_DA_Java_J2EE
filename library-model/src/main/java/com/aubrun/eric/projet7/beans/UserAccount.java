@@ -13,7 +13,7 @@ public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_account_id_generator")
     @Column(name = "id_user_account")
-    private Long userId;
+    private Integer userId;
     @Column(name = "user_account_last_name", unique = true)
     private String username;
     @Column(name = "user_account_email")
@@ -38,11 +38,11 @@ public class UserAccount {
         this.password = password;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
