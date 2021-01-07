@@ -33,9 +33,9 @@ public class BorrowingController {
     }
 
     @PostMapping("/")
-    public void createBorrowing(@RequestBody BorrowingDto borrowingDto) {
+    public void createBorrowing(@PathVariable(value = "idBook") int bookId, @RequestBody BorrowingDto borrowingDto) {
 
-        borrowingService.save(borrowingDto);
+        borrowingService.save(borrowingDto, bookId);
     }
 
     @PutMapping("/{id}")

@@ -43,7 +43,33 @@ public class BorrowingService {
         return BorrowingDtoMapper.toDto(borrowingRepository.findById(borrowingId).get());
     }
 
-    public int save(BorrowingDto newBorrowing) {
+    public int save(BorrowingDto newBorrowing, int bookId) {
+        Borrowing borrowing = BorrowingDtoMapper.toEntity(newBorrowing);
+        UserAccount userAccount = userAccountRepository.findById(newBorrowing.getUserAccountBorrowing().getUserId()).orElseThrow(()-> new RuntimeException("Vous avez déjà emprunté cet ouvrage"));
+        Book book = bookRepository.findBookByBookId(bookId).get();
+        borrowing.setBookBorrowing(book);
+        borrowing.setUserAccountBorrowing(userAccount);
+        borrowing.setBeginDate(LocalDate.now());
+        borrowing.setEndDate(LocalDate.now().plusWeeks(4));
+        borrowing.setRenewal(true);
+        book.setQuantity(book.getQuantity() - 1);
+        return borrowingRepository.save(borrowing).getBorrowingId();
+    }
+
+    /*public int save(BorrowingDto newBorrowing, int bookId, int userId) {
+        Borrowing borrowing = BorrowingDtoMapper.toEntity(newBorrowing);
+        UserAccount userAccount = userAccountRepository.findByUserId(userId).get();
+        Book book = bookRepository.findBookByBookId(bookId).get();
+        borrowing.setBookBorrowing(book);
+        borrowing.setUserAccountBorrowing(userAccount);
+        borrowing.setBeginDate(LocalDate.now());
+        borrowing.setEndDate(LocalDate.now().plusWeeks(4));
+        borrowing.setRenewal(true);
+        book.setQuantity(book.getQuantity() - 1);
+        return borrowingRepository.save(borrowing).getBorrowingId();
+    }*/
+
+    /*public int save(BorrowingDto newBorrowing) {
         Borrowing borrowing = BorrowingDtoMapper.toEntity(newBorrowing);
         UserAccount userAccount = userAccountRepository.findById(newBorrowing.getUserAccountBorrowing().getUserId()).orElseThrow(()-> new RuntimeException("Vous avez déjà emprunté cet ouvrage"));
         Book book = bookRepository.findById(newBorrowing.getBookBorrowing().getBookId()).orElseThrow(() -> new RuntimeException("L'ouvrage que vous souhaitez emprunter n'est pas disponible"));
@@ -54,7 +80,7 @@ public class BorrowingService {
         borrowing.setRenewal(true);
         book.setQuantity(book.getQuantity() - 1);
         return borrowingRepository.save(borrowing).getBorrowingId();
-    }
+    }*/
 
     public void update(Integer borrowingId) {
         Borrowing borrowing = borrowingRepository.findById(borrowingId).orElseThrow(()->new RuntimeException("La période de rallonge d'emprunt a déjà été effectuée"));
