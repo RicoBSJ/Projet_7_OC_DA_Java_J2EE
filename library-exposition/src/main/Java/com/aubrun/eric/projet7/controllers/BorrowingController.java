@@ -32,7 +32,7 @@ public class BorrowingController {
         return this.borrowingService.findById(borrowingId);
     }
 
-    @PostMapping("/")
+    @PostMapping("/{id}")
     public void createBorrowing(@PathVariable(value = "idBook") int bookId, @RequestBody BorrowingDto borrowingDto) {
 
         borrowingService.save(borrowingDto, bookId);
