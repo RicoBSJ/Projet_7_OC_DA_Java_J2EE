@@ -1,11 +1,13 @@
 package com.aubrun.eric.projet7.controllers;
 
+import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
 import com.aubrun.eric.projet7.business.service.BookService;
 import com.aubrun.eric.projet7.business.service.BorrowingService;
 import com.aubrun.eric.projet7.business.service.UserAccountService;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -32,10 +34,10 @@ public class BorrowingController {
         return this.borrowingService.findById(borrowingId);
     }
 
-    @PostMapping("/{id}")
-    public void createBorrowing(@PathVariable(value = "idBook") int bookId, @RequestBody BorrowingDto borrowingDto) {
+    @PostMapping("/")
+    public void createBorrowing(Principal principal, @RequestBody BookDto bookDto) {
 
-        borrowingService.save(borrowingDto, bookId);
+        borrowingService.save(bookDto.getBookId(), principal.getName());
     }
 
     @PutMapping("/{id}")

@@ -43,7 +43,7 @@ public class BorrowingService {
         return BorrowingDtoMapper.toDto(borrowingRepository.findById(borrowingId).get());
     }
 
-    public int save(BorrowingDto newBorrowing, int bookId) {
+    /*public int save(BorrowingDto newBorrowing, int bookId) {
         Borrowing borrowing = BorrowingDtoMapper.toEntity(newBorrowing);
         UserAccount userAccount = userAccountRepository.findById(newBorrowing.getUserAccountBorrowing().getUserId()).orElseThrow(()-> new RuntimeException("Vous avez déjà emprunté cet ouvrage"));
         Book book = bookRepository.findBookByBookId(bookId).get();
@@ -54,20 +54,21 @@ public class BorrowingService {
         borrowing.setRenewal(true);
         book.setQuantity(book.getQuantity() - 1);
         return borrowingRepository.save(borrowing).getBorrowingId();
-    }
+    }*/
 
-    /*public int save(BorrowingDto newBorrowing, int bookId, int userId) {
-        Borrowing borrowing = BorrowingDtoMapper.toEntity(newBorrowing);
-        UserAccount userAccount = userAccountRepository.findByUserId(userId).get();
+    public void save(int bookId, String userName) {
+        UserAccount userAccount = userAccountRepository.findByUsername(userName).get();
         Book book = bookRepository.findBookByBookId(bookId).get();
-        borrowing.setBookBorrowing(book);
+        Borrowing borrowing = new Borrowing();
         borrowing.setUserAccountBorrowing(userAccount);
+        borrowing.setBookBorrowing(book);
         borrowing.setBeginDate(LocalDate.now());
         borrowing.setEndDate(LocalDate.now().plusWeeks(4));
-        borrowing.setRenewal(true);
+        borrowing.setRenewal(false);
         book.setQuantity(book.getQuantity() - 1);
-        return borrowingRepository.save(borrowing).getBorrowingId();
-    }*/
+        borrowingRepository.save(borrowing);
+        bookRepository.save(book);
+    }
 
     /*public int save(BorrowingDto newBorrowing) {
         Borrowing borrowing = BorrowingDtoMapper.toEntity(newBorrowing);
