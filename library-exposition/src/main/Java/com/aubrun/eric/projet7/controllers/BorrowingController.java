@@ -2,7 +2,6 @@ package com.aubrun.eric.projet7.controllers;
 
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
-import com.aubrun.eric.projet7.business.service.BookService;
 import com.aubrun.eric.projet7.business.service.BorrowingService;
 import com.aubrun.eric.projet7.business.service.UserAccountService;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +14,9 @@ import java.util.List;
 public class BorrowingController {
 
     private final BorrowingService borrowingService;
-    private final BookService bookService;
-    private final UserAccountService userAccountService;
 
-    public BorrowingController(BorrowingService borrowingService, BookService bookService, UserAccountService userAccountService) {
+    public BorrowingController(BorrowingService borrowingService, UserAccountService userAccountService) {
         this.borrowingService = borrowingService;
-        this.bookService = bookService;
-        this.userAccountService = userAccountService;
     }
 
     @GetMapping("/")

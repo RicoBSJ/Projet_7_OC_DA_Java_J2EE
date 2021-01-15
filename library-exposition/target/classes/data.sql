@@ -46,7 +46,7 @@ insert into user_account(
 values
 (nextval('user_account_id_seq'), 'Jobs', 's_jobs@gmail.com','sJ53'),
 (nextval('user_account_id_seq'), 'Musk', 'e.musk@gmail.com', 'eM86'),
-(nextval('user_account_id_seq'), 'Ma', 'j-ma@gmail.com', 'jM68');
+(nextval('user_account_id_seq'), 'Ma', 'j-ma@gmail.com', '$2a$10$mBSYZQGGtSQsImgjeOMbGuJiw4Z4FYKBtvURKC4.w6a1TokVYjHGm');
 
 CREATE SEQUENCE IF NOT EXISTS book_id_seq;
 
