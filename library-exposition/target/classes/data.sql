@@ -44,9 +44,15 @@ insert into user_account(
     user_account_mot_de_passe
 )
 values
-(nextval('user_account_id_seq'), 'Jobs', 's_jobs@gmail.com','sJ53'),
-(nextval('user_account_id_seq'), 'Musk', 'e.musk@gmail.com', 'eM86'),
-(nextval('user_account_id_seq'), 'Ma', 'j-ma@gmail.com', '$2a$10$mBSYZQGGtSQsImgjeOMbGuJiw4Z4FYKBtvURKC4.w6a1TokVYjHGm');
+(nextval('user_account_id_seq'), 'Jobs', 's_jobs@gmail.com','$2a$10$fcEe3X.fC7QxmSj7hRZJdujuZ8UavlkhewM37rcjJWdRtQt.ROJPK'),
+(nextval('user_account_id_seq'), 'Musk', 'e.musk@gmail.com', '$2a$10$PBcySTS3eGN69mRzF6BWx.hs7aayN0FIJqLY16ZsKen4S0ikAyL9G'),
+(nextval('user_account_id_seq'), 'Ma', 'j-ma@gmail.com', '$2a$10$c/Iju8gfO4wokM2nY8B6V.aJP9plWIgSJ.4xzrj27UZQ5TP9cxeeq');
+
+/*
+ sJ53
+ eM86
+ jM68
+ */
 
 CREATE SEQUENCE IF NOT EXISTS book_id_seq;
 
