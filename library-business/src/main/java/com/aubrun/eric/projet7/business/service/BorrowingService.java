@@ -13,6 +13,7 @@ import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -33,9 +34,9 @@ public class BorrowingService {
     }
 
 
-    public List<BorrowingDto> findAll() {
-
-        return borrowingRepository.findAll().stream().map(BorrowingDtoMapper::toDto).collect(Collectors.toList());
+    public List<BorrowingDto> findAll(Principal principal) {
+        UserAccount userAccount = userAccountRepository.findByUsername(principal.getName()).orElseThrow(RuntimeException::new);
+        return borrowingRepository.findAllUserBorrowing(userAccount).stream().map(BorrowingDtoMapper::toDto).collect(Collectors.toList());
     }
 
     public BorrowingDto findById(int borrowingId) {

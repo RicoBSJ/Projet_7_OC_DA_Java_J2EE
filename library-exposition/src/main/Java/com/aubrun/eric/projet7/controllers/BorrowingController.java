@@ -20,8 +20,8 @@ public class BorrowingController {
     }
 
     @GetMapping("/")
-    public List<BorrowingDto> getAllBorrowings() {
-        return this.borrowingService.findAll();
+    public List<BorrowingDto> getAllBorrowings(Principal principal) {
+        return this.borrowingService.findAll(principal);
     }
 
     @GetMapping("/{id}")
