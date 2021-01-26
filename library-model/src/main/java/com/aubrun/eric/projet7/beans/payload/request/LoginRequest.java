@@ -3,9 +3,9 @@ package com.aubrun.eric.projet7.beans.payload.request;
 import javax.validation.constraints.NotNull;
 
 public class LoginRequest {
+
     @NotNull
     private String username;
-
     @NotNull
     private String password;
 
