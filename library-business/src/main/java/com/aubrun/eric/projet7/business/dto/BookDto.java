@@ -1,7 +1,5 @@
 package com.aubrun.eric.projet7.business.dto;
 
-import java.util.Date;
-
 public class BookDto {
 
     private Integer bookId;
