@@ -61,6 +61,7 @@ public class BorrowingService {
     public void update(Integer borrowingId) {
         Borrowing borrowing = borrowingRepository.findById(borrowingId).orElseThrow(()->new RuntimeException("La période de rallonge d'emprunt a déjà été effectuée"));
         borrowing.setEndDate(borrowing.getEndDate().plusWeeks(4));
+        borrowing.setRenewal(true);
         borrowingRepository.save(borrowing);
     }
 
