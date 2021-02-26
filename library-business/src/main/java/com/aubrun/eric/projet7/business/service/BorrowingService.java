@@ -3,6 +3,7 @@ package com.aubrun.eric.projet7.business.service;
 import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.beans.Borrowing;
 import com.aubrun.eric.projet7.beans.UserAccount;
+import com.aubrun.eric.projet7.business.dto.BatchDto;
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
 import com.aubrun.eric.projet7.business.dto.UserAccountDto;
@@ -15,9 +16,14 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toList;
 
 @Service
 @Transactional
@@ -36,7 +42,7 @@ public class BorrowingService {
 
     public List<BorrowingDto> findAll(Principal principal) {
         UserAccount userAccount = userAccountRepository.findByUsername(principal.getName()).orElseThrow(RuntimeException::new);
-        return borrowingRepository.findAllUserBorrowing(userAccount).stream().map(BorrowingDtoMapper::toDto).collect(Collectors.toList());
+        return borrowingRepository.findAllUserBorrowing(userAccount).stream().map(BorrowingDtoMapper::toDto).collect(toList());
     }
 
     public BorrowingDto findById(int borrowingId) {
@@ -70,8 +76,17 @@ public class BorrowingService {
         borrowingRepository.deleteById(borrowingId);
     }
 
-    public List<BorrowingDto> findLateBorrowingDate(Principal principal){
-        UserAccount userAccount = userAccountRepository.findByUsername(principal.getName()).orElseThrow(RuntimeException::new);
-        return borrowingRepository.findBorrowingByEndDateAndUserAccountBorrowing(userAccount).stream().map(BorrowingDtoMapper::toDto).collect(Collectors.toList());
+    public List<BatchDto> findLateBorrowingDate(){
+        List<Borrowing> list = borrowingRepository.findBorrowingByEndDateAndUserAccountBorrowing(LocalDate.now());
+        HashMap<UserAccount, List<Borrowing>> map = list.stream().collect(groupingBy(Borrowing::getUserAccountBorrowing, HashMap::new, toList()));
+        return map.entrySet().stream().map(this::mapBatchDto).collect(toList());
+    }
+
+    private BatchDto mapBatchDto(Map.Entry<UserAccount,List<Borrowing>> entry){
+        BatchDto batchDto = new BatchDto();
+        batchDto.setUsername(entry.getKey().getUsername());
+        batchDto.setEmail(entry.getKey().getEmail());
+        batchDto.setBorrowings(entry.getValue().stream().map(BorrowingDtoMapper::toDto).collect(toList()));
+        return batchDto;
     }
 }

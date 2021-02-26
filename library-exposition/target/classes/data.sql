@@ -99,15 +99,16 @@ insert into borrowing(
     user_account_borrowings
 )
 values
-(nextval('borrowing_id_seq'), 1, 1, '2020-01-10', '2020-02-10' , false, 1),
-(nextval('borrowing_id_seq'), 2, 1, '2020-02-10', '2020-03-10' , false, 1),
-(nextval('borrowing_id_seq'), 3, 1, '2020-03-10', '2020-04-10' , false, 1),
-(nextval('borrowing_id_seq'), 4, 2, '2020-04-10', '2020-05-10' , false, 2),
-(nextval('borrowing_id_seq'), 5, 2, '2020-05-10', '2020-06-10' , false, 2),
-(nextval('borrowing_id_seq'), 6, 2, '2020-06-10', '2020-07-10' , false, 2),
-(nextval('borrowing_id_seq'), 7, 3, '2020-07-10', '2020-08-10' , false, 3),
-(nextval('borrowing_id_seq'), 8, 3, '2020-08-10', '2020-09-10' , false, 3),
-(nextval('borrowing_id_seq'), 9, 3, '2020-09-10', '2020-10-10' , false, 3);
+(nextval('borrowing_id_seq'), 1, 1, '2021-01-10', '2021-02-10' , false, 1),
+(nextval('borrowing_id_seq'), 8, 1, '2021-01-10', '2021-02-10' , false, 1),
+(nextval('borrowing_id_seq'), 2, 1, '2021-02-10', '2021-03-10' , false, 1),
+(nextval('borrowing_id_seq'), 3, 1, '2021-03-10', '2021-04-10' , false, 1),
+(nextval('borrowing_id_seq'), 4, 2, '2021-01-11', '2021-02-11' , false, 2),
+(nextval('borrowing_id_seq'), 5, 2, '2021-02-11', '2021-03-11' , false, 2),
+(nextval('borrowing_id_seq'), 6, 2, '2021-03-11', '2021-04-11' , false, 2),
+(nextval('borrowing_id_seq'), 7, 3, '2021-01-12', '2021-02-12' , false, 3),
+(nextval('borrowing_id_seq'), 8, 3, '2021-02-12', '2021-03-12' , false, 3),
+(nextval('borrowing_id_seq'), 9, 3, '2021-03-12', '2021-04-12' , false, 3);
 
 CREATE SEQUENCE IF NOT EXISTS user_role_id_seq;
 

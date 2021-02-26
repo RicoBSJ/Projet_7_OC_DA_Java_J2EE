@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .antMatchers(HttpMethod.GET, "/authors/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/books/search/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/borrowings/lateDate").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

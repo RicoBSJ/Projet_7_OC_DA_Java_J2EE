@@ -100,6 +100,7 @@ insert into borrowing(
 )
 values
 (nextval('borrowing_id_seq'), 1, 1, '2021-01-10', '2021-02-10' , false, 1),
+(nextval('borrowing_id_seq'), 8, 1, '2021-01-10', '2021-02-10' , false, 1),
 (nextval('borrowing_id_seq'), 2, 1, '2021-02-10', '2021-03-10' , false, 1),
 (nextval('borrowing_id_seq'), 3, 1, '2021-03-10', '2021-04-10' , false, 1),
 (nextval('borrowing_id_seq'), 4, 2, '2021-01-11', '2021-02-11' , false, 2),

@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.controllers;
 
+import com.aubrun.eric.projet7.business.dto.BatchDto;
 import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
 import com.aubrun.eric.projet7.business.service.BorrowingService;
@@ -47,7 +48,7 @@ public class BorrowingController {
     }
 
     @GetMapping("/lateDate")
-    public List<BorrowingDto> lateBorrowingDate(Principal principal){
-        return this.borrowingService.findLateBorrowingDate(principal);
+    public List<BatchDto> lateBorrowingDate(){
+        return this.borrowingService.findLateBorrowingDate();
     }
 }
