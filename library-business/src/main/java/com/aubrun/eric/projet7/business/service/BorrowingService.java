@@ -69,4 +69,9 @@ public class BorrowingService {
 
         borrowingRepository.deleteById(borrowingId);
     }
+
+    public List<BorrowingDto> findLateBorrowingDate(Principal principal){
+        UserAccount userAccount = userAccountRepository.findByUsername(principal.getName()).orElseThrow(RuntimeException::new);
+        return borrowingRepository.findBorrowingByEndDateAndUserAccountBorrowing(userAccount).stream().map(BorrowingDtoMapper::toDto).collect(Collectors.toList());
+    }
 }

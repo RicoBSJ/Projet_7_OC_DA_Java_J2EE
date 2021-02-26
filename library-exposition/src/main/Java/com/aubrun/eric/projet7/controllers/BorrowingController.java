@@ -45,4 +45,9 @@ public class BorrowingController {
     public void deleteBorrowing(@PathVariable("id") int borrowingId) {
         borrowingService.delete(borrowingId);
     }
+
+    @GetMapping("/lateDate")
+    public List<BorrowingDto> lateBorrowingDate(Principal principal){
+        return this.borrowingService.findLateBorrowingDate(principal);
+    }
 }

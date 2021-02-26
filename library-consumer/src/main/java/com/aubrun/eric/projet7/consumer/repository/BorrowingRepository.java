@@ -13,4 +13,7 @@ public interface BorrowingRepository extends JpaRepository<Borrowing, Integer> {
     @Query("SELECT b FROM Borrowing b WHERE b.userAccountBorrowing = :userAccount")
     List<Borrowing> findAllUserBorrowing(UserAccount userAccount);
 
+    @Query("SELECT b.userAccountBorrowing FROM Borrowing b WHERE b.endDate < current_date ")
+    List<Borrowing> findBorrowingByEndDateAndUserAccountBorrowing(UserAccount userAccount);
+
 }
