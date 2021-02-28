@@ -4,9 +4,7 @@ import com.aubrun.eric.projet7.beans.Book;
 import com.aubrun.eric.projet7.beans.Borrowing;
 import com.aubrun.eric.projet7.beans.UserAccount;
 import com.aubrun.eric.projet7.business.dto.BatchDto;
-import com.aubrun.eric.projet7.business.dto.BookDto;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
-import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.mapper.BorrowingDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import com.aubrun.eric.projet7.consumer.repository.BorrowingRepository;
@@ -19,8 +17,6 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
