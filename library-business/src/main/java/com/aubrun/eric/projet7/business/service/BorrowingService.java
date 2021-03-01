@@ -5,6 +5,7 @@ import com.aubrun.eric.projet7.beans.Borrowing;
 import com.aubrun.eric.projet7.beans.UserAccount;
 import com.aubrun.eric.projet7.business.dto.BatchDto;
 import com.aubrun.eric.projet7.business.dto.BorrowingDto;
+import com.aubrun.eric.projet7.business.dto.MailObject;
 import com.aubrun.eric.projet7.business.mapper.BorrowingDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.BookRepository;
 import com.aubrun.eric.projet7.consumer.repository.BorrowingRepository;
@@ -84,5 +85,14 @@ public class BorrowingService {
         batchDto.setEmail(entry.getKey().getEmail());
         batchDto.setBorrowings(entry.getValue().stream().map(BorrowingDtoMapper::toDto).collect(toList()));
         return batchDto;
+    }
+
+    private MailObject sendMail(BatchDto batchDto){
+        MailObject mailObject = new MailObject();
+        mailObject.setTo(batchDto.getEmail());
+        mailObject.setRecipientName(batchDto.getUsername());
+        mailObject.setSubject("Your loan is late");
+        mailObject.setText("Your loan is late, you must return it as soon as possible");
+        return mailObject;
     }
 }
