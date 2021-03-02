@@ -90,7 +90,6 @@ public class BorrowingService {
     private MailObject sendMail(BatchDto batchDto){
         MailObject mailObject = new MailObject();
         mailObject.setTo(batchDto.getEmail());
-        mailObject.setRecipientName(batchDto.getUsername());
         mailObject.setSubject("Your loan is late");
         mailObject.setText("Your loan is late, you must return it as soon as possible");
         return mailObject;
