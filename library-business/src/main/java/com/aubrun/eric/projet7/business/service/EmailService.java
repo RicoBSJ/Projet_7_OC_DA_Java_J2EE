@@ -1,7 +1,31 @@
 package com.aubrun.eric.projet7.business.service;
 
-public interface EmailService {
-    void sendSimpleMessage(String to,
-                           String subject,
-                           String text);
+import com.aubrun.eric.projet7.business.dto.MailObject;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EmailService {
+
+    private final JavaMailSender emailSender;
+
+    public EmailService(@Qualifier("getJavaMailSender") JavaMailSender emailSender) {
+        this.emailSender = emailSender;
+    }
+
+    public void sendSimpleMessage(MailObject mailObject) {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(mailObject.getSenderName());
+            message.setTo(mailObject.getRecipientName());
+            message.setSubject(mailObject.getSubject());
+            message.setText(mailObject.getText());
+            emailSender.send(message);
+        } catch (MailException exception) {
+            exception.printStackTrace();
+        }
+    }
 }

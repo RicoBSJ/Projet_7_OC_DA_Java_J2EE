@@ -29,11 +29,13 @@ public class BorrowingService {
     private final BorrowingRepository borrowingRepository;
     private final BookRepository bookRepository;
     private final UserAccountRepository userAccountRepository;
+    private final EmailService emailService;
 
-    public BorrowingService(BorrowingRepository borrowingRepository, BookRepository bookRepository, UserAccountRepository userAccountRepository) {
+    public BorrowingService(BorrowingRepository borrowingRepository, BookRepository bookRepository, UserAccountRepository userAccountRepository, EmailService emailService) {
         this.borrowingRepository = borrowingRepository;
         this.bookRepository = bookRepository;
         this.userAccountRepository = userAccountRepository;
+        this.emailService = emailService;
     }
 
 
@@ -84,14 +86,15 @@ public class BorrowingService {
         batchDto.setUsername(entry.getKey().getUsername());
         batchDto.setEmail(entry.getKey().getEmail());
         batchDto.setBorrowings(entry.getValue().stream().map(BorrowingDtoMapper::toDto).collect(toList()));
+        sendMail(batchDto);
         return batchDto;
     }
 
-    private MailObject sendMail(BatchDto batchDto){
+    private void sendMail(BatchDto batchDto){
         MailObject mailObject = new MailObject();
         mailObject.setTo(batchDto.getEmail());
         mailObject.setSubject("Your loan is late");
         mailObject.setText("Your loan is late, you must return it as soon as possible");
-        return mailObject;
+        emailService.sendSimpleMessage(mailObject);
     }
 }
