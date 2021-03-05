@@ -64,7 +64,7 @@ public class BorrowingService {
     }
 
     public void update(Integer borrowingId) {
-        Borrowing borrowing = borrowingRepository.findById(borrowingId).orElseThrow(()->new RuntimeException("La période de rallonge d'emprunt a déjà été effectuée"));
+        Borrowing borrowing = borrowingRepository.findById(borrowingId).orElseThrow(() -> new RuntimeException("La période de rallonge d'emprunt a déjà été effectuée"));
         borrowing.setEndDate(borrowing.getEndDate().plusWeeks(4));
         borrowing.setRenewal(true);
         borrowingRepository.save(borrowing);
@@ -75,26 +75,31 @@ public class BorrowingService {
         borrowingRepository.deleteById(borrowingId);
     }
 
-    public List<BatchDto> findLateBorrowingDate(){
+    public List<BatchDto> findLateBorrowingDate() {
         List<Borrowing> list = borrowingRepository.findBorrowingByEndDateAndUserAccountBorrowing(LocalDate.now());
         HashMap<UserAccount, List<Borrowing>> map = list.stream().collect(groupingBy(Borrowing::getUserAccountBorrowing, HashMap::new, toList()));
         return map.entrySet().stream().map(this::mapBatchDto).collect(toList());
     }
 
-    private BatchDto mapBatchDto(Map.Entry<UserAccount,List<Borrowing>> entry){
+    private BatchDto mapBatchDto(Map.Entry<UserAccount, List<Borrowing>> entry) {
         BatchDto batchDto = new BatchDto();
         batchDto.setUsername(entry.getKey().getUsername());
         batchDto.setEmail(entry.getKey().getEmail());
         batchDto.setBorrowings(entry.getValue().stream().map(BorrowingDtoMapper::toDto).collect(toList()));
-        sendMail(batchDto);
         return batchDto;
     }
 
-    private void sendMail(BatchDto batchDto){
+    public void sendMail(BatchDto batchDto) {
+        String text = "Bonjour, \n" +
+                "N'oubliez pas de rendre les emprunts suivants : \n" +
+                batchDto.getBorrowings().stream().
+                        map(b -> b.getBookBorrowing().getTitle() + " " + b.getBookBorrowing().getBookAuthor().getFirstName() + " " + b.getBookBorrowing().getBookAuthor().getLastName())
+                        .reduce((a, b) -> a + "\n" + b).orElseGet(() -> "")+
+                "\nCordialement";
         MailObject mailObject = new MailObject();
         mailObject.setTo(batchDto.getEmail());
         mailObject.setSubject("Your loan is late");
-        mailObject.setText("Your loan is late, you must return it as soon as possible");
+        mailObject.setText(text);
         emailService.sendSimpleMessage(mailObject);
     }
 }

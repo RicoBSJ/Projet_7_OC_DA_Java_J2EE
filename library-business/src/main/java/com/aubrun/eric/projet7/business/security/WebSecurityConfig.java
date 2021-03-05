@@ -58,24 +58,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public JavaMailSender getJavaMailSender() {
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
-
-        mailSender.setUsername("eric.aubrun@gmail.com");
-        mailSender.setPassword("Dudgew-roddy3-jadsuq");
-
-        Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.debug", "true");
-
-        return mailSender;
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
@@ -87,6 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .antMatchers(HttpMethod.POST, "/books/search/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/borrowings/lateDate").permitAll()
+                .antMatchers(HttpMethod.POST,"/sendMail").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
