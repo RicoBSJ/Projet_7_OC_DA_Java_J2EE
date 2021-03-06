@@ -3,7 +3,6 @@ package com.aubrun.eric.projet7;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
@@ -23,7 +22,7 @@ public class Main {
         mailSender.setPort(587);
 
         mailSender.setUsername("eric.aubrun@gmail.com");
-        mailSender.setPassword("Dudgew-roddy3-jadsuq");
+        mailSender.setPassword("imstcprragpkvpdq");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

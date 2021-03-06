@@ -29,13 +29,13 @@ public class BorrowingService {
     private final BorrowingRepository borrowingRepository;
     private final BookRepository bookRepository;
     private final UserAccountRepository userAccountRepository;
-    private final EmailService emailService;
+    private final EmailServiceImpl emailServiceImpl;
 
-    public BorrowingService(BorrowingRepository borrowingRepository, BookRepository bookRepository, UserAccountRepository userAccountRepository, EmailService emailService) {
+    public BorrowingService(BorrowingRepository borrowingRepository, BookRepository bookRepository, UserAccountRepository userAccountRepository, EmailServiceImpl emailServiceImpl) {
         this.borrowingRepository = borrowingRepository;
         this.bookRepository = bookRepository;
         this.userAccountRepository = userAccountRepository;
-        this.emailService = emailService;
+        this.emailServiceImpl = emailServiceImpl;
     }
 
 
@@ -98,8 +98,8 @@ public class BorrowingService {
                 "\nCordialement";
         MailObject mailObject = new MailObject();
         mailObject.setTo(batchDto.getEmail());
-        mailObject.setSubject("Your loan is late");
+        mailObject.setSubject("Late loan");
         mailObject.setText(text);
-        emailService.sendSimpleMessage(mailObject);
+        emailServiceImpl.sendSimpleMessage(mailObject.getTo(), mailObject.getSubject(), mailObject.getText());
     }
 }
