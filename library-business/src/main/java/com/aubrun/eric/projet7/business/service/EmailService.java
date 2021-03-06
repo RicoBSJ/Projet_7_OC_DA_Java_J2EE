@@ -19,7 +19,7 @@ public class EmailService {
     public void sendSimpleMessage(MailObject mailObject) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("noreply@baeldung.com");
+            message.setFrom("eric.aubrun@gmail.com");
             message.setTo(mailObject.getTo());
             message.setSubject(mailObject.getSubject());
             message.setText(mailObject.getText());
