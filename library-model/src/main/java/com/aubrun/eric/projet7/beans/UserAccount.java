@@ -20,8 +20,8 @@ public class UserAccount {
     private String email;
     @Column(name = "user_account_mot_de_passe")
     private String password;
-    @JoinColumn(name = "user_account_borrowings")
     @OneToMany
+    @JoinColumn(name = "user_account_borrowings")
     private List<Borrowing> borrowingList;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",

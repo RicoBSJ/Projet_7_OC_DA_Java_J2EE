@@ -17,14 +17,14 @@ public class Book {
     private Integer quantity;
     @Column(name = "book_year")
     private String yearBook;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_author")
-    @ManyToOne
     private Author bookAuthor;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_category")
-    @ManyToOne
     private Category bookCategory;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_edition")
-    @ManyToOne
     private Edition bookEdition;
 
     public Book() {

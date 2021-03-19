@@ -12,11 +12,11 @@ public class Borrowing {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "borrowing_id_generator")
     @Column(name = "id_borrowing")
     private Integer borrowingId;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_book")
-    @ManyToOne
     private Book bookBorrowing;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user_account")
-    @ManyToOne
     private UserAccount userAccountBorrowing;
     @Column(name = "borrowing_begin_date")
     private LocalDate beginDate;
