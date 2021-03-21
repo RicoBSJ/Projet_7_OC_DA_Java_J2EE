@@ -46,15 +46,26 @@ insert into user_account(
 values
 (nextval('user_account_id_seq'), 'Jobs', 'eric.aubrun@gmail.com','$2a$10$fcEe3X.fC7QxmSj7hRZJdujuZ8UavlkhewM37rcjJWdRtQt.ROJPK'),
 (nextval('user_account_id_seq'), 'Musk', 'aubrun.eric@free.fr', '$2a$10$PBcySTS3eGN69mRzF6BWx.hs7aayN0FIJqLY16ZsKen4S0ikAyL9G'),
-(nextval('user_account_id_seq'), 'Ma', 'aubrun.sylvie@free.fr', '$2a$10$c/Iju8gfO4wokM2nY8B6V.aJP9plWIgSJ.4xzrj27UZQ5TP9cxeeq');
-/*(nextval('user_account_id_seq'), 'Jobs', 's_jobs@gmail.com','$2a$10$fcEe3X.fC7QxmSj7hRZJdujuZ8UavlkhewM37rcjJWdRtQt.ROJPK'),
-(nextval('user_account_id_seq'), 'Musk', 'e.musk@gmail.com', '$2a$10$PBcySTS3eGN69mRzF6BWx.hs7aayN0FIJqLY16ZsKen4S0ikAyL9G'),
-(nextval('user_account_id_seq'), 'Ma', 'j-ma@gmail.com', '$2a$10$c/Iju8gfO4wokM2nY8B6V.aJP9plWIgSJ.4xzrj27UZQ5TP9cxeeq');*/
+(nextval('user_account_id_seq'), 'Ma', 'aubrun.sylvie@free.fr', '$2a$10$c/Iju8gfO4wokM2nY8B6V.aJP9plWIgSJ.4xzrj27UZQ5TP9cxeeq'),
+(nextval('user_account_id_seq'), 'Bezos', 'eric.aubrun@gmail.com','$2a$10$oRStZm22E3KTYZop3vBB9.sKDnzv13YYgAwHJrQ1J8/x8T.k7tQAK'),
+(nextval('user_account_id_seq'), 'Knight', 'aubrun.eric@free.fr', '$2a$10$P0.aPdbYOpdtquVx6JQ01Otl43eA.uy9gmgxgOvHq193Zy3LF0VkG'),
+(nextval('user_account_id_seq'), 'Zuckerberg', 'aubrun.sylvie@free.fr', '$2a$10$d65Cvz.Uf3MYTy2tu5W4Eun3Tzckcgm23yEfcZD/xPH7oTPjNy2ma'),
+(nextval('user_account_id_seq'), 'William Foster', 'eric.aubrun@gmail.com','$2a$10$dG0tU0KM0GTUm4xs56UnDeKuxwkRA6DSzpI5WYoNk/.l294zERTNe'),
+(nextval('user_account_id_seq'), 'Gramsci', 'aubrun.eric@free.fr', '$2a$10$vhMKl55c6q/78r3s5w9OI.fgVh366UaUPRb13LqdTr4jPzA2d7NfS'),
+(nextval('user_account_id_seq'), 'Heidegger', 'aubrun.sylvie@free.fr', '$2a$10$Mm/u35cmpZzyR.Fg6ntmq.YlIFs5WPv.cEghq30FmtYwrwvPjp3ze'),
+(nextval('user_account_id_seq'), 'Cohen', 'eric.aubrun@gmail.com','$2a$10$CZBukW/NfpkF/mON0f7dc.MtE95U72zWgjjyupFgDAo8d8mRN3QHi');
 
 /*
  sJ53
  eM86
  jM68
+ sB64
+ pK38
+ mZ84
+ jWF35
+ aG1891
+ mH1889
+ aC55
  */
 
 CREATE SEQUENCE IF NOT EXISTS book_id_seq;
@@ -105,13 +116,33 @@ values
 (nextval('borrowing_id_seq'), 1, 1, '2021-01-10', '2021-02-10' , false, 1),
 (nextval('borrowing_id_seq'), 8, 1, '2021-01-10', '2021-02-10' , false, 1),
 (nextval('borrowing_id_seq'), 2, 1, '2021-02-10', '2021-03-10' , false, 1),
-(nextval('borrowing_id_seq'), 3, 1, '2021-03-10', '2021-04-10' , false, 1),
+(nextval('borrowing_id_seq'), 3, 2, '2021-03-10', '2021-04-10' , false, 2),
 (nextval('borrowing_id_seq'), 4, 2, '2021-01-11', '2021-02-11' , false, 2),
 (nextval('borrowing_id_seq'), 5, 2, '2021-02-11', '2021-03-11' , false, 2),
-(nextval('borrowing_id_seq'), 6, 2, '2021-03-11', '2021-04-11' , false, 2),
+(nextval('borrowing_id_seq'), 6, 3, '2021-03-11', '2021-04-11' , false, 3),
 (nextval('borrowing_id_seq'), 7, 3, '2021-01-12', '2021-02-12' , false, 3),
 (nextval('borrowing_id_seq'), 8, 3, '2021-02-12', '2021-03-12' , false, 3),
-(nextval('borrowing_id_seq'), 9, 3, '2021-03-12', '2021-04-12' , false, 3);
+(nextval('borrowing_id_seq'), 9, 4, '2021-03-12', '2021-04-12' , false, 4),
+(nextval('borrowing_id_seq'), 1, 4, '2021-01-10', '2021-02-10' , false, 4),
+(nextval('borrowing_id_seq'), 8, 4, '2021-01-10', '2021-02-10' , false, 4),
+(nextval('borrowing_id_seq'), 2, 5, '2021-02-10', '2021-03-10' , false, 5),
+(nextval('borrowing_id_seq'), 3, 5, '2021-03-10', '2021-04-10' , false, 5),
+(nextval('borrowing_id_seq'), 4, 5, '2021-01-11', '2021-02-11' , false, 5),
+(nextval('borrowing_id_seq'), 5, 6, '2021-02-11', '2021-03-11' , false, 6),
+(nextval('borrowing_id_seq'), 6, 6, '2021-03-11', '2021-04-11' , false, 6),
+(nextval('borrowing_id_seq'), 7, 6, '2021-01-12', '2021-02-12' , false, 6),
+(nextval('borrowing_id_seq'), 8, 7, '2021-02-12', '2021-03-12' , false, 7),
+(nextval('borrowing_id_seq'), 9, 7, '2021-03-12', '2021-04-12' , false, 7),
+(nextval('borrowing_id_seq'), 1, 7, '2021-01-10', '2021-02-10' , false, 7),
+(nextval('borrowing_id_seq'), 8, 8, '2021-01-10', '2021-02-10' , false, 8),
+(nextval('borrowing_id_seq'), 2, 8, '2021-02-10', '2021-03-10' , false, 8),
+(nextval('borrowing_id_seq'), 3, 8, '2021-03-10', '2021-04-10' , false, 8),
+(nextval('borrowing_id_seq'), 4, 9, '2021-01-11', '2021-02-11' , false, 9),
+(nextval('borrowing_id_seq'), 5, 9, '2021-02-11', '2021-03-11' , false, 9),
+(nextval('borrowing_id_seq'), 6, 9, '2021-03-11', '2021-04-11' , false, 9),
+(nextval('borrowing_id_seq'), 7, 10, '2021-01-12', '2021-02-12' , false, 10),
+(nextval('borrowing_id_seq'), 8, 10, '2021-02-12', '2021-03-12' , false, 10),
+(nextval('borrowing_id_seq'), 9, 10, '2021-03-12', '2021-04-12' , false, 10);
 
 CREATE SEQUENCE IF NOT EXISTS user_role_id_seq;
 
@@ -133,4 +164,11 @@ insert into user_roles(
 values
 (1, 3),
 (2, 2),
-(3, 1);
+(3, 1),
+(4, 3),
+(5, 2),
+(6, 1),
+(7, 3),
+(8, 2),
+(9, 1),
+(10, 3);

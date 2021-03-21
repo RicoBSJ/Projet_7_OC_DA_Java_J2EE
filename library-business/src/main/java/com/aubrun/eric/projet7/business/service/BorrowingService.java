@@ -90,10 +90,10 @@ public class BorrowingService {
     }
 
     public void sendMail(BatchDto batchDto) {
-        String text = "Bonjour, \n" +
+        String text = "Bonjour Monsieur "+ batchDto.getUsername() + ", \n" +
                 "N'oubliez pas de rendre les emprunts suivants : \n" +
                 batchDto.getBorrowings().stream().
-                        map(b -> b.getBookBorrowing().getTitle() + " " + b.getBookBorrowing().getBookAuthor().getFirstName() + " " + b.getBookBorrowing().getBookAuthor().getLastName())
+                        map(b -> b.getBookBorrowing().getTitle() + ", "+"Auteur : " + b.getBookBorrowing().getBookAuthor().getFirstName() + " " + b.getBookBorrowing().getBookAuthor().getLastName())
                         .reduce((a, b) -> a + "\n" + b).orElseGet(() -> "")+
                 "\nCordialement";
         MailObject mailObject = new MailObject();
