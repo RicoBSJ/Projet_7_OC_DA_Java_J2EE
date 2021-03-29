@@ -81,25 +81,25 @@ insert into book(
 )
 values
 (nextval('book_id_seq'), 3, 'La grève', '2017-03-09', 1, 1, 1),
-(nextval('book_id_seq'), 3, 'La source vive', '2018-03-01', 1, 1, 1),
-(nextval('book_id_seq'), 3, 'La Vertu d’Égoïsme', '2008-01-09', 1, 1, 1),
-(nextval('book_id_seq'), 3, 'We the Living', '2011-06-07', 1, 1, 1),
-(nextval('book_id_seq'), 3, 'Capitalism', '1986-07-15', 1, 1, 1),
-(nextval('book_id_seq'), 3, 'Le but', '2013-04-19', 2, 2, 2),
-(nextval('book_id_seq'), 3, 'Critical chain', '2019-08-15', 2, 2, 2),
-(nextval('book_id_seq'), 3, 'Evident, non ?', '2010-11-09', 2, 2, 2),
-(nextval('book_id_seq'), 3, 'Réussir n''est pas une question de chance' , '2017-05-11', 2, 2, 2),
+(nextval('book_id_seq'), 4, 'La source vive', '2018-03-01', 1, 1, 1),
+(nextval('book_id_seq'), 10, 'La Vertu d’Égoïsme', '2008-01-09', 1, 1, 1),
+(nextval('book_id_seq'), 7, 'We the Living', '2011-06-07', 1, 1, 1),
+(nextval('book_id_seq'), 8, 'Capitalism', '1986-07-15', 1, 1, 1),
+(nextval('book_id_seq'), 1, 'Le but', '2013-04-19', 2, 2, 2),
+(nextval('book_id_seq'), 2, 'Critical chain', '2019-08-15', 2, 2, 2),
+(nextval('book_id_seq'), 5, 'Evident, non ?', '2010-11-09', 2, 2, 2),
+(nextval('book_id_seq'), 9, 'Réussir n''est pas une question de chance' , '2017-05-11', 2, 2, 2),
 (nextval('book_id_seq'), 3, 'Un an pour sauver l''entreprise', '2003-02-04', 2, 2, 2),
-(nextval('book_id_seq'), 3, 'Carnets', '2010-10-01', 3, 3, 3),
-(nextval('book_id_seq'), 3, 'La première et dernière liberté', '1995-01-01', 3, 3, 3),
-(nextval('book_id_seq'), 3, 'De la nature et de l''environnement', '1994-02-03', 3, 3, 3),
-(nextval('book_id_seq'), 3, 'De la vie et de la mort', '1994-11-15', 3, 3, 3),
-(nextval('book_id_seq'), 3, 'Dernier journal', '1997-06-17', 3, 3, 3),
-(nextval('book_id_seq'), 3, 'La Flamme de l''attention', '2016-02-04', 3, 3, 3),
+(nextval('book_id_seq'), 2, 'Carnets', '2010-10-01', 3, 3, 3),
+(nextval('book_id_seq'), 6, 'La première et dernière liberté', '1995-01-01', 3, 3, 3),
+(nextval('book_id_seq'), 11, 'De la nature et de l''environnement', '1994-02-03', 3, 3, 3),
+(nextval('book_id_seq'), 4, 'De la vie et de la mort', '1994-11-15', 3, 3, 3),
+(nextval('book_id_seq'), 7, 'Dernier journal', '1997-06-17', 3, 3, 3),
+(nextval('book_id_seq'), 1, 'La Flamme de l''attention', '2016-02-04', 3, 3, 3),
 (nextval('book_id_seq'), 3, 'Plénitude de la vie', '1989-10-01', 3, 3, 3),
-(nextval('book_id_seq'), 3, 'La Relation de l''homme au monde', '1995-02-23', 3, 3, 3),
-(nextval('book_id_seq'), 3, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
-(nextval('book_id_seq'), 3, 'Le temps aboli', '2019-09-18', 3, 3, 3);
+(nextval('book_id_seq'), 5, 'La Relation de l''homme au monde', '1995-02-23', 3, 3, 3),
+(nextval('book_id_seq'), 19, 'La Vérité et l''évènement', '1990-01-01', 3, 3, 3),
+(nextval('book_id_seq'), 13, 'Le temps aboli', '2019-09-18', 3, 3, 3);
 
 CREATE SEQUENCE IF NOT EXISTS borrowing_id_seq;
 
