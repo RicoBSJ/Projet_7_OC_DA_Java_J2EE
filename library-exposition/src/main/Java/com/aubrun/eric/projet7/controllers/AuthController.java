@@ -9,12 +9,14 @@ import com.aubrun.eric.projet7.beans.payload.response.JwtResponse;
 import com.aubrun.eric.projet7.beans.payload.response.MessageResponse;
 import com.aubrun.eric.projet7.business.security.JwtUtils;
 import com.aubrun.eric.projet7.business.service.UserDetailsImpl;
+import com.aubrun.eric.projet7.business.service.exception.WrongIdentifier;
 import com.aubrun.eric.projet7.consumer.repository.RoleRepository;
 import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -52,8 +54,14 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        Authentication authentication = null;
+
+        try {
+            authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        } catch (AuthenticationException e) {
+            throw new WrongIdentifier();
+        }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);

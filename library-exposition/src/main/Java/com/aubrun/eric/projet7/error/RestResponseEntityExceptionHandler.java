@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.error;
 
+import com.aubrun.eric.projet7.business.service.exception.WrongIdentifier;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -49,6 +50,12 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     public ResponseEntity<Object> handleAccessDeniedException(final Exception ex, final WebRequest request) {
         System.out.println("request" + request.getUserPrincipal());
         return new ResponseEntity<Object>("Access denied message here", new HttpHeaders(), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler({WrongIdentifier.class})
+    public ResponseEntity<Object> handleWrongIdentified(final WrongIdentifier ex, final WebRequest request) {
+        System.out.println("request" + request.getUserPrincipal());
+        return new ResponseEntity<Object>(ex.getMessage(), new HttpHeaders(), HttpStatus.UNAUTHORIZED);
     }
 
     // 409
