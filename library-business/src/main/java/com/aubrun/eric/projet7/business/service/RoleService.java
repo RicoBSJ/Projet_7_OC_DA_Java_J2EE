@@ -1,5 +1,7 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.ERole;
+import com.aubrun.eric.projet7.beans.Role;
 import com.aubrun.eric.projet7.business.dto.RoleDto;
 import com.aubrun.eric.projet7.business.mapper.RoleDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.RoleRepository;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,5 +45,10 @@ public class RoleService {
     public void deleteById(Integer id) {
 
         roleRepository.deleteById(id);
+    }
+
+    public Optional<Role> findByRoleName(ERole roleUser) {
+
+        return roleRepository.findByRoleName(roleUser);
     }
 }

@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.business.dto.UserAccountDto;
+import com.aubrun.eric.projet7.business.mapper.CategoryDtoMapper;
 import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,15 @@ public class UserAccountService {
     public void delete(Integer id) {
 
         userAccountRepository.deleteById(id);
+    }
+
+    public boolean existsByUsername(String username){
+
+        return userAccountRepository.existsByUsername(username);
+    }
+
+    public boolean existsByEmail(String email){
+
+        return userAccountRepository.existsByEmail(email);
     }
 }

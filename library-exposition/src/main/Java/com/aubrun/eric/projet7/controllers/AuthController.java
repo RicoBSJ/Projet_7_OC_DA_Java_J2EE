@@ -7,7 +7,10 @@ import com.aubrun.eric.projet7.beans.payload.request.LoginRequest;
 import com.aubrun.eric.projet7.beans.payload.request.SignupRequest;
 import com.aubrun.eric.projet7.beans.payload.response.JwtResponse;
 import com.aubrun.eric.projet7.beans.payload.response.MessageResponse;
+import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
 import com.aubrun.eric.projet7.business.security.JwtUtils;
+import com.aubrun.eric.projet7.business.service.RoleService;
+import com.aubrun.eric.projet7.business.service.UserAccountService;
 import com.aubrun.eric.projet7.business.service.UserDetailsImpl;
 import com.aubrun.eric.projet7.business.service.exception.WrongIdentifier;
 import com.aubrun.eric.projet7.consumer.repository.RoleRepository;
@@ -35,18 +38,18 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
 
-    private final UserAccountRepository userRepository;
+    private final UserAccountService userAccountService;
 
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
     private final PasswordEncoder encoder;
 
     private final JwtUtils jwtUtils;
 
-    public AuthController(AuthenticationManager authenticationManager, UserAccountRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils) {
+    public AuthController(AuthenticationManager authenticationManager, UserAccountService userAccountService, RoleService roleService, PasswordEncoder encoder, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
+        this.userAccountService = userAccountService;
+        this.roleService = roleService;
         this.encoder = encoder;
         this.jwtUtils = jwtUtils;
     }
@@ -80,13 +83,13 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+        if (userAccountService.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if (userAccountService.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
@@ -101,26 +104,26 @@ public class AuthController {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleRepository.findByRoleName(ERole.ROLE_USER)
+            Role userRole = roleService.findByRoleName(ERole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
-                        Role adminRole = roleRepository.findByRoleName(ERole.ROLE_ADMIN)
+                        Role adminRole = roleService.findByRoleName(ERole.ROLE_ADMIN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(adminRole);
 
                         break;
                     case "mod":
-                        Role modRole = roleRepository.findByRoleName(ERole.ROLE_MODERATOR)
+                        Role modRole = roleService.findByRoleName(ERole.ROLE_MODERATOR)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(modRole);
 
                         break;
                     default:
-                        Role userRole = roleRepository.findByRoleName(ERole.ROLE_USER)
+                        Role userRole = roleService.findByRoleName(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
                 }
@@ -128,7 +131,7 @@ public class AuthController {
         }
 
         user.setRoles(roles);
-        userRepository.save(user);
+        userAccountService.save(UserAccountDtoMapper.toDto(user));
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
