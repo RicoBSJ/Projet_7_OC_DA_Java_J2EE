@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet7.business.service;
 
+import com.aubrun.eric.projet7.beans.UserAccount;
 import com.aubrun.eric.projet7.business.dto.UserAccountDto;
 import com.aubrun.eric.projet7.business.mapper.CategoryDtoMapper;
 import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,5 +55,10 @@ public class UserAccountService {
     public boolean existsByEmail(String email){
 
         return userAccountRepository.existsByEmail(email);
+    }
+
+    public UserAccountDto findByUsername(String username){
+
+        return UserAccountDtoMapper.toDto(userAccountRepository.findByUsername(username).get());
     }
 }
