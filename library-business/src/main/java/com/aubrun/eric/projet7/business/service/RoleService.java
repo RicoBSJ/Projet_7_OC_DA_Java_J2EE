@@ -46,9 +46,4 @@ public class RoleService {
 
         roleRepository.deleteById(id);
     }
-
-    public Optional<Role> findByRoleName(ERole roleUser) {
-
-        return roleRepository.findByRoleName(roleUser);
-    }
 }

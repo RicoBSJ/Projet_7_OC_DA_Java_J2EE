@@ -46,19 +46,4 @@ public class UserAccountService {
 
         userAccountRepository.deleteById(id);
     }
-
-    public boolean existsByUsername(String username){
-
-        return userAccountRepository.existsByUsername(username);
-    }
-
-    public boolean existsByEmail(String email){
-
-        return userAccountRepository.existsByEmail(email);
-    }
-
-    public UserAccountDto findByUsername(String username){
-
-        return UserAccountDtoMapper.toDto(userAccountRepository.findByUsername(username).get());
-    }
 }

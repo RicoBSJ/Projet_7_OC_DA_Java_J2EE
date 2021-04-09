@@ -12,17 +12,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserAccountService userAccountService;
+    private final UserAccountRepository userAccountRepository;
 
-    public UserDetailsServiceImpl(UserAccountService userAccountService) {
-        this.userAccountService = userAccountService;
+    public UserDetailsServiceImpl(UserAccountRepository userAccountRepository) {
+        this.userAccountRepository = userAccountRepository;
     }
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UserAccount user = UserAccountDtoMapper.toEntity(userAccountService.findByUsername(username));
+        UserAccount user = userAccountRepository.findByUsername(username).get();
         return UserDetailsImpl.build(user);
     }
 }
