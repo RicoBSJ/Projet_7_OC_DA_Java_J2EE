@@ -1,149 +1,114 @@
-# Développez le nouveau système d’information de la bibliothèque d’une grande ville
+# Développez le nouveau Système d’Information de la bibliothèque d’une grande ville, Projet 7, dans le cadre de la formation DA JAVA JEE OPENCLASSROOMS
 
 ## Contexte
 
-Vous travaillez au sein de la Direction du Système d’Information (DSI)  de la mairie d’une grande ville, sous la direction de Patricia, la responsable du service. La DSI est en charge de tous les traitements numériques pour la mairie et les structures qui lui sont rattachées, comme la gestion du site web de la ville par exemple. À ce titre, Patricia est contactée par le service culturel de la ville qui souhaite moderniser la gestion de ses bibliothèques. John, architecte logiciel, sera chargé de la validation technique du projet.
+    Vous travaillez au sein de la Direction du Système d’Information (DSI) de la mairie d’une grande ville, sous la direction de Patricia, la responsable du service. La DSI est en charge de tous les traitements numériques pour la mairie et les structures qui lui sont rattachées, comme la gestion du site web de la ville par exemple. À ce titre, Patricia est contactée par le service culturel de la ville qui souhaite moderniser la gestion de ses bibliothèques. John, architecte logiciel, sera chargé de la validation technique du projet.
+    Nous souhaitons confier à la DSI la création d’un ensemble d’outils numériques pour les différents acteurs des bibliothèques de la ville. Voici la liste des tâches qui me sont confiées :
 
-Patricia vous transfère son dernier échange avec Luc, le directeur du service culturel :
+    Développer UNE API Web : cette application permettra aux usagers de la bibliothèque d’avoir accès aux fonctionnalités suivantes :
 
-## Objet : Récapitulatif de notre discussion
+    ⁃	S’enregistrer comme utilisateur ;
+    ⁃	Se connecter à l’application en tant qu’utilisateur inscrit ;
+    ⁃	Rechercher des ouvrages et voir le nombre d’exemplaires disponibles ;
+    ⁃	De Consulter leurs prêts en cours. Les prêts sont pour une période de 4 semaines ;
+    ⁃	De Prolonger un prêt en cours. Le prêt d’un ouvrage n’est prolongeable qu’une seule fois. La prolongation ajoute une nouvelle période de prêt (4 semaines) à la période initiale.
 
-    Re-bonjour Patricia,
+    Développer une Application web Batch  pour des traitements automatisés (mails de relance).
 
-Suite à notre réunion de ce matin, tu trouveras ci-dessous le récapitulatif de nos attentes concernant le projet d’outils numériques à destination des bibliothèques de notre très chère ville.
+## Les fonctionnalités :
 
-Je reste à dispo si tu as des questions,
+    F1 : Créer un utilisateur, via son email et un mot de passe;
 
-Bien à toi,
+    F2 : Loguer un utilisateur existant tout en faisant appel au token de Spring Security afin de garantir un accès sécurisé;
 
-Luc
+    F3 : Rechercher des ouvrages et voir le nombre d’exemplaires disponibles;
 
-Directeur du service culturel
+    F4 : Consulter leurs prêts en cours. Les prêts sont pour une période de 4 semaines;
 
-----
+    F5 : Prolonger un prêt en cours. Le prêt d’un ouvrage n’est prolongeable qu’une seule fois. La prolongation ajoute une nouvelle période de prêt (4 semaines) à la période initiale.
 
-Nous souhaitons confier à la DSI la création d’un ensemble d’outils numériques pour les différents acteurs des bibliothèques de la ville. En voici la liste :
+## Choix techniques retenus
 
-Un site web et une application mobile pour les usagers de la bibliothèque.
-Un logiciel pour le personnel des bibliothèques.
-Un logiciel pour des traitements automatisés (mails de relance).
-Le site web permettra aux usagers de suivre les prêts de leurs ouvrages. Il pourront :
+	- API web en REST ou en SOAP (à voir avec le développeur): les clients (site web, batch, logiciel pour les personnels, application mobile) communiqueront à travers une API web. Factorisation de la logique métier.
+	- Application web avec un framework MVC (Spring MVC, Struts, …)
+	- Packaging avec Maven
 
-Rechercher des ouvrages et voir le nombre d’exemplaires disponibles.
-Consulter leurs prêts en cours. Les prêts sont pour une période de 4 semaines.
-Prolonger un prêt en cours. Le prêt d’un ouvrage n’est prolongeable qu’une seule fois. La prolongation ajoute une nouvelle période de prêt (4 semaines) à la période initiale.
-Nous attendons également une application mobile iOS et Android qui fournira les mêmes services que le site web.
+	Pour l’application mobile et le logiciel des personnels, une autre réunion sera organisée.
 
-Le logiciel pour le personnel des bibliothèques permettra notamment de gérer les emprunts et les livres rendus.
+	À noter : Dès la release 1.0, les actions de création d’un prêt et retour d’un prêt seront implémentés même si elles ne seront utilisées par le logiciel pour les personnels uniquement à la release 2.0.
 
-Le logiciel pour les traitements automatisés, que tu as désigné par le terme “batch” il me semble, permettra d’envoyer des mails de relance aux usagers n’ayant pas rendu les livres en fin de période de prêt. L’envoi est automatique à la fréquence d’un par jour.
+## Spécificités
 
-Vous êtes missionné pour la réalisation des premiers produits !
+Les outils utilisés pour le développement
 
-Patricia vous fournit le plan de travail suivant tout en vous précisant que vous serez chargé uniquement de la Release 1.0 :
+	Cette application a été développée avec :
+	
+	- IntelliJ IDEA 2021.1 (Ultimate Edition - Build #IU-211.6693.111, built on April 6, 2021)
+	- Apache Maven 3.6.3
+	- Java 8 (version 1.8 Update 251)
+	- Tomcat version 9.0.39
+	- PostgreSql 12 (version 10.12 - 10.14)
+	- Hibernate ORM (version hibernate-release-5.2.4.Final)
+	- Spring Boot version 2.4.3
+	- Spring Security version 2.4.1
+	- Spring MVC version 5.3.4
+	- Bootstrap version
 
-## Release 1.0
+Les étapes de déploiement de l'application
+	
+	1/Vous devez au-préalable télécharger et installer :
+	
+	- Java sur https://www.java.com/fr/download/
+	- Le JDK sur https://www.oracle.com/fr/java/technologies/javase/javase-jdk8-downloads.html
+	- Apache Maven sur https://maven.apache.org/download.cgi (n'oubliez pas d'ajouter la variable d'environnement d'Apache au "Path")
+	- Apache Tomcat sur https://tomcat.apache.org/download-90.cgi
+	- PostgreSQL sur https://www.postgresql.org/download/
+	- Hibernate sur https://sourceforge.net/projects/hibernate/files/hibernate-orm/5.4.10.Final/hibernate-release-5.4.10.Final.zip/download
+	- Dézippez le package "PBiblio_Api_AUBRUN_Eric"
+	
+	2/Ceci fait, vous devez lancer pgAdmin4 :
+	
+	- Voici le chemin : /Library/PostgreSQL/12/
+	- Dans la base de données, créez un utilisateur "postgres", attribuez lui le mot de passe "postgres"
+	- A partir de la base de données, ouvrez l'éditeur de script et exécutez le fichier "PBiblio_Api_03_Script_SQL_Creation_Base_De_Donnees.sql" que vous trouverez dans le package
+	- Pour alimenter la base de données, vous devez exécuter à partir de l'emplacement "Tables" le fichier "PBiblio_Api_04_Script_SQL_Jeu_De_Donnees.sql"
+	
+	3/A partir du terminal
+	
+	- Ouvrez votre terminal de commande, tapez cd et copiez le chemin d'accès à l'application : ............Faites "ENTRER"
+	- Une fois placé dans le chemin de l'application, tapez "mvn package"
+	- Rendez-vous dans le chemin suivant : library-exposition\target
+	- Copiez le fichier "library-exposition.war" généré par l'étape précédente
+	- Rendez-vous dans le dossier apache-tomcat-9.0.30\webapps\ et collez "library-exposition.war"
+	
+	4/Démarrage de Tomcat
+	
+	Sur Mac, la démarche est la suivante :
+	- Ouvrez le terminal
+	- Tapez : "sudo su", ce qui a pour effet de vous donner tous les droits en lecture et écriture
+	- Rendez-vous dans le dossier de Tomcat "apache-tomcat-9.0.30\" et tapez : "ls -l"
+	- Tapez "sudo chmod -R 755 apache-tomcat-9.0.30\", rendez-vous dans "\bin" et tapez "./startup.sh"
+	- Si Tomcat démarre, vous devez obtenir à l'affichage quelque chose de semblable à ceci :
+	- Using CATALINA_BASE:   /Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30
+	- Using CATALINA_HOME:   /Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30
+	- Using CATALINA_TMPDIR: /Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30/temp
+	- Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+	- Using CLASSPATH:       /Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30/bin/bootstrap.jar:/Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30/bin/tomcat-juli.jar
+	- Tomcat started.
 
-    API Web
-
-    Application web
-
-    Batch
-
-## Release 2.0
-
-    Logiciel pour le personnel
-
-## Release 3.0
-
-    Application mobile
-
-Vous recevez également le compte rendu de la réunion pour la conception technique du projet :
-
-## Contexte : Projet bibliothèque
-
-    Présents : 
-
-Patricia, responsable du service de DSI,
-John, architecte logiciel,
-Linda, lead tech
-Objet : Choix de la solution technique pour le projet “Bibliothèque”.
-
-    Choix techniques retenus :
-
-API web en REST ou en SOAP (à voir avec le développeur) : les clients (site web, batch, logiciel pour les personnels, application mobile) communiqueront à travers une API web. Factorisation de la logique métier.
-Application web avec un framework MVC (Spring MVC, Struts, …)
-Packaging avec Maven
-Pour l’application mobile et le logiciel des personnels, une autre réunion sera organisée.
-
-À noter : Dès la release 1.0, les actions de création d’un prêt et retour d’un prêt seront implémentés même si elles ne seront utilisés par le logiciel pour les personnels uniquement à la release 2.0.
-
-Vous trouvez également cette note sur votre bureau, vous reconnaissez l’écriture de Patricia :
-
-Ajoute bien un fichier readme.md à la racine de ton repository pour expliquer comment déployer l’application (cela servira de base pour rédiger la documentation par la suite).
-NB : n'oublie pas de respecter les bonnes pratiques de développement ;)
-
-    - Patricia
-
-Vous avez tous les éléments en main pour vous lancer !
-
-## Livrables attendus
-Vous livrerez, sur GitHub ou GitLab (dans un seul dépôt Git dédié) :
-
-Le code source des composants à développer de la Release 1.
-Les scripts SQL de création de la base de données avec un jeu de données de démonstration.
-Une documentation succincte (un fichier README.md  suffit) expliquant comment déployer l'application.
-Vous donnerez un accès en lecture à votre/vos dépôt(s) Git à votre mentor et au mentor qui vous fera passer la soutenance.
-
-## Soutenance
-Avant la soutenance
-Le mentor doit être en mesure de déployer le système d’information chez lui pour le tester avant la soutenance.
-
-Déroulement de la soutenance
-Il vous est demandé de vous mettre en situation réelle : en effet, il s'agit d'une réunion professionnelle. Vous vous adresserez à John, l’architecte logiciel de la DSIO, qui doit valider votre travail sur le projet.‌
-
-## La soutenance, d’une durée d’environ 25-30 minutes, se déroulera comme ceci :
-
-    Partie 1 – 20-25 minutes : Simulation d'une réunion professionnelle
+Le lancement de l'application
     
-L’évaluateur jouera le rôle de l’architecte logiciel de votre entreprise.
+    - Ouvrez votre navigateur Internet et tapez "http://localhost:8080/library_exposition_war_exploded/" pour lancer l'application
+    
+Pour arrêter Tomcat
+    
+    - Pour arrêter Tomcat, tapez "./shutdown.sh", votre affichage devrait ressembler à ceci :
+	- Using CATALINA_BASE:   /Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30
+	- Using CATALINA_HOME:   /Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30
+	- Using CATALINA_TMPDIR: /Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30/temp
+	- Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+	- Using CLASSPATH:       /Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30/bin/bootstrap.jar:/Users/ricobsj/intellij-workspace/Servers/apache-tomcat-9.0.30/bin/tomcat-juli.jar
 
-[~ 5 minutes]  Vous lui ferez une démonstration rapide de votre application web et du batch
+## Auteur
 
-[~ 5 minutes] Vous lui présenterez la solution technique : architecture et technologies utilisées
-
-[10 minutes] Vous présenterez l’implémentation de l’architecture mise en oeuvre et les points importants du développement.
-
-    Partie 2 – 5-10 minutes : Retour sur la soutenance
-L’évaluateur pourra vous demander d’approfondir certains aspects ou vous questionner sur vos livrables.
-L’évaluateur vous fera un debrief sur votre prestation en soutenance.
-
-    Référentiel d'évaluation
-Concevoir une application web avec une approche par composants
-
-L’application web est consommatrice d’une API web.
-Un framework MVC est utilisé.
-Le scope fonctionnel est respecté.
-Créer une API web avec un web service SOAP ou un microservice REST
-
-La logique métier est implémentée au sein d’un composant qui expose une API web.
-Interagir avec des composants externes
-
-L’API web communique avec la base de données.
-Sélectionner les langages de programmation adaptés pour le développement de l’application
-
-Différents frameworks sont mis en oeuvre en fonction des choix techniques.
-Les choix techniques sont justifiés à l’oral.
-Respecter les bonnes pratiques de développement en vigueur
-
-Le packaging est géré avec Apache Maven.
-Chaque composant a un cycle de développement qui lui est propre.
-Une architecture n-tiers est mise en oeuvre.
-Le patron de conception ‘Inversion de contrôle’ est mis en oeuvre.
-
-## Compétences évaluées
-Créer une API web avec un web service SOAP ou un microservice REST
-Concevoir une application web avec une approche par composants
-Respecter les bonnes pratiques de développement en vigueur
-Sélectionner les langages de programmation adaptés pour le développement de l’application
-Interagir avec des composants externes
+Rico BSJ
