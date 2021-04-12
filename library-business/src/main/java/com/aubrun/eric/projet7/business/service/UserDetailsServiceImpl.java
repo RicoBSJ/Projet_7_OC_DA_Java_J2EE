@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet7.business.service;
 
 import com.aubrun.eric.projet7.beans.UserAccount;
-import com.aubrun.eric.projet7.business.mapper.UserAccountDtoMapper;
 import com.aubrun.eric.projet7.consumer.repository.UserAccountRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
