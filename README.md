@@ -56,9 +56,9 @@ Les outils utilisés pour le développement
 	- Apache Maven 3.6.3
 	- Java 8 (version 1.8 Update 251)
 	- PostgreSql 12 (version 10.12 - 10.14)
-	- Hibernate ORM (version hibernate-release-5.2.4.Final)
-	- Spring Boot version 2.4.3 (Tomcat version 9.0.43 embarqué)
-	- Spring Security version 2.4.1
+	- Hibernate ORM (version hibernate-release-6.1.6.Final)
+	- Spring Boot version 2.4.2 (Tomcat version 9.0.43 embarqué)
+	- Spring Security version 2.4.2
 	- Spring Java Mail version 1.4.3
 
 Les étapes de déploiement de l'application
@@ -69,7 +69,7 @@ Les étapes de déploiement de l'application
 	- Le JDK sur https://www.oracle.com/fr/java/technologies/javase/javase-jdk8-downloads.html
 	- Apache Maven sur https://maven.apache.org/download.cgi (n'oubliez pas d'ajouter la variable d'environnement d'Apache au "Path")
 	- PostgreSQL sur https://www.postgresql.org/download/
-	- Hibernate sur https://sourceforge.net/projects/hibernate/files/hibernate-orm/5.4.10.Final/hibernate-release-5.4.10.Final.zip/download
+	- Hibernate sur https://sourceforge.net/projects/hibernate/files/hibernate-validator/6.1.6.Final/hibernate-validator-6.1.6.Final-dist.zip/download
 	
 	2/Ceci fait, vous devez lancer pgAdmin4 :
 	
