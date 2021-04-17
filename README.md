@@ -11,7 +11,7 @@
     John, architecte logiciel, sera chargé de la validation technique du projet.
 
     Nous souhaitons confier à la DSI la création d’un ensemble d’outils numériques pour les différents acteurs des bibliothèques de la ville. 
-    Voici la liste des tâches qui me sont confiées spécifiquement dans ce sous-projet :
+    Voici la liste des tâches qui me sont confiées :
 
     Développer UNE API Web : cette application permettra aux usagers de la bibliothèque d’avoir accès aux fonctionnalités suivantes :
 
